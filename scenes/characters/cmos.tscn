@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=3 uid="uid://u30mi0f28jcw"]
+
+[ext_resource type="Texture2D" uid="uid://bj35r86xde2c8" path="res://assets/sprites/characters/enemys/cmos.png" id="1_x3i0w"]
+
+[sub_resource type="Animation" id="Animation_n6s87"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -47)]
+}
+
+[sub_resource type="Animation" id="Animation_hap56"]
+resource_name = "walk"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5, 1, 1.1, 1.4, 1.5, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.785398, 1.5708, 2.35619, 3.14159, 3.92699, 4.71239, 5.49779, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5, 1, 1.1, 1.4, 1.5, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, -34), Vector2(-1, -47), Vector2(-1, -34), Vector2(-1.90735e-06, -45), Vector2(0, -34), Vector2(0, -46), Vector2(0, -33), Vector2(0, -45), Vector2(0, -33)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qg2x3"]
+_data = {
+&"RESET": SubResource("Animation_n6s87"),
+&"walk": SubResource("Animation_hap56")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qfmx"]
+size = Vector2(55, 58)
+
+[node name="cmos" type="CharacterBody2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qg2x3")
+}
+autoplay = "walk"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -47)
+texture = ExtResource("1_x3i0w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -47)
+shape = SubResource("RectangleShape2D_6qfmx")
