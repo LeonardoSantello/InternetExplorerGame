@@ -14,6 +14,10 @@ const WALL_SLIDE_SPEED = 50 # velocidade ao deslizar na parede
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var dust_start: GPUParticles2D = $DustStart
 @onready var dust_running: GPUParticles2D = $DustRunning
+@onready var sfx_jump: AudioStreamPlayer2D = $sfx_jump
+@onready var sfx_run: AudioStreamPlayer2D = $sfx_run
+@onready var sfx_dash: AudioStreamPlayer2D = $sfx_dash
+@onready var sfx_attack: AudioStreamPlayer2D = $sfx_attack
 
 var speed = 300.0
 var is_attacking: bool = false
@@ -23,7 +27,7 @@ var wall_contact_time := 0.0
 var is_wall_sliding := false
 var jump_time := 0.0
 var dash_cooldown := false
-var is_running := false   # nova variável para controlar estado de corrida
+var is_running := false   # controla estado de corrida
 
 # ==============================
 # FUNÇÕES PRINCIPAIS
@@ -48,15 +52,20 @@ func _physics_process(delta: float):
 	move_and_slide()
 	
 	# ==============================
-	# DETECTA INÍCIO DE CORRIDA
+	# DETECTA INÍCIO / FIM DE CORRIDA
 	# ==============================
-	if direction != 0 and not is_running:
+	if direction != 0 and is_on_floor() and not is_running:
 		is_running = true
-		dust_start.emitting = true   # dispara a poeira do início
-		dust_running.emitting = true # poeira contínua enquanto corre
-	elif direction == 0 and is_running:
+		# poeira e som só quando começa a correr
+		dust_start.emitting = true
+		dust_running.emitting = true
+		if not sfx_run.playing:
+			sfx_run.play()
+	elif (direction == 0 or not is_on_floor()) and is_running:
 		is_running = false
+		# para poeira e som quando solta ou pula
 		dust_running.emitting = false
+		sfx_run.stop()
 
 	# ==============================
 	# ATAQUE
@@ -65,6 +74,7 @@ func _physics_process(delta: float):
 		is_attacking = true
 		attack_timer = ATTACK_DURATION
 		$AnimationPlayer.play("attack")
+		$sfx_attack.play()
 
 	# ==============================
 	# DASH
@@ -74,6 +84,7 @@ func _physics_process(delta: float):
 		dash_cooldown = true
 		speed *= 3
 		velocity.x = direction * speed
+		sfx_dash.play()
 
 	# Gravidade
 	if not is_on_floor():
@@ -90,6 +101,7 @@ func _physics_process(delta: float):
 		elif jumps_left > 0:
 			velocity.y = JUMP_VELOCITY
 			jumps_left -= 1
+			sfx_jump.play()
 
 	# ==============================
 	# WALL SLIDE
