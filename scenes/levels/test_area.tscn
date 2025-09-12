@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://b2nval3o38pi3"]
+[gd_scene load_steps=45 format=4 uid="uid://b2nval3o38pi3"]
 
 [ext_resource type="PackedScene" uid="uid://c21ql2k38tee4" path="res://scenes/others/plataforma_bios_verde.tscn" id="1_u176a"]
 [ext_resource type="PackedScene" uid="uid://dq1cbspcxg7g4" path="res://scenes/others/plataform_bios.tscn" id="2_t4sv0"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bnhwb2qa10gi1" path="res://assets/sprites/tilemaps/bios_text.png" id="5_cbdl7"]
 [ext_resource type="PackedScene" uid="uid://c7r2uecmruluc" path="res://scenes/others/file.tscn" id="6_68dts"]
 [ext_resource type="PackedScene" uid="uid://tuh5bksivnch" path="res://scenes/others/kill_zone.tscn" id="7_74qto"]
+[ext_resource type="AudioStream" uid="uid://dno34t60bx436" path="res://sons/som de coleta de moeda.mp3" id="8_c8s1d"]
 [ext_resource type="PackedScene" uid="uid://cfjogcfcpqr1d" path="res://scenes/characters/player.tscn" id="8_vtg18"]
 [ext_resource type="PackedScene" uid="uid://u30mi0f28jcw" path="res://scenes/characters/cmos.tscn" id="9_0hb5u"]
 
@@ -1046,6 +1047,9 @@ position = Vector2(-421, -305)
 
 [node name="file7" parent="files" instance=ExtResource("6_68dts")]
 position = Vector2(-422, -153)
+
+[node name="sfx_coin" type="AudioStreamPlayer2D" parent="files"]
+stream = ExtResource("8_c8s1d")
 
 [node name="kill_zone" parent="." instance=ExtResource("7_74qto")]
 position = Vector2(-1, 203)

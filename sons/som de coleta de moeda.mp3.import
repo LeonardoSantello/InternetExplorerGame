@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dno34t60bx436"
+path="res://.godot/imported/som de coleta de moeda.mp3-3635360654b9712f4261faf960dc2cad.mp3str"
+
+[deps]
+
+source_file="res://sons/som de coleta de moeda.mp3"
+dest_files=["res://.godot/imported/som de coleta de moeda.mp3-3635360654b9712f4261faf960dc2cad.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
