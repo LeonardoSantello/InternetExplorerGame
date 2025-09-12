@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://b2nval3o38pi3"]
+[gd_scene load_steps=46 format=4 uid="uid://b2nval3o38pi3"]
 
 [ext_resource type="PackedScene" uid="uid://c21ql2k38tee4" path="res://scenes/others/plataforma_bios_verde.tscn" id="1_u176a"]
 [ext_resource type="PackedScene" uid="uid://dq1cbspcxg7g4" path="res://scenes/others/plataform_bios.tscn" id="2_t4sv0"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dno34t60bx436" path="res://sons/som de coleta de moeda.mp3" id="8_c8s1d"]
 [ext_resource type="PackedScene" uid="uid://cfjogcfcpqr1d" path="res://scenes/characters/player.tscn" id="8_vtg18"]
 [ext_resource type="PackedScene" uid="uid://u30mi0f28jcw" path="res://scenes/characters/cmos.tscn" id="9_0hb5u"]
+[ext_resource type="PackedScene" uid="uid://qygqo5oi4epv" path="res://itens com efeitos/item de velocidade.tscn" id="11_mhixo"]
 
 [sub_resource type="Animation" id="Animation_w16va"]
 length = 0.001
@@ -1051,6 +1052,9 @@ position = Vector2(-422, -153)
 [node name="sfx_coin" type="AudioStreamPlayer2D" parent="files"]
 stream = ExtResource("8_c8s1d")
 
+[node name="item velocidade" parent="." instance=ExtResource("11_mhixo")]
+position = Vector2(-53, -37)
+
 [node name="kill_zone" parent="." instance=ExtResource("7_74qto")]
 position = Vector2(-1, 203)
 
@@ -1089,3 +1093,5 @@ offset = Vector2(-0.790741, 32.7293)
 
 [node name="cmos" parent="." instance=ExtResource("9_0hb5u")]
 position = Vector2(-1155, 6)
+
+[connection signal="body_entered" from="item velocidade" to="item velocidade" method="_on_body_entered"]

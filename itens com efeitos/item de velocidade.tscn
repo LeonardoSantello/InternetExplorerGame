@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://qygqo5oi4epv"]
+
+[ext_resource type="Script" uid="uid://djch4yi6jw8in" path="res://item_velocidade.gd" id="1_jlf0b"]
+[ext_resource type="Texture2D" uid="uid://dvws31pqitjjg" path="res://itens com efeitos/tile000.png" id="2_h6wmh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir6l5"]
+size = Vector2(30, 28)
+
+[node name="item velocidade" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_jlf0b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(28.5, 22)
+scale = Vector2(2.78125, 2.375)
+texture = ExtResource("2_h6wmh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(29, 19)
+shape = SubResource("RectangleShape2D_ir6l5")
