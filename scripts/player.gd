@@ -123,7 +123,7 @@ func _physics_process(delta: float):
 	if not is_attacking:
 		if is_wall_sliding:
 			$AnimationPlayer.play("slide")
-		elif speed > 300:
+		elif speed > 500:
 			$AnimationPlayer.play("dash_2")
 		elif not is_on_floor():
 			jump_time += delta
