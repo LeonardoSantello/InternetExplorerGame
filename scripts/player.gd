@@ -3,7 +3,7 @@ extends CharacterBody2D
 # ==============================
 # CONSTANTES
 # ==============================
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -465.0
 const ATTACK_DURATION = 0.45
 const MAX_JUMPS = 2    # pulo duplo
 const WALL_SLIDE_SPEED = 50 # velocidade ao deslizar na parede
@@ -11,13 +11,13 @@ const WALL_SLIDE_SPEED = 50 # velocidade ao deslizar na parede
 # ==============================
 # VARIÁVEIS
 # ==============================
-@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
-@onready var dust_start: GPUParticles2D = $DustStart
-@onready var dust_running: GPUParticles2D = $DustRunning
-@onready var sfx_jump: AudioStreamPlayer2D = $sfx_jump
-@onready var sfx_run: AudioStreamPlayer2D = $sfx_run
-@onready var sfx_dash: AudioStreamPlayer2D = $sfx_dash
-@onready var sfx_attack: AudioStreamPlayer2D = $sfx_attack
+@onready var deal_damage_zone: Area2D = $attack_area
+@onready var anim: AnimatedSprite2D = $sprites/AnimatedSprite2D
+@onready var dust_running: GPUParticles2D = $sprites/DustRunning
+@onready var sfx_jump: AudioStreamPlayer2D = $audio/sfx_jump
+@onready var sfx_run: AudioStreamPlayer2D = $audio/sfx_run
+@onready var sfx_dash: AudioStreamPlayer2D = $audio/sfx_dash
+@onready var sfx_attack: AudioStreamPlayer2D = $audio/sfx_attack
 
 var speed = 300.0
 var is_attacking: bool = false
@@ -27,17 +27,19 @@ var wall_contact_time := 0.0
 var is_wall_sliding := false
 var jump_time := 0.0
 var dash_cooldown := false
-var is_running := false   # controla estado de corrida
 
 # ==============================
 # FUNÇÕES PRINCIPAIS
 # ==============================
+func _ready():
+	Global.playerBody = self
+
 func _physics_process(delta: float):
+	Global.playerDamageZone = deal_damage_zone
 	# ==============================
 	# MOVIMENTAÇÃO
 	# ==============================
 	var direction := Input.get_axis("ui_left", "ui_right")
-	
 	if not is_attacking:
 		if direction != 0:
 			velocity.x = direction * speed
@@ -54,16 +56,13 @@ func _physics_process(delta: float):
 	# ==============================
 	# DETECTA INÍCIO / FIM DE CORRIDA
 	# ==============================
-	if direction != 0 and is_on_floor() and not is_running:
-		is_running = true
-		# poeira e som só quando começa a correr
-		dust_start.emitting = true
+	if direction != 0 and is_on_floor():
+		# Poeira e som só quando começar a correr
 		dust_running.emitting = true
 		if not sfx_run.playing:
 			sfx_run.play()
-	elif (direction == 0 or not is_on_floor()) and is_running:
-		is_running = false
-		# para poeira e som quando solta ou pula
+	elif (direction == 0 or not is_on_floor()):
+		# Para poeira e som quando solta ou pula
 		dust_running.emitting = false
 		sfx_run.stop()
 
@@ -72,15 +71,16 @@ func _physics_process(delta: float):
 	# ==============================
 	if Input.is_action_just_pressed("attack") and not is_attacking:
 		is_attacking = true
+		toggle_damage_collision()
 		attack_timer = ATTACK_DURATION
-		$AnimationPlayer.play("attack")
-		$sfx_attack.play()
+		$sprites/AnimationPlayer.play("attack")
+		$audio/sfx_attack.play()
 
 	# ==============================
 	# DASH
 	# ==============================
 	if Input.is_action_just_pressed("dash") and not dash_cooldown and not is_attacking and direction != 0:
-		$Dash.start()
+		$timers/Dash.start()
 		dash_cooldown = true
 		speed *= 3
 		velocity.x = direction * speed
@@ -91,6 +91,8 @@ func _physics_process(delta: float):
 		velocity += get_gravity() * delta
 	else:
 		jumps_left = MAX_JUMPS # reseta os pulos quando toca no chão
+		if Input.is_action_just_pressed("down"):
+			position.y += 5
 
 	# ==============================
 	# PULO E WALL JUMP
@@ -122,31 +124,44 @@ func _physics_process(delta: float):
 	# ==============================
 	if not is_attacking:
 		if is_wall_sliding:
-			$AnimationPlayer.play("slide")
+			$sprites/AnimationPlayer.play("slide")
 		elif speed > 500:
-			$AnimationPlayer.play("dash_2")
+			$sprites/AnimationPlayer.play("dash")
 		elif not is_on_floor():
 			jump_time += delta
 			if jump_time >= 0.2:
-				$AnimationPlayer.play("jump")
+				$sprites/AnimationPlayer.play("jump")
 		elif direction != 0:
 			if direction < 0:
-				$AnimationPlayer.play("run")
+				$sprites/AnimationPlayer.play("run_left")
 			else:
-				$AnimationPlayer.play("run_right")
+				$sprites/AnimationPlayer.play("run_right")
 		else:
 			jump_time = 0
-			$AnimationPlayer.play("idle")
+			$sprites/AnimationPlayer .play("idle")
 
 	# Espelhar sprite
 	if direction < 0:
 		anim.flip_h = true
+		deal_damage_zone.scale.x = -1
 	elif direction > 0:
 		anim.flip_h = false
+		deal_damage_zone.scale.x = 1
+
+func toggle_damage_collision():
+	var damage_zone_collision = deal_damage_zone.get_node("CollisionShape2D")
+	damage_zone_collision.disabled = false
+	await get_tree().create_timer(ATTACK_DURATION).timeout
+	damage_zone_collision.disabled = true
+
+func set_damage():
+	var current_damage_to_deal: int
+	current_damage_to_deal = 10
+	Global.playerDamageAmount = current_damage_to_deal
 
 func _on_dash_timeout():
 	speed = 300.0
-	$"Dash cooldown".start()
+	$"timers/Dash cooldown".start()
 
 func _on_dash_cooldown_timeout():
 	print("Dash cooldown down")

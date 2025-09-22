@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bnduc62gaq1rr"
+path="res://.godot/imported/som de pulo.mp3-0def16e1a5eb8ccd2ae0dca39fb5423a.mp3str"
+
+[deps]
+
+source_file="res://assets/Audios/Test/som de pulo.mp3"
+dest_files=["res://.godot/imported/som de pulo.mp3-0def16e1a5eb8ccd2ae0dca39fb5423a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

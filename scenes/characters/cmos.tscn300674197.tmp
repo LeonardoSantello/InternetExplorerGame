@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://u30mi0f28jcw"]
+[gd_scene load_steps=7 format=3 uid="uid://u30mi0f28jcw"]
 
 [ext_resource type="Script" uid="uid://c71bw3pvooo6s" path="res://scenes/characters/cmos.gd" id="1_chg3l"]
 [ext_resource type="Texture2D" uid="uid://bj35r86xde2c8" path="res://assets/sprites/characters/enemys/cmos.png" id="1_x3i0w"]
@@ -29,18 +29,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(-1, -47)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.25490198)]
-}
 
 [sub_resource type="Animation" id="Animation_hap56"]
 resource_name = "walk"
@@ -70,62 +58,15 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(1, -34), Vector2(-1, -47), Vector2(-1, -34), Vector2(-1.90735e-06, -45), Vector2(0, -34), Vector2(0, -46), Vector2(0, -33), Vector2(0, -45), Vector2(0, -33)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_chg3l"]
-resource_name = "hurt"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.48, 0.93333334),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.54901963), Color(1, 1, 1, 0.25490198), Color(1, 1, 1, 0.54901963)]
-}
-
-[sub_resource type="Animation" id="Animation_734l3"]
-resource_name = "dead"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(4.29996, 0, 0, 1)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qg2x3"]
 _data = {
 &"RESET": SubResource("Animation_n6s87"),
-&"dead": SubResource("Animation_734l3"),
-&"hurt": SubResource("Animation_chg3l"),
 &"walk": SubResource("Animation_hap56")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qfmx"]
 size = Vector2(55, 58)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_chg3l"]
-size = Vector2(64, 65)
 
 [node name="cmos" type="CharacterBody2D"]
 script = ExtResource("1_chg3l")
@@ -136,7 +77,6 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.25490198)
 position = Vector2(-1, -47)
 texture = ExtResource("1_x3i0w")
 
@@ -147,11 +87,4 @@ shape = SubResource("RectangleShape2D_6qfmx")
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="cmosHitBox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="cmosHitBox"]
-position = Vector2(-1, -46.5)
-shape = SubResource("RectangleShape2D_chg3l")
-
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="area_entered" from="cmosHitBox" to="." method="_on_cmos_hit_box_area_entered"]

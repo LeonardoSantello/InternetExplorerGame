@@ -1,7 +1,8 @@
-[gd_scene load_steps=55 format=3 uid="uid://cfjogcfcpqr1d"]
+[gd_scene load_steps=63 format=3 uid="uid://cfjogcfcpqr1d"]
 
 [ext_resource type="Script" uid="uid://dweor28xdn8hp" path="res://scripts/player.gd" id="1_c08b3"]
 [ext_resource type="Texture2D" uid="uid://dissfbymcp68l" path="res://assets/sprites/characters/player/Warrior_SheetnoEffect.png" id="2_agjl5"]
+[ext_resource type="PackedScene" uid="uid://b36lr4l0mytby" path="res://scenes/particles/DustStart.tscn" id="3_76oj4"]
 [ext_resource type="PackedScene" uid="uid://da3hffgq1p57t" path="res://scenes/particles/DustRunning.tscn" id="4_dyp2m"]
 [ext_resource type="AudioStream" uid="uid://bnduc62gaq1rr" path="res://assets/Audios/Test/som de pulo.mp3" id="5_atpat"]
 [ext_resource type="AudioStream" uid="uid://cb02hpux7yrl" path="res://assets/Audios/Test/som de correr.mp3" id="6_kqtwu"]
@@ -11,9 +12,6 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2brh"]
 radius = 14.0
 height = 64.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6eyoc"]
-size = Vector2(55, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o6j3l"]
 atlas = ExtResource("2_agjl5")
@@ -42,6 +40,26 @@ region = Rect2(276, 572, 69, 44)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7oyl4"]
 atlas = ExtResource("2_agjl5")
 region = Rect2(345, 572, 69, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7f0u4"]
+atlas = ExtResource("2_agjl5")
+region = Rect2(138, 616, 69, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftkcl"]
+atlas = ExtResource("2_agjl5")
+region = Rect2(207, 616, 69, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsup3"]
+atlas = ExtResource("2_agjl5")
+region = Rect2(276, 616, 69, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltp6r"]
+atlas = ExtResource("2_agjl5")
+region = Rect2(345, 616, 69, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fah0"]
+atlas = ExtResource("2_agjl5")
+region = Rect2(0, 660, 69, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_17d6m"]
 atlas = ExtResource("2_agjl5")
@@ -183,6 +201,31 @@ animations = [{
 "name": &"attack",
 "speed": 11.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"attack_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7f0u4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftkcl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsup3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltp6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fah0")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 8.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_17d6m")
@@ -200,7 +243,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_8ubjp")
 }],
 "loop": true,
-"name": &"dash",
+"name": &"dash_2",
 "speed": 5.0
 }, {
 "frames": [{
@@ -297,7 +340,7 @@ animations = [{
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("sprites/AnimatedSprite2D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -309,7 +352,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("sprites/AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -321,7 +364,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("sprites/AnimatedSprite2D:sprite_frames")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -333,7 +376,7 @@ tracks/2/keys = {
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("sprites/DustRunning:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
@@ -342,6 +385,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-36, 3)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sprites/AnimatedSprite2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -32)]
 }
 
 [sub_resource type="Animation" id="Animation_yewv4"]
@@ -377,10 +432,83 @@ tracks/2/path = NodePath("sprites/AnimatedSprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.43333334, 0.56666666, 0.7, 0.8333333),
+"times": PackedFloat32Array(0, 0.132445, 0.264889, 0.399372, 0.535892, 0.672412, 0.806894),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_k4v7y"]
+resource_name = "attack_2"
+
+[sub_resource type="Animation" id="Animation_dyp2m"]
+resource_name = "dash_2"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"dash_2", &"dash_2"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprites/AnimatedSprite2D:sprite_frames")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_yi2kj")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprites/AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.533333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 4, 3]
+}
+
+[sub_resource type="Animation" id="Animation_qgnko"]
+resource_name = "dust_left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites/DustRunning:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-36, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_7vyk4"]
+resource_name = "dust_right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites/DustRunning:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-31, 8)]
 }
 
 [sub_resource type="Animation" id="Animation_atpat"]
@@ -463,143 +591,8 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_2l4js"]
-resource_name = "run_right"
-length = 0.7
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprites/AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [&"run", &"run"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprites/AnimatedSprite2D:sprite_frames")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("SpriteFrames_yi2kj")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("sprites/AnimatedSprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.533333, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("sprites/DustRunning:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-39, 8)]
-}
-
-[sub_resource type="Animation" id="Animation_eojnx"]
-resource_name = "slide"
-length = 0.6
-step = 0.033
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprites/AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [&"slide", &"slide"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprites/AnimatedSprite2D:sprite_frames")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("SpriteFrames_yi2kj")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("sprites/AnimatedSprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.466667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-
-[sub_resource type="Animation" id="Animation_7vyk4"]
-resource_name = "dash"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprites/AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [&"dash", &"dash"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprites/AnimatedSprite2D:sprite_frames")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("SpriteFrames_yi2kj")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("sprites/AnimatedSprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.36666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 3, 4]
-}
-
 [sub_resource type="Animation" id="Animation_6eyoc"]
-resource_name = "run_left"
+resource_name = "run"
 length = 0.7
 loop_mode = 1
 tracks/0/type = "value"
@@ -651,14 +644,123 @@ tracks/3/keys = {
 "values": [Vector2(36, 4)]
 }
 
+[sub_resource type="Animation" id="Animation_2l4js"]
+resource_name = "run_right"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"run", &"run"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprites/AnimatedSprite2D:sprite_frames")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_yi2kj")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprites/AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.533333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sprites/AnimatedSprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -32)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sprites/DustRunning:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-39, 8)]
+}
+
+[sub_resource type="Animation" id="Animation_eojnx"]
+resource_name = "slide"
+length = 0.6
+step = 0.033
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"slide", &"slide"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprites/AnimatedSprite2D:sprite_frames")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_yi2kj")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprites/AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dyp2m"]
 _data = {
 &"RESET": SubResource("Animation_76oj4"),
 &"attack": SubResource("Animation_yewv4"),
-&"dash": SubResource("Animation_7vyk4"),
+&"attack_2": SubResource("Animation_k4v7y"),
+&"dash_2": SubResource("Animation_dyp2m"),
+&"dust_left": SubResource("Animation_qgnko"),
+&"dust_right": SubResource("Animation_7vyk4"),
 &"idle": SubResource("Animation_atpat"),
 &"jump": SubResource("Animation_kqtwu"),
-&"run_left": SubResource("Animation_6eyoc"),
+&"run": SubResource("Animation_6eyoc"),
 &"run_right": SubResource("Animation_2l4js"),
 &"slide": SubResource("Animation_eojnx")
 }
@@ -669,16 +771,23 @@ collision_layer = 2
 script = ExtResource("1_c08b3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -32)
+position = Vector2(-22, -21)
 shape = SubResource("CapsuleShape2D_g2brh")
 
-[node name="attack_area" type="Area2D" parent="."]
-position = Vector2(0, -11)
+[node name="audio" type="Node" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area"]
-position = Vector2(20.5, -25)
-shape = SubResource("RectangleShape2D_6eyoc")
-disabled = true
+[node name="sfx_jump" type="AudioStreamPlayer2D" parent="audio"]
+stream = ExtResource("5_atpat")
+
+[node name="sfx_run" type="AudioStreamPlayer2D" parent="audio"]
+stream = ExtResource("6_kqtwu")
+parameters/looping = false
+
+[node name="sfx_dash" type="AudioStreamPlayer2D" parent="audio"]
+stream = ExtResource("7_6eyoc")
+
+[node name="sfx_attack" type="AudioStreamPlayer2D" parent="audio"]
+stream = ExtResource("8_eojnx")
 
 [node name="timers" type="Node" parent="."]
 
@@ -693,34 +802,24 @@ one_shot = true
 [node name="sprites" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="sprites"]
-position = Vector2(15, -42)
+position = Vector2(-3, -32)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_yi2kj")
-animation = &"idle"
+animation = &"attack"
+autoplay = "idle"
+
+[node name="DustStart" parent="sprites" instance=ExtResource("3_76oj4")]
+position = Vector2(-37, 8)
 
 [node name="DustRunning" parent="sprites" instance=ExtResource("4_dyp2m")]
-position = Vector2(36, 4)
+position = Vector2(-36, 3)
+lifetime = 0.4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="sprites"]
 root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_dyp2m")
 }
-
-[node name="audio" type="Node2D" parent="."]
-
-[node name="sfx_jump" type="AudioStreamPlayer2D" parent="audio"]
-stream = ExtResource("5_atpat")
-
-[node name="sfx_run" type="AudioStreamPlayer2D" parent="audio"]
-stream = ExtResource("6_kqtwu")
-parameters/looping = false
-
-[node name="sfx_dash" type="AudioStreamPlayer2D" parent="audio"]
-stream = ExtResource("7_6eyoc")
-
-[node name="sfx_attack" type="AudioStreamPlayer2D" parent="audio"]
-stream = ExtResource("8_eojnx")
 
 [connection signal="timeout" from="timers/Dash" to="." method="_on_dash_timeout"]
 [connection signal="timeout" from="timers/Dash cooldown" to="." method="_on_dash_cooldown_timeout"]
