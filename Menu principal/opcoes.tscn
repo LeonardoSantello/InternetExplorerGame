@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://cm1ia40myosdp"]
+
+[ext_resource type="Texture2D" uid="uid://qdqdk0yhy4xu" path="res://assets/Menu principal/fundo menu.jpg" id="1_pqawy"]
+[ext_resource type="Script" uid="uid://by61v6gprxjpm" path="res://assets/Menu principal/opcoes.gd" id="1_yca33"]
+[ext_resource type="FontFile" uid="uid://q2cpxqhyekxl" path="res://assets/Menu principal/pixel.ttf" id="2_yca33"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_crurm"]
+texture = ExtResource("1_pqawy")
+modulate_color = Color(0.65098, 0.65098, 0.65098, 0.490196)
+
+[node name="Opcoes" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yca33")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1761.0
+offset_bottom = 1052.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_crurm")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.091
+offset_left = -280.0
+offset_top = 84.0
+offset_right = 280.0
+offset_bottom = 105.032
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_yca33")
+theme_override_font_sizes/font_size = 32
+text = "opcoes"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.5
+offset_top = -49.0
+offset_right = 160.5
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_yca33")
+theme_override_font_sizes/font_size = 32
+text = "Voltar"
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 422.0
+offset_top = 185.0
+offset_right = 739.0
+offset_bottom = 267.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1062,7 +1062,7 @@ position = Vector2(-1, 203)
 shape = SubResource("WorldBoundaryShape2D_xnrqy")
 
 [node name="Player" parent="." instance=ExtResource("8_vtg18")]
-position = Vector2(-889, -9)
+position = Vector2(-881, -4)
 floor_stop_on_slope = false
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
