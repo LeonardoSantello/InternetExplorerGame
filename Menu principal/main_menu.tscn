@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://lfdxktwfkx2n"]
+[gd_scene load_steps=13 format=3 uid="uid://lfdxktwfkx2n"]
 
 [ext_resource type="Script" uid="uid://dsfnanw2sgu6k" path="res://Menu principal/main_menu.gd" id="1_x4gdb"]
 [ext_resource type="Texture2D" uid="uid://qdqdk0yhy4xu" path="res://Menu principal/fundo menu.jpg" id="2_gr5yt"]
 [ext_resource type="FontFile" uid="uid://q2cpxqhyekxl" path="res://Menu principal/pixel.ttf" id="3_42kn2"]
+[ext_resource type="AudioStream" uid="uid://fgpbdimhl2w1" path="res://Menu principal/musica.mp3" id="4_v2cb7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jix8l"]
 texture = ExtResource("2_gr5yt")
@@ -143,6 +144,11 @@ theme_override_constants/shadow_offset_x = 4
 theme_override_fonts/font = ExtResource("3_42kn2")
 text = "Nome do Jogo"
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_v2cb7")
+autoplay = true
+parameters/looping = false
 
 [connection signal="pressed" from="Botoes/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Botoes/Button3" to="." method="_on_button_3_pressed"]
