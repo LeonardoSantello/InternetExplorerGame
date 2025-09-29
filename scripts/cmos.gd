@@ -1,23 +1,31 @@
 extends CharacterBody2D
 
+class_name CmosEnemy
+
 const SPEED = 30
-var player: CharacterBody2D
 var dir: Vector2
+
 var is_chasing: bool
+
+var player: CharacterBody2D
 
 var health = 50
 var health_max = 50
 var health_min = 0
+
 var dead = false
 var taking_damage = false
 var is_roming: bool
+var damage_to_deal = 20
 
 func _process(delta):
+	Global.cmosDamageAmount = damage_to_deal
 	move(delta)
 	handle_animation()
-	
+
 	if is_on_floor() and dead:
-		await  get_tree().create_timer(3).timeout
+		$cmosHitBox.monitorable = false #Desliga hitbox para não poder dar mais dano
+		await  get_tree().create_timer(1).timeout
 		print(str(self), "Morreu")
 		self.queue_free()
 		await  get_tree().create_timer(0.1).timeout
@@ -26,16 +34,22 @@ func _ready():
 	is_chasing = true
 
 func move(delta):
+
 	player = Global.playerBody
 	if not dead:
 		is_roming = true
 		if is_chasing and not taking_damage:
 			var dir_x = sign(player.position.x - position.x)
-			velocity = Vector2(dir_x, 0) * SPEED + (get_gravity() * delta)
-			dir.x = abs(velocity.x) / velocity.x
+			# Movimento horizontal (segue o player)
+			velocity.x = dir_x * SPEED
+			# Movimento vertical (gravidade)
+			velocity += get_gravity() * delta
+			# Atualiza a direção do sprite (esquerda/direita)
+			dir.x = sign(velocity.x)
 		elif taking_damage:
 			var knockback_dir = position.direction_to(player.position) * -150
 			velocity = knockback_dir
+			velocity.y = -25
 		else:
 			velocity += dir * SPEED * delta
 	elif dead:

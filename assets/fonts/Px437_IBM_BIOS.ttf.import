@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://q2cpxqhyekxl"
-path="res://.godot/imported/pixel.ttf-6e5f5065e016dba9ea62d992298ba216.fontdata"
+uid="uid://dk7lxatn30j6k"
+path="res://.godot/imported/Px437_IBM_BIOS.ttf-4679c1dbab359ec8f40e97af1672d139.fontdata"
 
 [deps]
 
-source_file="res://Menu principal/pixel.ttf"
-dest_files=["res://.godot/imported/pixel.ttf-6e5f5065e016dba9ea62d992298ba216.fontdata"]
+source_file="res://assets/fonts/Px437_IBM_BIOS.ttf"
+dest_files=["res://.godot/imported/Px437_IBM_BIOS.ttf-4679c1dbab359ec8f40e97af1672d139.fontdata"]
 
 [params]
 

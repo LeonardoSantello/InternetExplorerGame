@@ -1,18 +1,17 @@
-[gd_scene load_steps=49 format=4 uid="uid://b2nval3o38pi3"]
+[gd_scene load_steps=48 format=4 uid="uid://b6ylrgdbtaoxg"]
 
-[ext_resource type="Script" uid="uid://c2uehgc0yolvr" path="res://scripts/test_area.gd" id="1_c8s1d"]
-[ext_resource type="PackedScene" uid="uid://c21ql2k38tee4" path="res://scenes/platforms/plataforma_bios_verde.tscn" id="1_u176a"]
-[ext_resource type="PackedScene" uid="uid://dq1cbspcxg7g4" path="res://scenes/platforms/plataform_bios.tscn" id="2_t4sv0"]
-[ext_resource type="Texture2D" uid="uid://p8fkhi3wng8c" path="res://assets/sprites/tilemaps/bios_tileset.png" id="3_mhixo"]
-[ext_resource type="Texture2D" uid="uid://cy6ty01ceunha" path="res://assets/sprites/tilemaps/bios_background.png" id="4_c8s1d"]
-[ext_resource type="Texture2D" uid="uid://bnhwb2qa10gi1" path="res://assets/sprites/tilemaps/bios_text.png" id="5_cbdl7"]
-[ext_resource type="PackedScene" uid="uid://c7r2uecmruluc" path="res://scenes/itens/file.tscn" id="6_68dts"]
-[ext_resource type="PackedScene" uid="uid://tuh5bksivnch" path="res://scenes/others/kill_zone.tscn" id="7_74qto"]
-[ext_resource type="AudioStream" uid="uid://dno34t60bx436" path="res://assets/Audios/Test/som de coleta de moeda.mp3" id="8_c8s1d"]
-[ext_resource type="PackedScene" uid="uid://cfjogcfcpqr1d" path="res://scenes/characters/player.tscn" id="8_vtg18"]
-[ext_resource type="PackedScene" uid="uid://u30mi0f28jcw" path="res://scenes/characters/cmos.tscn" id="9_0hb5u"]
-[ext_resource type="PackedScene" uid="uid://qygqo5oi4epv" path="res://scenes/itens/speed_potion.tscn" id="11_mhixo"]
-[ext_resource type="PackedScene" uid="uid://co0pfjib457ty" path="res://scenes/others/scene_transition_animation.tscn" id="13_cbdl7"]
+[ext_resource type="PackedScene" uid="uid://c21ql2k38tee4" path="res://scenes/platforms/plataforma_bios_verde.tscn" id="2_50g65"]
+[ext_resource type="PackedScene" uid="uid://dq1cbspcxg7g4" path="res://scenes/platforms/plataform_bios.tscn" id="3_oawlr"]
+[ext_resource type="Texture2D" uid="uid://p8fkhi3wng8c" path="res://assets/sprites/tilemaps/bios_tileset.png" id="4_hkcsb"]
+[ext_resource type="Texture2D" uid="uid://cy6ty01ceunha" path="res://assets/sprites/tilemaps/bios_background.png" id="5_7mpuc"]
+[ext_resource type="Texture2D" uid="uid://bnhwb2qa10gi1" path="res://assets/sprites/tilemaps/bios_text.png" id="6_f6qka"]
+[ext_resource type="PackedScene" uid="uid://c7r2uecmruluc" path="res://scenes/itens/file.tscn" id="7_xsdt4"]
+[ext_resource type="AudioStream" uid="uid://dno34t60bx436" path="res://assets/Audios/Test/som de coleta de moeda.mp3" id="8_bfuce"]
+[ext_resource type="PackedScene" uid="uid://qygqo5oi4epv" path="res://scenes/itens/speed_potion.tscn" id="9_jgevx"]
+[ext_resource type="PackedScene" uid="uid://tuh5bksivnch" path="res://scenes/others/kill_zone.tscn" id="10_ivdgo"]
+[ext_resource type="PackedScene" uid="uid://cfjogcfcpqr1d" path="res://scenes/characters/player.tscn" id="11_t76rg"]
+[ext_resource type="PackedScene" uid="uid://u30mi0f28jcw" path="res://scenes/characters/cmos.tscn" id="12_c0lrx"]
+[ext_resource type="FontFile" uid="uid://q2cpxqhyekxl" path="res://assets/fonts/pixel.ttf" id="13_50g65"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mhixo"]
 size = Vector2(38, 191)
@@ -151,7 +150,7 @@ polygon = PackedVector2Array(-32.5, -32.5, 32.5, -32.5, 32.5, 32.5, -32.5, 32.5)
 polygon = PackedVector2Array(-32.5, -32.5, 32.5, -32.5, 32.5, 32.5, -32.5, 32.5)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3fd14"]
-texture = ExtResource("3_mhixo")
+texture = ExtResource("4_hkcsb")
 texture_region_size = Vector2i(65, 65)
 0:0/0 = 0
 0:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_w16va")
@@ -830,7 +829,7 @@ physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_3fd14")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_576i8"]
-texture = ExtResource("4_c8s1d")
+texture = ExtResource("5_7mpuc")
 texture_region_size = Vector2i(65, 65)
 0:0/0 = 0
 0:0/0/z_index = -99
@@ -848,7 +847,7 @@ tile_size = Vector2i(65, 65)
 sources/0 = SubResource("TileSetAtlasSource_576i8")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w16va"]
-texture = ExtResource("5_cbdl7")
+texture = ExtResource("6_f6qka")
 texture_region_size = Vector2i(65, 65)
 0:0/0 = 0
 1:0/0 = 0
@@ -984,7 +983,6 @@ gradient = SubResource("Gradient_6cvml")
 fill_from = Vector2(0.174312, 0.802752)
 
 [node name="TestArea" type="Node2D"]
-script = ExtResource("1_c8s1d")
 
 [node name="next_level" type="Area2D" parent="."]
 position = Vector2(-303, -1)
@@ -996,7 +994,7 @@ shape = SubResource("RectangleShape2D_mhixo")
 
 [node name="Plataformas" type="Node" parent="."]
 
-[node name="plataforma_bios_verde2" parent="Plataformas" instance=ExtResource("1_u176a")]
+[node name="plataforma_bios_verde2" parent="Plataformas" instance=ExtResource("2_50g65")]
 position = Vector2(-421, 12)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Plataformas/plataforma_bios_verde2"]
@@ -1005,7 +1003,7 @@ libraries = {
 }
 autoplay = "plataform"
 
-[node name="plataforma_bios_verde" parent="Plataformas" instance=ExtResource("1_u176a")]
+[node name="plataforma_bios_verde" parent="Plataformas" instance=ExtResource("2_50g65")]
 position = Vector2(617, -83)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Plataformas/plataforma_bios_verde"]
@@ -1014,16 +1012,16 @@ libraries = {
 }
 autoplay = "plataforma"
 
-[node name="Plataforma_bios" parent="Plataformas" instance=ExtResource("2_t4sv0")]
+[node name="Plataforma_bios" parent="Plataformas" instance=ExtResource("3_oawlr")]
 position = Vector2(0, -767)
 
-[node name="Plataforma_bios2" parent="Plataformas" instance=ExtResource("2_t4sv0")]
+[node name="Plataforma_bios2" parent="Plataformas" instance=ExtResource("3_oawlr")]
 position = Vector2(0, -663)
 
-[node name="Plataforma_bios3" parent="Plataformas" instance=ExtResource("2_t4sv0")]
+[node name="Plataforma_bios3" parent="Plataformas" instance=ExtResource("3_oawlr")]
 position = Vector2(-1, -550)
 
-[node name="Plataforma_bios4" parent="Plataformas" instance=ExtResource("2_t4sv0")]
+[node name="Plataforma_bios4" parent="Plataformas" instance=ExtResource("3_oawlr")]
 position = Vector2(0, -442)
 
 [node name="TileSet" type="Node" parent="."]
@@ -1042,45 +1040,48 @@ tile_set = SubResource("TileSet_764nf")
 
 [node name="files" type="Node" parent="."]
 
-[node name="file" parent="files" instance=ExtResource("6_68dts")]
+[node name="file" parent="files" instance=ExtResource("7_xsdt4")]
 position = Vector2(85, -20)
 
-[node name="file2" parent="files" instance=ExtResource("6_68dts")]
+[node name="file2" parent="files" instance=ExtResource("7_xsdt4")]
 position = Vector2(137, -20)
 
-[node name="file3" parent="files" instance=ExtResource("6_68dts")]
+[node name="file3" parent="files" instance=ExtResource("7_xsdt4")]
 position = Vector2(192, -20)
 
-[node name="file4" parent="files" instance=ExtResource("6_68dts")]
+[node name="file4" parent="files" instance=ExtResource("7_xsdt4")]
 position = Vector2(247, -20)
 
-[node name="file5" parent="files" instance=ExtResource("6_68dts")]
+[node name="file5" parent="files" instance=ExtResource("7_xsdt4")]
 position = Vector2(-421, -233)
 
-[node name="file6" parent="files" instance=ExtResource("6_68dts")]
+[node name="file6" parent="files" instance=ExtResource("7_xsdt4")]
 position = Vector2(-421, -305)
 
-[node name="file7" parent="files" instance=ExtResource("6_68dts")]
+[node name="file7" parent="files" instance=ExtResource("7_xsdt4")]
 position = Vector2(-422, -153)
 
 [node name="sfx_coin" type="AudioStreamPlayer2D" parent="files"]
-stream = ExtResource("8_c8s1d")
+stream = ExtResource("8_bfuce")
 
-[node name="speed_potion" parent="." instance=ExtResource("11_mhixo")]
+[node name="speed_potion" parent="." instance=ExtResource("9_jgevx")]
 position = Vector2(-53, -37)
 
-[node name="kill_zone" parent="." instance=ExtResource("7_74qto")]
+[node name="kill_zone" parent="." instance=ExtResource("10_ivdgo")]
 position = Vector2(-1, 203)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
 shape = SubResource("WorldBoundaryShape2D_xnrqy")
 
-[node name="Player" parent="." instance=ExtResource("8_vtg18")]
-position = Vector2(-1739, -533)
+[node name="Player" parent="." instance=ExtResource("11_t76rg")]
+position = Vector2(-1787, -533)
 floor_stop_on_slope = false
 
-[node name="sceneTransitionAnimation" parent="Player" instance=ExtResource("13_cbdl7")]
-position = Vector2(-534, -348)
+[node name="Camera2D2" type="Camera2D" parent="Player"]
+position = Vector2(78, -54)
+zoom = Vector2(1.5, 1.5)
+limit_bottom = 190
+limit_smoothed = true
 
 [node name="Light" type="Node" parent="."]
 
@@ -1102,8 +1103,24 @@ shadow_filter = 2
 texture = SubResource("GradientTexture2D_du6a0")
 offset = Vector2(-0.790741, 32.7293)
 
-[node name="cmos" parent="." instance=ExtResource("9_0hb5u")]
-position = Vector2(-1148, 1)
+[node name="cmos" parent="." instance=ExtResource("12_c0lrx")]
+position = Vector2(-1155, 11)
+
+[node name="Label" type="Label" parent="."]
+z_index = 100
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.091
+offset_left = -1967.0
+offset_top = -688.0
+offset_right = -1407.0
+offset_bottom = -629.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("13_50g65")
+theme_override_font_sizes/font_size = 32
+text = "LVL 2"
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="next_level" to="." method="_on_next_level_body_entered"]
 [connection signal="body_entered" from="speed_potion" to="speed_potion" method="_on_body_entered"]

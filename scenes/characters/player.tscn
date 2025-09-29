@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://cfjogcfcpqr1d"]
+[gd_scene load_steps=69 format=3 uid="uid://cfjogcfcpqr1d"]
 
 [ext_resource type="Script" uid="uid://dweor28xdn8hp" path="res://scripts/player.gd" id="1_c08b3"]
 [ext_resource type="Texture2D" uid="uid://dissfbymcp68l" path="res://assets/sprites/characters/player/Warrior_SheetnoEffect.png" id="2_agjl5"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://cb02hpux7yrl" path="res://assets/Audios/Test/som de correr.mp3" id="6_kqtwu"]
 [ext_resource type="AudioStream" uid="uid://dmp6ao4v1fcai" path="res://assets/Audios/Test/som de dash.mp3" id="7_6eyoc"]
 [ext_resource type="AudioStream" uid="uid://b24dt62j5e61l" path="res://assets/Audios/Test/som de ataque espada.mp3" id="8_eojnx"]
+[ext_resource type="PackedScene" uid="uid://dmvjd7mfnlatt" path="res://scenes/others/health_bar_player.tscn" id="8_qgnko"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2brh"]
 radius = 14.0
@@ -62,6 +63,50 @@ region = Rect2(0, 528, 69, 44)
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ubjp"]
 atlas = ExtResource("2_agjl5")
 region = Rect2(69, 528, 69, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6eyoc"]
+atlas = ExtResource("2_agjl5")
+region = Rect2(138, 176, 69, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eojnx"]
+atlas = ExtResource("2_agjl5")
+region = Rect2(207, 176, 69, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgnko"]
+atlas = ExtResource("2_agjl5")
+region = Rect2(276, 176, 69, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vyk4"]
+atlas = ExtResource("2_agjl5")
+region = Rect2(345, 176, 69, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l4js"]
+atlas = ExtResource("2_agjl5")
+region = Rect2(0, 220, 69, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk2m4"]
+atlas = ExtResource("2_agjl5")
+region = Rect2(69, 220, 69, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhtjm"]
+atlas = ExtResource("2_agjl5")
+region = Rect2(138, 220, 69, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4v7y"]
+atlas = ExtResource("2_agjl5")
+region = Rect2(207, 220, 69, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrqxk"]
+atlas = ExtResource("2_agjl5")
+region = Rect2(276, 220, 69, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g66nw"]
+atlas = ExtResource("2_agjl5")
+region = Rect2(345, 220, 69, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpnd8"]
+atlas = ExtResource("2_agjl5")
+region = Rect2(0, 264, 69, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hb4is"]
 atlas = ExtResource("2_agjl5")
@@ -202,6 +247,44 @@ animations = [{
 "loop": true,
 "name": &"dash",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6eyoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eojnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgnko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vyk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2l4js")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jk2m4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhtjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4v7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrqxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g66nw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpnd8")
+}],
+"loop": true,
+"name": &"death",
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -422,6 +505,46 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_d6tgn"]
+resource_name = "death"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites/AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprites/AnimatedSprite2D:sprite_frames")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_yi2kj")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprites/AnimatedSprite2D:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"death", &"death"]
 }
 
 [sub_resource type="Animation" id="Animation_atpat"]
@@ -656,12 +779,17 @@ _data = {
 &"RESET": SubResource("Animation_76oj4"),
 &"attack": SubResource("Animation_yewv4"),
 &"dash": SubResource("Animation_7vyk4"),
+&"death": SubResource("Animation_d6tgn"),
 &"idle": SubResource("Animation_atpat"),
 &"jump": SubResource("Animation_kqtwu"),
 &"run_left": SubResource("Animation_6eyoc"),
 &"run_right": SubResource("Animation_2l4js"),
 &"slide": SubResource("Animation_eojnx")
 }
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6eyoc"]
+radius = 14.0
+height = 64.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 99
@@ -721,6 +849,25 @@ stream = ExtResource("7_6eyoc")
 
 [node name="sfx_attack" type="AudioStreamPlayer2D" parent="audio"]
 stream = ExtResource("8_eojnx")
+
+[node name="hitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
+position = Vector2(0, -32)
+shape = SubResource("CapsuleShape2D_6eyoc")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-4, -55)
+zoom = Vector2(1.5, 1.5)
+limit_bottom = 190
+limit_smoothed = true
+
+[node name="healthBar" parent="." instance=ExtResource("8_qgnko")]
+offset_left = -374.00003
+offset_top = -262.0
+offset_right = 1111.0
+offset_bottom = 276.0
+scale = Vector2(0.15, 0.15)
 
 [connection signal="timeout" from="timers/Dash" to="." method="_on_dash_timeout"]
 [connection signal="timeout" from="timers/Dash cooldown" to="." method="_on_dash_cooldown_timeout"]

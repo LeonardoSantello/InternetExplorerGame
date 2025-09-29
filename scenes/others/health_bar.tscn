@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c16d0lihpmv54"]
+
+[ext_resource type="Script" uid="uid://cyjjp8pklay8m" path="res://scripts/health_bar.gd" id="1_1bv2x"]
+[ext_resource type="FontFile" uid="uid://dk7lxatn30j6k" path="res://assets/fonts/Px437_IBM_BIOS.ttf" id="2_dxk1o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ujtn"]
+bg_color = Color(0.98039216, 0.10980392, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bv2x"]
+bg_color = Color(0, 0.92156863, 0.23921569, 1)
+
+[node name="healthBar" type="ProgressBar"]
+offset_left = -36.0
+offset_right = 35.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_3ujtn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1bv2x")
+show_percentage = false
+script = ExtResource("1_1bv2x")
+
+[node name="health" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -2.0
+theme_override_fonts/font = ExtResource("2_dxk1o")
+horizontal_alignment = 1
+vertical_alignment = 1

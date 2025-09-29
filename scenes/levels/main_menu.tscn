@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://lfdxktwfkx2n"]
 
-[ext_resource type="Script" uid="uid://dsfnanw2sgu6k" path="res://Menu principal/main_menu.gd" id="1_x4gdb"]
-[ext_resource type="Texture2D" uid="uid://qdqdk0yhy4xu" path="res://Menu principal/fundo menu.jpg" id="2_gr5yt"]
-[ext_resource type="FontFile" uid="uid://q2cpxqhyekxl" path="res://Menu principal/pixel.ttf" id="3_42kn2"]
-[ext_resource type="AudioStream" uid="uid://fgpbdimhl2w1" path="res://Menu principal/musica.mp3" id="4_v2cb7"]
+[ext_resource type="Script" uid="uid://dsfnanw2sgu6k" path="res://scripts/main_menu.gd" id="1_x4gdb"]
+[ext_resource type="Texture2D" uid="uid://qdqdk0yhy4xu" path="res://assets/sprites/ui/fundo menu.jpg" id="2_gr5yt"]
+[ext_resource type="FontFile" uid="uid://q2cpxqhyekxl" path="res://assets/fonts/pixel.ttf" id="3_42kn2"]
+[ext_resource type="AudioStream" uid="uid://fgpbdimhl2w1" path="res://assets/Audios/musica.mp3" id="4_v2cb7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jix8l"]
 texture = ExtResource("2_gr5yt")
