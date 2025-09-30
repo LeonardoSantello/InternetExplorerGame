@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://gdast3nneiir"]
+
+[ext_resource type="Script" uid="uid://ber7hwgokxs1e" path="res://itemupgrade.gd" id="1_xkfn3"]
+[ext_resource type="Texture2D" uid="uid://mr0sixxp5dyf" path="res://scripts/Item__46.png" id="2_j76d0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqsnh"]
+size = Vector2(19, 19)
+
+[node name="Itemupgrade" type="Node2D"]
+script = ExtResource("1_xkfn3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_j76d0")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_dqsnh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_left = -26.0
+offset_top = -83.0
+offset_right = 254.0
+offset_bottom = 68.0
+
+[node name="btn_attack" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.029000001
+anchor_bottom = 0.053000003
+offset_left = 194.0
+offset_top = 39.0
+offset_right = 243.88
+offset_bottom = 106.997
+
+[node name="btn_health" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.029000001
+anchor_bottom = 0.026
+offset_left = 104.0
+offset_top = 50.0
+offset_right = 152.88
+offset_bottom = 97.074
+
+[node name="btn_speed" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 48.0
+offset_right = 78.0
+offset_bottom = 99.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="pressed" from="CanvasLayer/Panel/btn_speed" to="." method="_on_btn_speed_pressed"]

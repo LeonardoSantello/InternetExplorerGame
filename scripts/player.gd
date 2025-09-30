@@ -10,6 +10,7 @@ const ATTACK_DURATION = 0.45
 const MAX_JUMPS = 2    # pulo duplo
 const WALL_SLIDE_SPEED = 50 # velocidade ao deslizar na parede
 
+
 # ==============================
 # VARIÁVEIS
 # ==============================
@@ -29,6 +30,9 @@ var wall_contact_time := 0.0
 var is_wall_sliding := false
 var jump_time := 0.0
 var dash_cooldown := false
+var attack: float = 10.0
+var max_health: int = 100
+var health: int = max_health
 
 var can_take_damage: bool
 var dead: bool
