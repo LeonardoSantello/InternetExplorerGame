@@ -30,10 +30,6 @@ var is_wall_sliding := false
 var jump_time := 0.0
 var dash_cooldown := false
 
-var health = 100
-var health_max = 100
-var health_min = 0
-
 var can_take_damage: bool
 var dead: bool
 
@@ -176,11 +172,11 @@ func check_hitbox():
 		
 func take_damage(damage):
 	if damage != 0:
-		if health > 0:
-			health -= damage
-			print("Vida player:", health)
-			if health <= 0:
-				health = 0
+		if Global.health > 0:
+			Global.health -= damage
+			print("Vida player:", Global.health)
+			if Global.health <= 0:
+				Global.health = 0
 				dead = true
 				Global.playerAlive = false
 				handle_death_animation()
