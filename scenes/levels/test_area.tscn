@@ -1077,7 +1077,7 @@ position = Vector2(-1, 203)
 shape = SubResource("WorldBoundaryShape2D_xnrqy")
 
 [node name="Player" parent="." instance=ExtResource("8_vtg18")]
-position = Vector2(-1739, -533)
+position = Vector2(-268, -7)
 floor_stop_on_slope = false
 
 [node name="sceneTransitionAnimation" parent="Player" instance=ExtResource("13_cbdl7")]

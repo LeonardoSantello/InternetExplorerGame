@@ -22,37 +22,70 @@ shape = SubResource("RectangleShape2D_dqsnh")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
-offset_left = -26.0
-offset_top = -83.0
-offset_right = 254.0
-offset_bottom = 68.0
+offset_left = 187.0
+offset_top = 53.0
+offset_right = 967.0
+offset_bottom = 496.0
 
 [node name="btn_attack" type="Button" parent="CanvasLayer/Panel"]
+process_mode = 3
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.029000001
 anchor_bottom = 0.053000003
-offset_left = 194.0
-offset_top = 39.0
-offset_right = 243.88
-offset_bottom = 106.997
+offset_left = 527.0
+offset_top = 128.0
+offset_right = 634.38
+offset_bottom = 284.521
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/btn_attack"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 14.0
+offset_right = 119.0
+offset_bottom = 56.0
+text = "Ataque"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="btn_health" type="Button" parent="CanvasLayer/Panel"]
+process_mode = 3
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.029000001
 anchor_bottom = 0.026
-offset_left = 104.0
-offset_top = 50.0
-offset_right = 152.88
-offset_bottom = 97.074
+offset_left = 274.0
+offset_top = 130.0
+offset_right = 381.38
+offset_bottom = 298.482
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/btn_health"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 19.0
+offset_right = 82.0
+offset_bottom = 42.0
+text = "Vida"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="btn_speed" type="Button" parent="CanvasLayer/Panel"]
+process_mode = 3
 layout_mode = 0
-offset_left = 18.0
-offset_top = 48.0
-offset_right = 78.0
-offset_bottom = 99.0
+offset_left = 35.0
+offset_top = 129.0
+offset_right = 165.0
+offset_bottom = 309.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/btn_speed"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 19.0
+offset_right = 104.0
+offset_bottom = 42.0
+text = "Velocidade"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="pressed" from="CanvasLayer/Panel/btn_attack" to="." method="_on_btn_attack_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/btn_health" to="." method="_on_btn_health_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/btn_speed" to="." method="_on_btn_speed_pressed"]
