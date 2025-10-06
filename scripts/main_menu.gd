@@ -1,17 +1,10 @@
 extends Control
 
-
 func _ready() -> void:
-	pass 
-
-
-
-func _process(_delta: float) -> void:
-	pass
-
+	Global.reset_game_state()
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/levels/test_area.tscn")
+	$transition.scene_transition_animation_function("res://scenes/levels/test_area.tscn")
 
 
 func _on_button_3_pressed() -> void:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://c7r2uecmruluc"]
+[gd_scene load_steps=16 format=3 uid="uid://c7r2uecmruluc"]
 
 [ext_resource type="Script" uid="uid://ctodw1g0lrrxd" path="res://scripts/file.gd" id="1_g4uxh"]
 [ext_resource type="Texture2D" uid="uid://n7l6ld6s545q" path="res://assets/sprites/Itens/file.png" id="1_v2vit"]
+[ext_resource type="AudioStream" uid="uid://dno34t60bx436" path="res://assets/Audios/Test/som de coleta de moeda.mp3" id="3_v311d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4uxh"]
 atlas = ExtResource("1_v2vit")
@@ -98,6 +99,9 @@ frame_progress = 0.949307
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 1)
 shape = SubResource("RectangleShape2D_3tmjw")
+
+[node name="sfx_coin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_v311d")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

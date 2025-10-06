@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://b2nval3o38pi3"]
+[gd_scene load_steps=49 format=4 uid="uid://b2nval3o38pi3"]
 
 [ext_resource type="Script" uid="uid://c2uehgc0yolvr" path="res://scripts/test_area.gd" id="1_c8s1d"]
 [ext_resource type="PackedScene" uid="uid://c21ql2k38tee4" path="res://scenes/platforms/plataforma_bios_verde.tscn" id="1_u176a"]
@@ -8,12 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://bnhwb2qa10gi1" path="res://assets/sprites/tilemaps/bios_text.png" id="5_cbdl7"]
 [ext_resource type="PackedScene" uid="uid://c7r2uecmruluc" path="res://scenes/itens/file.tscn" id="6_68dts"]
 [ext_resource type="PackedScene" uid="uid://tuh5bksivnch" path="res://scenes/others/kill_zone.tscn" id="7_74qto"]
-[ext_resource type="AudioStream" uid="uid://dno34t60bx436" path="res://assets/Audios/Test/som de coleta de moeda.mp3" id="8_c8s1d"]
 [ext_resource type="PackedScene" uid="uid://cfjogcfcpqr1d" path="res://scenes/characters/player.tscn" id="8_vtg18"]
 [ext_resource type="PackedScene" uid="uid://u30mi0f28jcw" path="res://scenes/characters/cmos.tscn" id="9_0hb5u"]
 [ext_resource type="PackedScene" uid="uid://qygqo5oi4epv" path="res://scenes/itens/speed_potion.tscn" id="11_mhixo"]
-[ext_resource type="PackedScene" uid="uid://co0pfjib457ty" path="res://scenes/others/scene_transition_animation.tscn" id="13_cbdl7"]
-[ext_resource type="PackedScene" uid="uid://gdast3nneiir" path="res://itemupgrade.tscn" id="14_68dts"]
+[ext_resource type="PackedScene" uid="uid://c4qtjnfmiloag" path="res://scenes/characters/mal_cabeado.tscn" id="13_cbdl7"]
+[ext_resource type="PackedScene" uid="uid://gdast3nneiir" path="res://scenes/itens/itemupgrade.tscn" id="14_68dts"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mhixo"]
 size = Vector2(38, 191)
@@ -1064,9 +1063,6 @@ position = Vector2(-421, -305)
 [node name="file7" parent="files" instance=ExtResource("6_68dts")]
 position = Vector2(-422, -153)
 
-[node name="sfx_coin" type="AudioStreamPlayer2D" parent="files"]
-stream = ExtResource("8_c8s1d")
-
 [node name="speed_potion" parent="." instance=ExtResource("11_mhixo")]
 position = Vector2(-53, -37)
 
@@ -1075,13 +1071,6 @@ position = Vector2(-1, 203)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
 shape = SubResource("WorldBoundaryShape2D_xnrqy")
-
-[node name="Player" parent="." instance=ExtResource("8_vtg18")]
-position = Vector2(-268, -7)
-floor_stop_on_slope = false
-
-[node name="sceneTransitionAnimation" parent="Player" instance=ExtResource("13_cbdl7")]
-position = Vector2(-534, -348)
 
 [node name="Light" type="Node" parent="."]
 
@@ -1103,11 +1092,19 @@ shadow_filter = 2
 texture = SubResource("GradientTexture2D_du6a0")
 offset = Vector2(-0.790741, 32.7293)
 
+[node name="Player" parent="." instance=ExtResource("8_vtg18")]
+position = Vector2(-1717, -864)
+floor_stop_on_slope = false
+
 [node name="cmos" parent="." instance=ExtResource("9_0hb5u")]
 position = Vector2(-1148, 1)
 
 [node name="Itemupgrade" parent="." instance=ExtResource("14_68dts")]
+z_index = 4096
 position = Vector2(-96, -15)
+
+[node name="mal_cabeado" parent="." instance=ExtResource("13_cbdl7")]
+position = Vector2(-1669, -563)
 
 [connection signal="body_entered" from="next_level" to="." method="_on_next_level_body_entered"]
 [connection signal="body_entered" from="speed_potion" to="speed_potion" method="_on_body_entered"]

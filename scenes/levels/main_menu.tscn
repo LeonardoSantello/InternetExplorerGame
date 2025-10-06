@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://lfdxktwfkx2n"]
+[gd_scene load_steps=14 format=3 uid="uid://lfdxktwfkx2n"]
 
 [ext_resource type="Script" uid="uid://dsfnanw2sgu6k" path="res://scripts/main_menu.gd" id="1_x4gdb"]
 [ext_resource type="Texture2D" uid="uid://qdqdk0yhy4xu" path="res://assets/sprites/ui/fundo menu.jpg" id="2_gr5yt"]
 [ext_resource type="FontFile" uid="uid://q2cpxqhyekxl" path="res://assets/fonts/pixel.ttf" id="3_42kn2"]
 [ext_resource type="AudioStream" uid="uid://fgpbdimhl2w1" path="res://assets/Audios/musica.mp3" id="4_v2cb7"]
+[ext_resource type="PackedScene" uid="uid://bkw56kxvg6xmo" path="res://scenes/others/transition.tscn" id="5_fkd6t"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jix8l"]
 texture = ExtResource("2_gr5yt")
@@ -149,6 +150,8 @@ horizontal_alignment = 1
 stream = ExtResource("4_v2cb7")
 autoplay = true
 parameters/looping = false
+
+[node name="transition" parent="." instance=ExtResource("5_fkd6t")]
 
 [connection signal="pressed" from="Botoes/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Botoes/Button3" to="." method="_on_button_3_pressed"]

@@ -18,6 +18,11 @@ config/features=PackedStringArray("4.5", "Mobile")
 
 Global="*res://scripts/global.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [input]
 
 ui_left={

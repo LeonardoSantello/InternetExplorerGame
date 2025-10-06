@@ -5,12 +5,13 @@ extends Area2D
 
 func _on_body_entered(body: Node):
 	if body.is_in_group("player"):   # garanta que seu Player esteja no grupo "player"
-		var original_speed = body.speed
-		body.speed = original_speed + speed_bonus
-
-		queue_free()  # remove o item da cena
+		var original_speed = Global.speed
+		Global.speed = original_speed + speed_bonus
+		print("Speed:", Global.speed)
+		$CollisionShape2D.queue_free()
+		$Sprite2D.queue_free()
 
 		await get_tree().create_timer(duration).timeout
-
-		
-		body.speed = original_speed
+		Global.speed = original_speed
+		print("Speed:", Global.speed)
+		queue_free()  # remove o item da cenad

@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://gdast3nneiir"]
+
+[ext_resource type="Script" uid="uid://ber7hwgokxs1e" path="res://scripts/itemupgrade.gd" id="1_xkfn3"]
+[ext_resource type="Texture2D" uid="uid://mr0sixxp5dyf" path="res://assets/sprites/Itens/Item__46.png" id="2_j76d0"]
+[ext_resource type="Texture2D" uid="uid://da2oo4y7jc1pf" path="res://assets/sprites/Itens/attack.png" id="3_nhjgv"]
+[ext_resource type="Texture2D" uid="uid://df53pwukayc8m" path="res://assets/sprites/Itens/health.png" id="4_br32x"]
+[ext_resource type="Texture2D" uid="uid://ciy7cjaway2es" path="res://assets/sprites/Itens/speed.png" id="5_8f8d1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqsnh"]
+size = Vector2(19, 19)
+
+[node name="Itemupgrade" type="Node2D"]
+script = ExtResource("1_xkfn3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_j76d0")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_dqsnh")
+
+[node name="Control" type="Control" parent="."]
+z_index = 4096
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 611.0
+offset_top = 207.0
+offset_right = 611.0
+offset_bottom = 207.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -877.5
+offset_top = -476.0
+offset_right = 877.5
+offset_bottom = 476.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 200
+
+[node name="btn_attack" type="Button" parent="Control/HBoxContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(125, 200)
+layout_mode = 2
+icon = ExtResource("3_nhjgv")
+flat = true
+
+[node name="btn_health" type="Button" parent="Control/HBoxContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(125, 200)
+layout_mode = 2
+icon = ExtResource("4_br32x")
+flat = true
+
+[node name="btn_speed" type="Button" parent="Control/HBoxContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(125, 200)
+layout_mode = 2
+icon = ExtResource("5_8f8d1")
+flat = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="pressed" from="Control/HBoxContainer/btn_attack" to="." method="_on_btn_attack_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/btn_health" to="." method="_on_btn_health_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/btn_speed" to="." method="_on_btn_speed_pressed"]
