@@ -33,7 +33,7 @@ func _apply_upgrade(stat: String):
 			Global.health_max *= 1.1
 			print ("Vida aumentada:")
 		"speed":
-			Global.speed *= 1.05
+			Global.speed += 15
 			print ("Velocidade aumentado:")
 
 	panel.visible = false

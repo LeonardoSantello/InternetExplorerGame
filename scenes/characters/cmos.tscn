@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://u30mi0f28jcw"]
+[gd_scene load_steps=14 format=3 uid="uid://u30mi0f28jcw"]
 
 [ext_resource type="Script" uid="uid://c71bw3pvooo6s" path="res://scripts/cmos.gd" id="1_chg3l"]
 [ext_resource type="Texture2D" uid="uid://bj35r86xde2c8" path="res://assets/sprites/characters/enemys/cmos.png" id="1_x3i0w"]
+[ext_resource type="PackedScene" uid="uid://cr5rxw3y74s46" path="res://scenes/particles/spriteExplosion.tscn" id="2_2w5s8"]
 [ext_resource type="Shader" uid="uid://b48snv0g75ss0" path="res://scripts/shaders/cmos.gdshader" id="3_734l3"]
 [ext_resource type="PackedScene" uid="uid://c16d0lihpmv54" path="res://scenes/others/health_bar.tscn" id="4_3kt38"]
 
@@ -113,7 +114,7 @@ tracks/1/path = NodePath("Sprite2D/ColorRect:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -189,6 +190,7 @@ size = Vector2(66, 66)
 [node name="cmos" type="CharacterBody2D"]
 z_index = 98
 script = ExtResource("1_chg3l")
+deathParticle = ExtResource("2_2w5s8")
 
 [node name="healthBar" parent="." instance=ExtResource("4_3kt38")]
 offset_left = -35.0
@@ -202,6 +204,7 @@ texture = ExtResource("1_x3i0w")
 
 [node name="ColorRect" type="ColorRect" parent="Sprite2D"]
 visible = false
+light_mask = 0
 material = SubResource("ShaderMaterial_734l3")
 anchors_preset = -1
 anchor_right = 0.020000001

@@ -1064,9 +1064,6 @@ position = Vector2(-422, -153)
 [node name="sfx_coin" type="AudioStreamPlayer2D" parent="files"]
 stream = ExtResource("8_bfuce")
 
-[node name="speed_potion" parent="." instance=ExtResource("9_jgevx")]
-position = Vector2(-53, -37)
-
 [node name="kill_zone" parent="." instance=ExtResource("10_ivdgo")]
 position = Vector2(-1, 203)
 
@@ -1122,5 +1119,7 @@ theme_override_font_sizes/font_size = 32
 text = "LVL 2"
 horizontal_alignment = 1
 
+[node name="speed_potions" parent="." instance=ExtResource("9_jgevx")]
+position = Vector2(-33, -46)
+
 [connection signal="body_entered" from="next_level" to="." method="_on_next_level_body_entered"]
-[connection signal="body_entered" from="speed_potion" to="speed_potion" method="_on_body_entered"]

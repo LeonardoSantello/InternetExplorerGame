@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxui808yhuv6g"]
+
+[ext_resource type="Script" uid="uid://f41ujnwuwmox" path="res://bestiary/scripts/bestiary_data.gd" id="1_tu3sk"]
+
+[node name="BestiaryData" type="Node2D"]
+script = ExtResource("1_tu3sk")

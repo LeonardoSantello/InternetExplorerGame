@@ -1,10 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://da3hffgq1p57t"]
+[gd_scene load_steps=6 format=3 uid="uid://da3hffgq1p57t"]
 
 [ext_resource type="Texture2D" uid="uid://cn71he7yxw26p" path="res://assets/sprites/particles/particle_small_64x64-removebg-preview.png" id="1_bfp0y"]
 
+[sub_resource type="CurveTexture" id="CurveTexture_6exux"]
+
+[sub_resource type="Curve" id="Curve_pi72b"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.3370787), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_f06p7"]
+curve = SubResource("Curve_pi72b")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dvdby"]
 particle_flag_disable_z = true
-gravity = Vector3(0, 98, 0)
+angle_curve = SubResource("CurveTexture_6exux")
+initial_velocity_max = 20.0
+gravity = Vector3(0, 68, 0)
+scale_min = 0.79999995
+scale_max = 1.1
+scale_curve = SubResource("CurveTexture_f06p7")
 
 [node name="DustRunning" type="GPUParticles2D"]
 position = Vector2(7, 0)

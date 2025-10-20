@@ -4,9 +4,8 @@ class_name Player
 # ==============================
 # CONSTANTES
 # ==============================
-const JUMP_VELOCITY = -465.0
+const JUMP_VELOCITY = -500.0
 const ATTACK_DURATION = 0.45
-const MAX_JUMPS = 2    # pulo duplo
 const WALL_SLIDE_SPEED = 50 # velocidade ao deslizar na parede
 
 # ==============================
@@ -17,23 +16,27 @@ const WALL_SLIDE_SPEED = 50 # velocidade ao deslizar na parede
 @onready var anim: AnimatedSprite2D = $sprites/AnimatedSprite2D
 @onready var dust_running: GPUParticles2D = $sprites/DustRunning
 @onready var damage_animation = $ErroPopup/AnimationPlayer
-@onready var sfx_jump: AudioStreamPlayer2D = $audio/sfx_jump
-@onready var sfx_run: AudioStreamPlayer2D = $audio/sfx_run
+@onready var sfx_jump: AudioStreamPlayer2D = $"audio/Windows7Balloon(jump)"
+@onready var sfx_run: AudioStreamPlayer2D = $"audio/keyboard sound effect"
 @onready var sfx_dash: AudioStreamPlayer2D = $audio/sfx_dash
 @onready var sfx_attack: AudioStreamPlayer2D = $audio/sfx_attack
-@export var jump_buffer_timer: float = 0.1
 
-var jump_buffer: bool = false
+@export var can_slide: bool = true
+@export var can_dash: bool = true
+@export var max_jumps: int = 2    # pulo duplo
+
 var is_attacking: bool = false
+var jump_buffer_timer: float = 0.1
+var jump_buffer: bool = false
 var attack_timer: float
 var jumps_left: int
 var wall_contact_time := 0.0
 var is_wall_sliding := false
 var jump_time := 0.0
 var dash_cooldown := false
+var is_dashing := false
 var attack: float = 10.0
 var max_health: int = 100
-var health: int = max_health
 
 var can_move := true
 var can_take_damage: bool
@@ -50,7 +53,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	Global.playerDamageZone = deal_damage_zone
-	
+
 	if not Global.playerAlive:
 		return
 	
@@ -64,8 +67,24 @@ func _physics_process(delta: float) -> void:
 	update_animation(delta)
 	flip_sprite()
 	check_hitbox()
+	handle_bestiary()
+	
 	move_and_slide()
 
+
+# ==============================
+# BESTIARIO
+# ==============================
+func handle_bestiary() -> void:
+	if Input.is_action_just_pressed("bestiary"):
+		var bestiary = $Camera2D/bestiario
+		if bestiary:
+			if bestiary.visible:
+				bestiary.hide()
+			else:
+				bestiary.show_bestiary()
+		else:
+			print("⚠️ Bestiário não encontrado!")
 
 # ==============================
 # MOVIMENTAÇÃO
@@ -79,7 +98,12 @@ func handle_input(delta: float) -> void:
 		if attack_timer <= 0:
 			is_attacking = false
 	else:
-		if can_move:
+		if is_dashing:
+			if $sprites/AnimatedSprite2D.flip_h == true:
+				velocity.x =  -Global.speed
+			else:
+				velocity.x = Global.speed
+		elif can_move:
 			velocity.x = direction * Global.speed if direction != 0 else move_toward(velocity.x, 0, Global.speed)
 
 
@@ -90,7 +114,7 @@ func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	else:
-		jumps_left = MAX_JUMPS
+		jumps_left = max_jumps
 		if jump_buffer:
 			velocity.y = JUMP_VELOCITY
 			jump_buffer = false
@@ -111,13 +135,15 @@ func handle_jump() -> void:
 		else:
 			jump_buffer = true
 			get_tree().create_timer(jump_buffer_timer).timeout.connect(on_jump_buffer_timeout)
+	elif (Input.is_action_just_released("space") or is_on_ceiling()) and velocity.y < 0:
+		velocity.y *= 0.5
 
 
 # ==============================
 # WALL SLIDE
 # ==============================
 func handle_wall_slide(delta: float) -> void:
-	if is_on_wall_only():
+	if is_on_wall_only() and can_slide:
 		wall_contact_time += delta
 		if wall_contact_time >= 0.3 and velocity.y > WALL_SLIDE_SPEED:
 			is_wall_sliding = true
@@ -133,11 +159,11 @@ func handle_wall_slide(delta: float) -> void:
 # ATAQUE
 # ==============================
 func handle_attack() -> void:
-	if Input.is_action_just_pressed("attack") and not is_attacking:
+	if Input.is_action_just_pressed("attack") and not is_attacking and not is_wall_sliding:
 		is_attacking = true
 		toggle_damage_collision()
 		attack_timer = ATTACK_DURATION
-		$sprites/AnimationPlayer.play("attack")
+		$sprites/AnimationPlayer.play("longAttack1")
 		$audio/sfx_attack.play()
 
 
@@ -145,12 +171,11 @@ func handle_attack() -> void:
 # DASH
 # ==============================
 func handle_dash() -> void:
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if Input.is_action_just_pressed("dash") and not dash_cooldown and not is_attacking and direction != 0:
+	if Input.is_action_just_pressed("dash") and not dash_cooldown and not is_attacking and can_dash:
 		$timers/Dash.start()
+		is_dashing = true
 		dash_cooldown = true
-		Global.speed *= 3
-		velocity.x = direction * Global.speed
+		Global.speed += 600
 		sfx_dash.play()
 
 
@@ -178,7 +203,7 @@ func update_animation(delta: float) -> void:
 	
 	if is_wall_sliding:
 		anim_player.play("slide")
-	elif Global.speed > 500:
+	elif Global.speed >= 900:
 		anim_player.play("dash")
 	elif not is_on_floor():
 		jump_time += delta
@@ -210,27 +235,41 @@ func check_hitbox() -> void:
 	var damage: int
 	if hitbox_areas:
 		var hitbox = hitbox_areas.front()
+		#NÃO USAR OR !!!
 		if hitbox.get_parent() is CmosEnemy:
 			damage = Global.cmosDamageAmount
 		elif hitbox.get_parent() is mal_cabeado:
 			damage = Global.malCabeadoDamageAmount
 		elif hitbox.get_parent() is inimigo_basico:
 			damage = Global.inimigoBasicoDamageAmount
+		elif hitbox.get_parent() is cavaloDeTroia:
+			damage = Global.cavaloDeTroiaDamageAmount
+		elif (hitbox.get_parent() is invader) or  (hitbox.get_parent() is invaderLifeTime):
+			damage = Global.invaderDamageAmount
 		if can_take_damage and damage != 0:
 			take_damage(damage)
 
 
 func take_damage(damage) -> void:
+	print(damage)
 	if Global.health > 0:
 		Global.health -= damage
 		print("Vida player:", Global.health)
-		velocity.x = $hitBox.get_overlapping_areas().front().get_parent().dir.x * 1000 #Knockback
-		velocity.y = -350
+		if $hitBox.get_overlapping_areas().front().get_parent():
+			velocity.x = $hitBox.get_overlapping_areas().front().get_parent().dir.x * 1000 #Knockback
+		else:
+			if $sprites/AnimatedSprite2D.flip_h == true:
+				velocity.x = -1000
+			else:
+				velocity.x = 1000
+		velocity.y = -400
+		damage = 0
 		can_move = false
 		erro_change_position() 
 		$timers/Knockback.start()
 		if Global.health <= 0:
 			Global.health = 0
+			#Mutar outros sons
 			Global.playerAlive = false
 			handle_death_animation()
 		take_damage_cooldown(2.0)
@@ -249,7 +288,7 @@ func erro_change_position() -> void:
 
 func handle_death_animation() -> void:
 	await get_tree().create_timer(0.2).timeout
-	$sprites/AnimationPlayer.play("death")
+	$sprites/AnimatedSprite2D.visible = false
 	$Camera2D.zoom.x = 4
 	$Camera2D.zoom.y = 4
 	$Camera2D.position.y = 0
@@ -275,7 +314,8 @@ func set_damage() -> void:
 
 
 func _on_dash_timeout() -> void:
-	Global.speed = 300.0
+	is_dashing = false
+	Global.speed = Global.speed - 600
 	$"timers/Dash cooldown".start()
 
 func _on_dash_cooldown_timeout() -> void:

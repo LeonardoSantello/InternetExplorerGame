@@ -15,6 +15,8 @@ var files_coleted = 0
 var malCabeadoDamageAmount : int
 var cmosDamageAmount: int
 var inimigoBasicoDamageAmount: int
+var cavaloDeTroiaDamageAmount: int
+var invaderDamageAmount: int
 
 func reset_game_state():
 	playerDamageAmount = 10

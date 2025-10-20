@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://b63h6gn0tuql7"]
+
+[ext_resource type="Texture2D" uid="uid://p8fkhi3wng8c" path="res://assets/sprites/tilemaps/bios_tileset.png" id="1_661nw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t61cb"]
+size = Vector2(195, 130)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_b43up"]
+polygon = PackedVector2Array(-97, -98, 98, -98, 98, 32, -97, 32)
+
+[node name="bloco2__bios" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 10
+texture = ExtResource("1_661nw")
+region_enabled = true
+region_rect = Rect2(390.03473, 128.94489, 195.00623, 65.330826)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(0, -65)
+rotation = -3.1415927
+texture = ExtResource("1_661nw")
+region_enabled = true
+region_rect = Rect2(390.03473, 128.94489, 195.00623, 65.330826)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -33)
+shape = SubResource("RectangleShape2D_t61cb")
+one_way_collision = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_b43up")

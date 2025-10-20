@@ -4,7 +4,7 @@ func _ready() -> void:
 	Global.reset_game_state()
 
 func _on_button_pressed() -> void:
-	$transition.scene_transition_animation_function("res://scenes/levels/test_area.tscn")
+	$transition.scene_transition_animation_function("res://scenes/levels/kernel_cut.tscn")
 
 
 func _on_button_3_pressed() -> void:

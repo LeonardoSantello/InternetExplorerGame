@@ -1,0 +1,190 @@
+[gd_scene load_steps=14 format=3 uid="uid://bl4r8ogxr0ulc"]
+
+[ext_resource type="Script" uid="uid://dab488t23brrd" path="res://scripts/invader_life_time.gd" id="1_6w4hm"]
+[ext_resource type="PackedScene" uid="uid://cr5rxw3y74s46" path="res://scenes/particles/spriteExplosion.tscn" id="2_ii8ih"]
+[ext_resource type="Texture2D" uid="uid://cjo5sm6uemp8i" path="res://assets/sprites/characters/enemys/invader.png" id="3_gjix7"]
+[ext_resource type="Shader" uid="uid://b48snv0g75ss0" path="res://scripts/shaders/cmos.gdshader" id="4_4b47t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c36bj"]
+atlas = ExtResource("3_gjix7")
+region = Rect2(0, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ro8pn"]
+atlas = ExtResource("3_gjix7")
+region = Rect2(0, 8, 16, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dwoi8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c36bj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ro8pn")
+}],
+"loop": true,
+"name": &"sprite",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fgp7v"]
+shader = ExtResource("4_4b47t")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.2
+shader_parameter/shake_speed = 999.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.01
+
+[sub_resource type="Animation" id="Animation_cpynn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_dwoi8")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D/ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uihqj"]
+resource_name = "sprite"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_dwoi8")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"sprite"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3jmvj"]
+_data = {
+&"RESET": SubResource("Animation_cpynn"),
+&"walk": SubResource("Animation_uihqj")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qwnf"]
+size = Vector2(20.833332, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c36bj"]
+size = Vector2(22.5, 16.666666)
+
+[node name="invaderLifeTime" type="CharacterBody2D"]
+z_index = 98
+scale = Vector2(1.2, 1.2)
+script = ExtResource("1_6w4hm")
+deathParticle = ExtResource("2_ii8ih")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dwoi8")
+animation = &"sprite"
+
+[node name="ColorRect" type="ColorRect" parent="AnimatedSprite2D"]
+visible = false
+material = SubResource("ShaderMaterial_fgp7v")
+anchors_preset = -1
+anchor_right = 0.020000001
+anchor_bottom = 0.017
+offset_left = -21.0
+offset_top = -32.0
+offset_right = 13.72
+offset_bottom = 25.912
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3jmvj")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.25, 0)
+shape = SubResource("RectangleShape2D_2qwnf")
+
+[node name="hitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
+position = Vector2(-1.25, -2.9802322e-07)
+shape = SubResource("RectangleShape2D_c36bj")
+
+[node name="directionTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="lifeTime" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[connection signal="area_entered" from="hitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="timeout" from="directionTimer" to="." method="_on_direction_timer_timeout"]
+[connection signal="timeout" from="lifeTime" to="." method="_on_life_time_timeout"]

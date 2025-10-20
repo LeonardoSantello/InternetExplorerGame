@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://cr5rxw3y74s46"]
+
+[ext_resource type="Script" uid="uid://bc6li4tcw20oy" path="res://scripts/sprite_explosion.gd" id="1_7g0f7"]
+
+[sub_resource type="Curve" id="Curve_7g0f7"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(1, -360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6avml"]
+curve = SubResource("Curve_7g0f7")
+
+[sub_resource type="Gradient" id="Gradient_ch805"]
+offsets = PackedFloat32Array(0, 0.5754717)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7g0f7"]
+gradient = SubResource("Gradient_ch805")
+
+[sub_resource type="Curve" id="Curve_ch805"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_oco5w"]
+curve = SubResource("Curve_ch805")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_syjk2"]
+lifetime_randomness = 0.7
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+angle_curve = SubResource("CurveTexture_6avml")
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 250.0
+gravity = Vector3(0, -99, 0)
+scale_min = 2.0
+scale_max = 15.0
+scale_curve = SubResource("CurveTexture_oco5w")
+color_ramp = SubResource("GradientTexture1D_7g0f7")
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+self_modulate = Color(0.99999994, 0.03258767, 0.034672815, 1)
+z_index = 5
+amount = 200
+lifetime = 1.2
+explosiveness = 1.0
+randomness = 0.3
+trail_sections = 2
+trail_section_subdivisions = 1
+process_material = SubResource("ParticleProcessMaterial_syjk2")
+script = ExtResource("1_7g0f7")

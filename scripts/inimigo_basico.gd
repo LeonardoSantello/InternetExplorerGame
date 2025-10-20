@@ -3,11 +3,9 @@ extends CharacterBody2D
 class_name inimigo_basico
 
 const SPEED = 30
-const GRAVITY = 900
 var is_chasing: bool = true
 
 var health = 80
-var health_max = 80
 
 var dead: bool = false
 var taking_damage: bool = false
@@ -23,7 +21,7 @@ var player_in_area = false
 func _ready() -> void:
 	Global.inimigoBasicoDamageAmount = 1
 	
-func _process(delta) -> void:
+func _physics_process(delta) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		velocity.x = 0
@@ -62,7 +60,7 @@ func handle_animation():
 	elif dead and is_roaming:
 		is_roaming = false
 		animation.play("dead")
-		#$CollisionShape2D.monitorable = false #Desliga hitbox para não poder dar mais dano
+		$hitBox/CollisionShape2D.disabled = true
 		await  get_tree().create_timer(1).timeout
 		print(str(self), "Morreu")
 		self.queue_free()
@@ -85,7 +83,6 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 
 func take_damage(damage):
 	health -= damage
-	print(str(self), "Vida:", health)
 	taking_damage = true
 	if health <= 0:
 		health = 0

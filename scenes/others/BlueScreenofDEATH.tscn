@@ -154,7 +154,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_4s3aj")
 }
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." groups=["DEADTH_SOUND"]]
 visible = false
 z_index = 4096
 offset_left = -773.0
