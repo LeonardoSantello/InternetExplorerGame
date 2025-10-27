@@ -53,7 +53,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	Global.playerDamageZone = deal_damage_zone
-
+	
 	if not Global.playerAlive:
 		return
 	
@@ -105,7 +105,8 @@ func handle_input(delta: float) -> void:
 				velocity.x = Global.speed
 		elif can_move:
 			velocity.x = direction * Global.speed if direction != 0 else move_toward(velocity.x, 0, Global.speed)
-
+			#velocity.x = move_toward(velocity.x, direction * Global.speed, 600 * delta) if direction != 0 else move_toward(velocity.x, 0, Global.speed)
+			#velocity.x = direction * Global.speed if direction != 0 else move_toward(velocity.x, 0, Global.speed)
 
 # ==============================
 # GRAVIDADE
@@ -173,6 +174,7 @@ func handle_attack() -> void:
 func handle_dash() -> void:
 	if Input.is_action_just_pressed("dash") and not dash_cooldown and not is_attacking and can_dash:
 		$timers/Dash.start()
+		$Camera2D/CanvasLayer/dash_icon/Sprite2D/AnimationPlayer.play("dash_cooldown")
 		is_dashing = true
 		dash_cooldown = true
 		Global.speed += 600

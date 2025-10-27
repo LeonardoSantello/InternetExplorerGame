@@ -30,6 +30,8 @@ func _ready() -> void:
 	
 func _input(event):
 	if event.is_action_pressed("fala") and can_talk:
+		$"../Lights/AnimationPlayer".stop()
+		$PressE.start()
 		next_dialogue()
 
 func next_dialogue():
@@ -90,6 +92,7 @@ func _on_area_2d_4_area_entered(area: Area2D) -> void:
 		Global.speed = 0
 		
 		$"../areas2D/Area2D4".queue_free()
-		
 
-		
+
+func _on_press_e_timeout() -> void:
+	$"../Lights/AnimationPlayer".play("pressE")

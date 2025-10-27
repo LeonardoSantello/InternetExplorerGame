@@ -1,9 +1,9 @@
 extends Node2D
 
-@onready var panel = $Control/HBoxContainer
-@onready var btn_attack = $Control/HBoxContainer/btn_attack
-@onready var btn_health = $Control/HBoxContainer/btn_health
-@onready var btn_speed = $Control/HBoxContainer/btn_speed
+@onready var panel = $CanvasLayer/Control
+@onready var btn_attack = $CanvasLayer/Control/HBoxContainer/btn_attack
+@onready var btn_health = $CanvasLayer/Control/HBoxContainer/btn_health
+@onready var btn_speed = $CanvasLayer/Control/HBoxContainer/btn_speed
 @onready var area2d = $Area2D
 
 var player_ref: Node = null

@@ -32,4 +32,4 @@ func _on_area_2d_3_area_entered(area: Area2D) -> void:
 
 func _on_next_level_area_entered(area: Area2D) -> void:
 	if area == Global.playerHitBox:
-		$Player/Camera2D/CanvasLayer/transitionAnimation.scene_transition_animation_function("res://scenes/levels/test_area.tscn")
+		$Player/Camera2D/CanvasLayer/transitionAnimation.scene_transition_animation_function("res://scenes/levels/bios/lvl1.tscn")

@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhaqt5vt5oicf"]
+
+[ext_resource type="Script" uid="uid://dfljibg3gj65l" path="res://scripts/tooltip.gd" id="1_i408y"]
+[ext_resource type="Shader" uid="uid://di8afmayxmt32" path="res://scripts/shaders/wave_text.gdshader" id="2_owkxx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nmtrn"]
+bg_color = Color(0, 0, 0, 0.7294118)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0.78125, 0.78125, 0.78125, 1)
+expand_margin_left = 65.0
+expand_margin_top = 65.0
+expand_margin_right = 65.0
+expand_margin_bottom = 65.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nmtrn"]
+shader = ExtResource("2_owkxx")
+shader_parameter/height = 1.5
+shader_parameter/frequency = 7.0
+shader_parameter/speed = 0.8
+
+[node name="Tooltip" type="PanelContainer"]
+top_level = true
+z_index = 1000
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 642.0
+offset_bottom = 244.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nmtrn")
+script = ExtResource("1_i408y")
+
+[node name="Segredo" type="RichTextLabel" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_nmtrn")
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font=res://assets/fonts/Px437_IBM_BIOS.ttf][font_size=60]Aumenta seu dano em 10%[/font_size][/font]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1

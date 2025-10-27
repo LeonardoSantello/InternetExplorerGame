@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://cfjogcfcpqr1d"]
+[gd_scene load_steps=91 format=3 uid="uid://cfjogcfcpqr1d"]
 
 [ext_resource type="Script" uid="uid://dweor28xdn8hp" path="res://scripts/player.gd" id="1_c08b3"]
 [ext_resource type="Texture2D" uid="uid://dissfbymcp68l" path="res://assets/sprites/characters/player/Warrior_SheetnoEffect.png" id="2_agjl5"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dmvjd7mfnlatt" path="res://scenes/others/health_bar_player.tscn" id="8_qgnko"]
 [ext_resource type="PackedScene" uid="uid://iyou52koijjq" path="res://scenes/others/errorPopup.tscn" id="10_7vyk4"]
 [ext_resource type="PackedScene" uid="uid://bkw56kxvg6xmo" path="res://scenes/others/transition.tscn" id="11_2l4js"]
+[ext_resource type="Texture2D" uid="uid://b2iksb6o7ikw2" path="res://assets/sprites/ui/dash_icon.png" id="12_eir2k"]
 [ext_resource type="PackedScene" uid="uid://kw1rtl6ec0hs" path="res://scenes/others/BlueScreenofDEATH.tscn" id="12_jk2m4"]
 [ext_resource type="Texture2D" uid="uid://coyyx7nsof3" path="res://assets/sprites/characters/player/playerDash.png" id="12_xhtjm"]
 [ext_resource type="Texture2D" uid="uid://blu2ra0ayroyv" path="res://assets/sprites/characters/player/playerIdle.png" id="13_k4v7y"]
@@ -32,6 +33,70 @@ size = Vector2(71, 49)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6eyoc"]
 radius = 14.0
 height = 64.0
+
+[sub_resource type="Animation" id="Animation_eir2k"]
+resource_name = "dash_cooldown"
+length = 1.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ProgressBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.89, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 100.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(0.4609375, 0.4609375, 0.4609375, 0.65882355), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_inhyd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ProgressBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wqk1x"]
+_data = {
+&"RESET": SubResource("Animation_inhyd"),
+&"dash_cooldown": SubResource("Animation_eir2k")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eir2k"]
+bg_color = Color(1, 1, 1, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7vyk4"]
 shader = ExtResource("2_qgnko")
@@ -880,6 +945,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
+collision_mask = 3
 platform_wall_layers = 255
 script = ExtResource("1_c08b3")
 
@@ -961,6 +1027,38 @@ offset_right = 16.0
 offset_bottom = -1.0
 
 [node name="transitionAnimation" parent="Camera2D/CanvasLayer" instance=ExtResource("11_2l4js")]
+
+[node name="dash_icon" type="Control" parent="Camera2D/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/CanvasLayer/dash_icon"]
+position = Vector2(431.00003, 41)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("12_eir2k")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/CanvasLayer/dash_icon/Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_wqk1x")
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="Camera2D/CanvasLayer/dash_icon/Sprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.22224
+offset_top = -32.22223
+offset_right = -31.777813
+offset_bottom = -32.22223
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_eir2k")
+rounded = true
+fill_mode = 3
+show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [node name="bestiario" parent="Camera2D" instance=ExtResource("19_3wg1y")]
 
