@@ -22,6 +22,7 @@ shader_parameter/frequency = 7.0
 shader_parameter/speed = 0.8
 
 [node name="Tooltip" type="PanelContainer"]
+process_mode = 3
 top_level = true
 z_index = 1000
 anchors_preset = 15
@@ -36,6 +37,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_nmtrn")
 script = ExtResource("1_i408y")
 
 [node name="Segredo" type="RichTextLabel" parent="."]
+process_mode = 3
 visible = false
 material = SubResource("ShaderMaterial_nmtrn")
 layout_mode = 2

@@ -943,6 +943,21 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7pl1i"]
 size = Vector2(55, 70.41667)
 
+[sub_resource type="Animation" id="Animation_vnygk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3544, -394)]
+}
+
 [sub_resource type="Animation" id="Animation_um055"]
 resource_name = "porta"
 length = 2.0
@@ -957,21 +972,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(3544, -394), Vector2(3544, -600)]
-}
-
-[sub_resource type="Animation" id="Animation_vnygk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(3544, -394)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iw78k"]

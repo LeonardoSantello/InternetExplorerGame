@@ -8,17 +8,19 @@ func _input(event: InputEvent) -> void:
 	if visible and event is InputEventMouseMotion:
 		global_position = get_global_mouse_position() + OFFSET
 
-func toggle(off: bool):
-	if off:
-		print("OFF")
-		modulate.a = 1.0
-		await  tween_opacity(0.0).finished
-		hide()
-	else:
+func toggle(on: bool):
+	if on:
 		print("ON")
 		show()
 		modulate.a = 0.0
 		tween_opacity(1.0)
+	else:
+		print("OFF")
+		modulate.a = 1.0
+		await  tween_opacity(0.0).finished
+		hide()
+		
+
 
 
 func tween_opacity(to: float):

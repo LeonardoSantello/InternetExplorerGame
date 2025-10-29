@@ -16,8 +16,8 @@ func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"): 
 		player_ref = body
 		panel.visible = true
-		get_tree().paused = true  
-
+		#get_tree().paused = true
+		$"../..".process_mode = Node.PROCESS_MODE_DISABLED
 
 func _apply_upgrade(stat: String):
 	if not player_ref:

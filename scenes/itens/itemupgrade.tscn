@@ -19,12 +19,14 @@ shader_parameter/frequency = 7.0
 shader_parameter/speed = 0.8
 
 [node name="Itemupgrade" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_xkfn3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_j76d0")
 
 [node name="Area2D" type="Area2D" parent="."]
+process_mode = 3
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -32,10 +34,12 @@ position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_dqsnh")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 scale = Vector2(1.5, 1.5)
 transform = Transform2D(1.5, 0, 0, 1.5, 0, 0)
 
 [node name="Control" type="Control" parent="CanvasLayer"]
+process_mode = 3
 z_index = 4096
 layout_mode = 3
 anchors_preset = 8
@@ -53,6 +57,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -93,6 +98,7 @@ offset_right = 708.47375
 offset_bottom = 144.83723
 
 [node name="txt" type="RichTextLabel" parent="CanvasLayer/Control/HBoxContainer/btn_attack/Tooltip"]
+process_mode = 3
 material = SubResource("ShaderMaterial_nmtrn")
 layout_mode = 2
 mouse_filter = 2
@@ -125,6 +131,7 @@ offset_right = 708.47375
 offset_bottom = 144.83723
 
 [node name="txt" type="RichTextLabel" parent="CanvasLayer/Control/HBoxContainer/btn_health/Tooltip"]
+process_mode = 3
 material = SubResource("ShaderMaterial_nmtrn")
 layout_mode = 2
 mouse_filter = 2
@@ -157,6 +164,7 @@ offset_right = 875.7354
 offset_bottom = 255.94832
 
 [node name="txt" type="RichTextLabel" parent="CanvasLayer/Control/HBoxContainer/btn_speed/Tooltip"]
+process_mode = 3
 material = SubResource("ShaderMaterial_nmtrn")
 layout_mode = 2
 mouse_filter = 2
