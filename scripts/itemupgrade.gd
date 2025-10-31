@@ -9,6 +9,7 @@ extends Node2D
 var player_ref: Node = null
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	panel.visible = false
 
 
@@ -37,7 +38,9 @@ func _apply_upgrade(stat: String):
 			print ("Velocidade aumentado:")
 
 	panel.visible = false
-	get_tree().paused = false
+	#get_tree().paused = false
+	$"../..".process_mode = Node.PROCESS_MODE_INHERIT
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	queue_free()  
 
 

@@ -2,6 +2,7 @@ extends Node2D
 
 
 func _ready() -> void:
+	$Player/Camera2D/CanvasLayer/dash_icon.visible = false
 	$Player.can_dash = false
 	$Player.can_slide = false
 	$Player.max_jumps = 1

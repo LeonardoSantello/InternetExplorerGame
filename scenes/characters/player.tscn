@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://cfjogcfcpqr1d"]
+[gd_scene load_steps=94 format=3 uid="uid://cfjogcfcpqr1d"]
 
 [ext_resource type="Script" uid="uid://dweor28xdn8hp" path="res://scripts/player.gd" id="1_c08b3"]
 [ext_resource type="Texture2D" uid="uid://dissfbymcp68l" path="res://assets/sprites/characters/player/Warrior_SheetnoEffect.png" id="2_agjl5"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://iyou52koijjq" path="res://scenes/others/errorPopup.tscn" id="10_7vyk4"]
 [ext_resource type="PackedScene" uid="uid://bkw56kxvg6xmo" path="res://scenes/others/transition.tscn" id="11_2l4js"]
 [ext_resource type="Texture2D" uid="uid://b2iksb6o7ikw2" path="res://assets/sprites/ui/dash_icon.png" id="12_eir2k"]
+[ext_resource type="Shader" uid="uid://bn4fohkrhip8e" path="res://scripts/shaders/melt.gdshader" id="12_inhyd"]
 [ext_resource type="PackedScene" uid="uid://kw1rtl6ec0hs" path="res://scenes/others/BlueScreenofDEATH.tscn" id="12_jk2m4"]
 [ext_resource type="Texture2D" uid="uid://coyyx7nsof3" path="res://assets/sprites/characters/player/playerDash.png" id="12_xhtjm"]
 [ext_resource type="Texture2D" uid="uid://blu2ra0ayroyv" path="res://assets/sprites/characters/player/playerIdle.png" id="13_k4v7y"]
@@ -33,6 +34,45 @@ size = Vector2(71, 49)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6eyoc"]
 radius = 14.0
 height = 64.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wqk1x"]
+shader = ExtResource("12_inhyd")
+shader_parameter/pre_melting_gradient = ExtResource("12_eir2k")
+shader_parameter/falling_gradient = ExtResource("12_eir2k")
+shader_parameter/animation_progress = 0.0
+shader_parameter/random_influence = 0.0
+shader_parameter/melting_point = Vector2(0, 0)
+shader_parameter/atlas_size = Vector2(1, 1)
+shader_parameter/melting_time = 0.1
+shader_parameter/falling_time = 0.0
+shader_parameter/fall_distance = 16
+
+[sub_resource type="Animation" id="Animation_inhyd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ProgressBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_eir2k"]
 resource_name = "dash_cooldown"
@@ -62,37 +102,26 @@ tracks/1/keys = {
 "values": [Color(0.4609375, 0.4609375, 0.4609375, 0.65882355), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_inhyd"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_dm10o"]
+resource_name = "melt"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ProgressBar:value")
+tracks/0/path = NodePath(".:material:shader_parameter/animation_progress")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [1.0, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wqk1x"]
 _data = {
 &"RESET": SubResource("Animation_inhyd"),
-&"dash_cooldown": SubResource("Animation_eir2k")
+&"dash_cooldown": SubResource("Animation_eir2k"),
+&"melt": SubResource("Animation_dm10o")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eir2k"]
@@ -1035,6 +1064,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D/CanvasLayer/dash_icon"]
+material = SubResource("ShaderMaterial_wqk1x")
 position = Vector2(431.00003, 41)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("12_eir2k")

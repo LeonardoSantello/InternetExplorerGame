@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://dx4klgssodkkg"]
+
+[ext_resource type="Script" uid="uid://bomqqicq4g13a" path="res://scripts/dash_icon_pick.gd" id="1_xpgqf"]
+[ext_resource type="Texture2D" uid="uid://b2iksb6o7ikw2" path="res://assets/sprites/ui/dash_icon.png" id="1_xyash"]
+[ext_resource type="Shader" uid="uid://bn4fohkrhip8e" path="res://scripts/shaders/melt.gdshader" id="2_ebnr6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ebnr6"]
+shader = ExtResource("2_ebnr6")
+shader_parameter/pre_melting_gradient = ExtResource("1_xyash")
+shader_parameter/falling_gradient = ExtResource("1_xyash")
+shader_parameter/animation_progress = 0.0
+shader_parameter/random_influence = 0.0
+shader_parameter/melting_point = Vector2(0, 0)
+shader_parameter/atlas_size = Vector2(1, 1)
+shader_parameter/melting_time = 0.1
+shader_parameter/falling_time = 0.0
+shader_parameter/fall_distance = 65
+
+[sub_resource type="Animation" id="Animation_xpgqf"]
+resource_name = "melt"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/animation_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_ebnr6"]
+resource_name = "move"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1.035265, 1.035265),
+"update": 0,
+"values": [Vector2(0, -15), Vector2(0, 15)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xpgqf"]
+_data = {
+&"melt": SubResource("Animation_xpgqf"),
+&"move": SubResource("Animation_ebnr6")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ebnr6"]
+size = Vector2(44, 44)
+
+[node name="dash_icon_pick" type="Node2D"]
+script = ExtResource("1_xpgqf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ebnr6")
+position = Vector2(0, -15)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_xyash")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xpgqf")
+}
+autoplay = "move"
+
+[node name="melt" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xpgqf")
+}
+autoplay = "move"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_ebnr6")
+
+[connection signal="animation_finished" from="melt" to="." method="_on_melt_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

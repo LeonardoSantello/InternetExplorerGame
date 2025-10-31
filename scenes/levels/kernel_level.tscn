@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://cj7vpkwwv223o"]
+[gd_scene load_steps=51 format=4 uid="uid://cj7vpkwwv223o"]
 
 [ext_resource type="Script" uid="uid://bhj40ab1dkyq" path="res://scripts/tutorial.gd" id="1_ucdw3"]
 [ext_resource type="Texture2D" uid="uid://cy6ty01ceunha" path="res://assets/sprites/tilemaps/bios_background.png" id="2_lfdfo"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://buodprcdkv0by" path="res://assets/Audios/backgound/Windows_XP_Startup.wav" id="16_ls7vl"]
 [ext_resource type="AudioStream" uid="uid://caaepscul5w0f" path="res://assets/Audios/backgound/Server Room.mp3" id="17_m4utn"]
 [ext_resource type="AudioStream" uid="uid://dm01trk7gsibd" path="res://assets/Audios/effects/8-bit-beeping-computer.mp3" id="18_fmtce"]
+[ext_resource type="PackedScene" uid="uid://dx4klgssodkkg" path="res://scenes/itens/dash_icon_pick.tscn" id="18_sk1cs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ob3uo"]
 texture = ExtResource("2_lfdfo")
@@ -1288,7 +1289,7 @@ position = Vector2(-9.999996, -89)
 shape = SubResource("WorldBoundaryShape2D_8gw8n")
 
 [node name="Area2D2" type="Area2D" parent="areas2D"]
-position = Vector2(4193, -710)
+position = Vector2(4509, -710)
 rotation = -1.5707964
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas2D/Area2D2"]
@@ -1376,6 +1377,9 @@ autoplay = true
 stream = ExtResource("18_fmtce")
 volume_db = -18.0
 parameters/looping = true
+
+[node name="dash_icon_pick" parent="." instance=ExtResource("18_sk1cs")]
+position = Vector2(4506, -639)
 
 [connection signal="area_entered" from="areas2D/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="areas2D/Area2D2" to="." method="_on_area_2d_2_area_entered"]

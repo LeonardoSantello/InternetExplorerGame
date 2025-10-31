@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwrfl87bxo1jh"]
+
+[ext_resource type="Texture2D" uid="uid://p8fkhi3wng8c" path="res://assets/sprites/tilemaps/bios_tileset.png" id="4_4b4yp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_712uc"]
+atlas = ExtResource("4_4b4yp")
+region = Rect2(390, 715, 195, 65)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dwoi8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_712uc")
+}],
+"loop": true,
+"name": &"sprite",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4o8di"]
+size = Vector2(22.5, 180.83333)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gbaxy"]
+polygon = PackedVector2Array(-12.5, -91.666664, 11.666666, -91.666664, 11.666666, 91.666664, -12.5, 91.666664)
+
+[node name="portaInicio" type="CharacterBody2D"]
+z_index = 98
+scale = Vector2(1.2, 1.2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_dwoi8")
+animation = &"sprite"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.4166665, -0.41666666)
+shape = SubResource("RectangleShape2D_4o8di")
+disabled = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="CollisionShape2D"]
+position = Vector2(0.4166665, 0.41666666)
+occluder = SubResource("OccluderPolygon2D_gbaxy")
