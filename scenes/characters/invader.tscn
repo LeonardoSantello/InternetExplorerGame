@@ -85,6 +85,7 @@ size = Vector2(22.5, 16.666666)
 [node name="invader" type="CharacterBody2D"]
 z_index = 98
 scale = Vector2(1.2, 1.2)
+collision_layer = 16
 script = ExtResource("1_ro8pn")
 deathParticle = ExtResource("2_c36bj")
 

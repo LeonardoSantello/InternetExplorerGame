@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name cavaloDeTroia
 
-const DASH_SPEED = 350
+const DASH_SPEED = 500
 
 var speed = 100
 var dir: Vector2

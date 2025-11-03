@@ -405,10 +405,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_11eot"]
-size = Vector2(80.83333, 68.33333)
+size = Vector2(59.166664, 68.33333)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7125h"]
-size = Vector2(85.83333, 72.5)
+size = Vector2(63.33333, 72.5)
 
 [node name="cavaloDeTroia" type="CharacterBody2D"]
 z_index = 98
@@ -440,7 +440,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.2500013, 20.833334)
+position = Vector2(-2.0833333, 20.833334)
 shape = SubResource("RectangleShape2D_11eot")
 
 [node name="DirectionTimer" type="Timer" parent="."]
@@ -449,7 +449,7 @@ autostart = true
 [node name="hitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
-position = Vector2(-1.2500025, 19.583332)
+position = Vector2(-1.6666682, 19.583332)
 shape = SubResource("RectangleShape2D_7125h")
 
 [node name="dash_timer" type="Timer" parent="."]

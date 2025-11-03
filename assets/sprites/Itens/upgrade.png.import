@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dissfbymcp68l"
-path="res://.godot/imported/Warrior_SheetnoEffect.png-704d353d5046ce6ab9a1ab0e8c4d1178.ctex"
+uid="uid://b442cxbyky074"
+path="res://.godot/imported/upgrade.png-59d0226884e4441eb588932d12a263c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/characters/player/Warrior_SheetnoEffect.png"
-dest_files=["res://.godot/imported/Warrior_SheetnoEffect.png-704d353d5046ce6ab9a1ab0e8c4d1178.ctex"]
+source_file="res://assets/sprites/Itens/upgrade.png"
+dest_files=["res://.godot/imported/upgrade.png-59d0226884e4441eb588932d12a263c8.ctex"]
 
 [params]
 

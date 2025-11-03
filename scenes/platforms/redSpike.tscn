@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3pp2y5rqpho0"]
+
+[ext_resource type="Texture2D" uid="uid://p8fkhi3wng8c" path="res://assets/sprites/tilemaps/bios_tileset.png" id="1_5oqdw"]
+[ext_resource type="Script" uid="uid://c1bd1mk7001v0" path="res://scripts/spike.gd" id="2_gvjp1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvjp1"]
+size = Vector2(63, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s645s"]
+size = Vector2(61, 25)
+
+[node name="RedSpike" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_5oqdw")
+region_enabled = true
+region_rect = Rect2(194.98416, 1269.2628, 65.034454, 30.720093)
+script = ExtResource("2_gvjp1")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_gvjp1")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_s645s")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

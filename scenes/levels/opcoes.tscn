@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cm1ia40myosdp"]
+[gd_scene load_steps=6 format=3 uid="uid://cm1ia40myosdp"]
 
 [ext_resource type="Script" uid="uid://by61v6gprxjpm" path="res://scripts/opcoes.gd" id="1_yfan3"]
-[ext_resource type="Texture2D" uid="uid://qdqdk0yhy4xu" path="res://assets/sprites/ui/fundo menu.jpg" id="2_ebehb"]
-[ext_resource type="FontFile" uid="uid://q2cpxqhyekxl" path="res://assets/fonts/pixel.ttf" id="3_whr4y"]
+[ext_resource type="Texture2D" uid="uid://ujqcx7ucwdaj" path="res://assets/sprites/ui/fundo menu.jpg" id="2_ebehb"]
+[ext_resource type="FontFile" uid="uid://dk7lxatn30j6k" path="res://assets/fonts/Px437_IBM_BIOS.ttf" id="3_yfan3"]
+[ext_resource type="AudioStream" uid="uid://fgpbdimhl2w1" path="res://assets/Audios/musica.mp3" id="4_ebehb"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_crurm"]
 texture = ExtResource("2_ebehb")
@@ -16,11 +17,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yfan3")
+bus_name = "Master"
 
 [node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_right = 1761.0
-offset_bottom = 1052.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -691.2
+offset_bottom = -388.80002
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.5, 2.5)
 theme_override_styles/panel = SubResource("StyleBoxTexture_crurm")
 
 [node name="Label" type="Label" parent="."]
@@ -29,14 +37,30 @@ anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.091
-offset_left = -280.0
-offset_top = 84.0
-offset_right = 280.0
-offset_bottom = 105.032
+offset_left = -281.0
+offset_top = 106.0
+offset_right = 279.0
+offset_bottom = 127.032
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("3_whr4y")
+theme_override_fonts/font = ExtResource("3_yfan3")
 theme_override_font_sizes/font_size = 32
 text = "opcoes"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.091
+offset_left = -568.0
+offset_top = 288.0
+offset_right = -8.0
+offset_bottom = 309.032
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_yfan3")
+theme_override_font_sizes/font_size = 32
+text = "Volume:"
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="."]
@@ -46,13 +70,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -160.5
-offset_top = -49.0
-offset_right = 160.5
-offset_bottom = 49.0
+offset_left = -162.0
+offset_top = 139.0
+offset_right = 159.0
+offset_bottom = 237.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_whr4y")
+theme_override_fonts/font = ExtResource("3_yfan3")
 theme_override_font_sizes/font_size = 32
 text = "Voltar"
 
@@ -62,11 +86,21 @@ anchors_preset = -1
 anchor_left = 0.36600003
 anchor_right = 0.64100003
 anchor_bottom = 1.0
-offset_left = 0.36798096
-offset_top = 185.0
-offset_right = 0.56799316
-offset_bottom = -381.0
+offset_left = -1.632019
+offset_top = 262.0
+offset_right = -1.4320068
+offset_bottom = -304.0
 grow_horizontal = 2
 grow_vertical = 2
+max_value = 1.0
+step = 0.001
+value = 0.5
+ticks_on_borders = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ebehb")
+autoplay = true
+parameters/looping = false
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]

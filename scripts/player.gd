@@ -237,7 +237,7 @@ func check_hitbox() -> void:
 	var damage: int
 	if hitbox_areas:
 		var hitbox = hitbox_areas.front()
-		#NÃO USAR OR !!!
+
 		if hitbox.get_parent() is CmosEnemy:
 			damage = Global.cmosDamageAmount
 		elif hitbox.get_parent() is mal_cabeado:
@@ -248,6 +248,8 @@ func check_hitbox() -> void:
 			damage = Global.cavaloDeTroiaDamageAmount
 		elif (hitbox.get_parent() is invader) or  (hitbox.get_parent() is invaderLifeTime):
 			damage = Global.invaderDamageAmount
+		elif hitbox.get_parent() is spike:
+			damage = Global.spikeDamageAmount
 		if can_take_damage and damage != 0:
 			take_damage(damage)
 
@@ -257,6 +259,7 @@ func take_damage(damage) -> void:
 	if Global.health > 0:
 		Global.health -= damage
 		print("Vida player:", Global.health)
+		print($hitBox.get_overlapping_areas().front().get_parent())
 		if $hitBox.get_overlapping_areas().front().get_parent():
 			velocity.x = $hitBox.get_overlapping_areas().front().get_parent().dir.x * 1000 #Knockback
 		else:

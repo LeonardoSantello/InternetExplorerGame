@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name mal_cabeado
 
-const SPEED = 40
+const SPEED = 60
 
 var health = 80
 var health_max = 80

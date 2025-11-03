@@ -1,64 +1,42 @@
 [gd_scene load_steps=14 format=3 uid="uid://lfdxktwfkx2n"]
 
 [ext_resource type="Script" uid="uid://dsfnanw2sgu6k" path="res://scripts/main_menu.gd" id="1_x4gdb"]
-[ext_resource type="Texture2D" uid="uid://qdqdk0yhy4xu" path="res://assets/sprites/ui/fundo menu.jpg" id="2_gr5yt"]
-[ext_resource type="FontFile" uid="uid://q2cpxqhyekxl" path="res://assets/fonts/pixel.ttf" id="3_42kn2"]
+[ext_resource type="Texture2D" uid="uid://ujqcx7ucwdaj" path="res://assets/sprites/ui/fundo menu.jpg" id="2_gr5yt"]
+[ext_resource type="FontFile" uid="uid://dk7lxatn30j6k" path="res://assets/fonts/Px437_IBM_BIOS.ttf" id="4_keln3"]
 [ext_resource type="AudioStream" uid="uid://fgpbdimhl2w1" path="res://assets/Audios/musica.mp3" id="4_v2cb7"]
 [ext_resource type="PackedScene" uid="uid://bkw56kxvg6xmo" path="res://scenes/others/transition.tscn" id="5_fkd6t"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jix8l"]
 texture = ExtResource("2_gr5yt")
-modulate_color = Color(0.650128, 0.650128, 0.650128, 0.490196)
+modulate_color = Color(0.6509804, 0.6509804, 0.6509804, 0.54901963)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhts7"]
 bg_color = Color(0.188235, 0.286275, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
 shadow_size = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jix8l"]
 bg_color = Color(0.321728, 0.321728, 0.321728, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vrkn"]
 bg_color = Color(0, 0, 0, 1)
 border_blend = true
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glbon"]
 bg_color = Color(0.568973, 0.568973, 0.568973, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu7sn"]
 bg_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qe12f"]
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nlkkf"]
 bg_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -85,10 +63,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -135.5
-offset_top = -79.0
-offset_right = 135.5
-offset_bottom = 79.0
+offset_left = -135.0
+offset_top = -55.0
+offset_right = 136.0
+offset_bottom = 146.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 12
@@ -97,8 +75,7 @@ alignment = 1
 [node name="Button" type="Button" parent="Botoes"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.933333, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_42kn2")
+theme_override_fonts/font = ExtResource("4_keln3")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_jix8l")
@@ -108,19 +85,17 @@ text = "Iniciar"
 [node name="Button3" type="Button" parent="Botoes"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.933333, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_42kn2")
+theme_override_fonts/font = ExtResource("4_keln3")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_glbon")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fu7sn")
-text = "Opcoes"
+text = "Opçoes"
 
 [node name="Button2" type="Button" parent="Botoes"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.933333, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_42kn2")
+theme_override_fonts/font = ExtResource("4_keln3")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_qe12f")
@@ -134,16 +109,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -192.0
-offset_top = -149.0
-offset_right = 184.0
-offset_bottom = -95.0
+offset_left = -427.0
+offset_top = -171.0
+offset_right = 293.0
+offset_bottom = -88.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 4
-theme_override_fonts/font = ExtResource("3_42kn2")
-text = "Nome do Jogo"
+theme_override_fonts/font = ExtResource("4_keln3")
+theme_override_font_sizes/font_size = 40
+text = "INTERNET 
+          EXPLORER"
 horizontal_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://gdast3nneiir"]
+[gd_scene load_steps=16 format=3 uid="uid://gdast3nneiir"]
 
 [ext_resource type="Script" uid="uid://ber7hwgokxs1e" path="res://scripts/itemupgrade.gd" id="1_xkfn3"]
-[ext_resource type="Texture2D" uid="uid://mr0sixxp5dyf" path="res://assets/sprites/Itens/Item__46.png" id="2_j76d0"]
+[ext_resource type="Texture2D" uid="uid://b442cxbyky074" path="res://assets/sprites/Itens/upgrade.png" id="2_nmtrn"]
 [ext_resource type="Texture2D" uid="uid://da2oo4y7jc1pf" path="res://assets/sprites/Itens/attack.png" id="3_nhjgv"]
 [ext_resource type="Texture2D" uid="uid://df53pwukayc8m" path="res://assets/sprites/Itens/health.png" id="4_br32x"]
 [ext_resource type="Shader" uid="uid://di8afmayxmt32" path="res://scripts/shaders/wave_text.gdshader" id="4_iixpc"]
@@ -9,8 +9,82 @@
 [ext_resource type="Texture2D" uid="uid://ciy7cjaway2es" path="res://assets/sprites/Itens/speed.png" id="5_8f8d1"]
 [ext_resource type="PackedScene" uid="uid://dhaqt5vt5oicf" path="res://scenes/itens/tooltip.tscn" id="5_nmtrn"]
 
+[sub_resource type="Gradient" id="Gradient_8ixjt"]
+offsets = PackedFloat32Array(0.41333333, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nmtrn"]
+gradient = SubResource("Gradient_8ixjt")
+width = 65
+height = 65
+fill = 1
+fill_from = Vector2(0.50934577, 0.47663552)
+fill_to = Vector2(0.78971964, 0.13551402)
+
+[sub_resource type="Animation" id="Animation_4ulhm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.0471976]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Light:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.051948]
+}
+
+[sub_resource type="Animation" id="Animation_nmtrn"]
+resource_name = "move"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.0471976, 1.0471976]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Light:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.70000005, 1.3, 1.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [2.051948, 1.0, 2.051948, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1eiji"]
+_data = {
+&"RESET": SubResource("Animation_4ulhm"),
+&"move": SubResource("Animation_nmtrn")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqsnh"]
-size = Vector2(19, 19)
+size = Vector2(32, 32)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nmtrn"]
 shader = ExtResource("4_iixpc")
@@ -23,14 +97,31 @@ process_mode = 3
 script = ExtResource("1_xkfn3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_j76d0")
+light_mask = 0
+rotation = -1.0471976
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_nmtrn")
+
+[node name="Light" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(0, 4)
+scale = Vector2(0.5, 0.5)
+color = Color(0, 1, 0.15625, 0.45882353)
+energy = 2.051948
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_nmtrn")
+texture_scale = 6.43
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1eiji")
+}
+autoplay = "move"
 
 [node name="Area2D" type="Area2D" parent="."]
 process_mode = 3
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_dqsnh")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

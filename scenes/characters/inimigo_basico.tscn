@@ -352,6 +352,7 @@ height = 61.666664
 [node name="inimigo_basico" type="CharacterBody2D"]
 z_index = 98
 scale = Vector2(1.2, 1.2)
+collision_layer = 16
 script = ExtResource("1_sxrh5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

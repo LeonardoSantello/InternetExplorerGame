@@ -1,7 +1,6 @@
-[gd_scene load_steps=94 format=3 uid="uid://cfjogcfcpqr1d"]
+[gd_scene load_steps=86 format=3 uid="uid://cfjogcfcpqr1d"]
 
 [ext_resource type="Script" uid="uid://dweor28xdn8hp" path="res://scripts/player.gd" id="1_c08b3"]
-[ext_resource type="Texture2D" uid="uid://dissfbymcp68l" path="res://assets/sprites/characters/player/Warrior_SheetnoEffect.png" id="2_agjl5"]
 [ext_resource type="Shader" uid="uid://b6xhtrm7s4vsu" path="res://scripts/shaders/blink.gdshader" id="2_qgnko"]
 [ext_resource type="PackedScene" uid="uid://da3hffgq1p57t" path="res://scenes/particles/DustRunning.tscn" id="4_dyp2m"]
 [ext_resource type="AudioStream" uid="uid://bnduc62gaq1rr" path="res://assets/Audios/Test/som de pulo.mp3" id="5_atpat"]
@@ -130,34 +129,6 @@ bg_color = Color(1, 1, 1, 0)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7vyk4"]
 shader = ExtResource("2_qgnko")
 shader_parameter/flash_progress = 0.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o6j3l"]
-atlas = ExtResource("2_agjl5")
-region = Rect2(345, 528, 69, 44)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_diyyd"]
-atlas = ExtResource("2_agjl5")
-region = Rect2(0, 572, 69, 44)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uduk5"]
-atlas = ExtResource("2_agjl5")
-region = Rect2(69, 572, 69, 44)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tyfdd"]
-atlas = ExtResource("2_agjl5")
-region = Rect2(138, 572, 69, 44)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bae6d"]
-atlas = ExtResource("2_agjl5")
-region = Rect2(207, 572, 69, 44)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mamov"]
-atlas = ExtResource("2_agjl5")
-region = Rect2(276, 572, 69, 44)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7oyl4"]
-atlas = ExtResource("2_agjl5")
-region = Rect2(345, 572, 69, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d6tgn"]
 atlas = ExtResource("12_xhtjm")
@@ -313,32 +284,6 @@ region = Rect2(138, 0, 69, 44)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yi2kj"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o6j3l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_diyyd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uduk5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tyfdd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bae6d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mamov")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7oyl4")
-}],
-"loop": true,
-"name": &"attack",
-"speed": 11.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d6tgn")
@@ -973,7 +918,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-collision_layer = 2
+collision_layer = 3
 collision_mask = 3
 platform_wall_layers = 255
 script = ExtResource("1_c08b3")
@@ -1101,7 +1046,7 @@ material = SubResource("ShaderMaterial_7vyk4")
 position = Vector2(-1, -42)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_yi2kj")
-animation = &"run"
+animation = &"dash"
 
 [node name="DustRunning" parent="sprites" instance=ExtResource("4_dyp2m")]
 position = Vector2(35, -3)
