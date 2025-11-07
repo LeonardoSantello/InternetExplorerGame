@@ -146,7 +146,7 @@ func handle_jump() -> void:
 func handle_wall_slide(delta: float) -> void:
 	if is_on_wall_only() and can_slide:
 		wall_contact_time += delta
-		if wall_contact_time >= 0.3 and velocity.y > WALL_SLIDE_SPEED:
+		if wall_contact_time >= 0.25 and velocity.y > WALL_SLIDE_SPEED:
 			is_wall_sliding = true
 			velocity.y = WALL_SLIDE_SPEED
 		else:

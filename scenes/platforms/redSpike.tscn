@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://c1bd1mk7001v0" path="res://scripts/spike.gd" id="2_gvjp1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvjp1"]
-size = Vector2(63, 27)
+size = Vector2(57, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s645s"]
-size = Vector2(61, 25)
+size = Vector2(53, 25)
 
 [node name="RedSpike" type="Sprite2D"]
 texture_filter = 1

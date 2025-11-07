@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://b6coe4c1dyqx0"]
+[gd_scene load_steps=49 format=4 uid="uid://b6coe4c1dyqx0"]
 
 [ext_resource type="Script" uid="uid://ytjvy1a23xab" path="res://scripts/lvl_3.gd" id="1_g1rm2"]
 [ext_resource type="Texture2D" uid="uid://cy6ty01ceunha" path="res://assets/sprites/tilemaps/bios_background.png" id="2_hd0a2"]
@@ -934,6 +934,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mi3ku"]
 size = Vector2(805.8333, 307.49997)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1rm2"]
+size = Vector2(408.7498, 320)
+
 [sub_resource type="Animation" id="Animation_iw78k"]
 resource_name = "move"
 length = 4.0
@@ -1253,27 +1256,27 @@ shape = SubResource("RectangleShape2D_mi3ku")
 debug_color = Color(1, 0.9372549, 0.007843138, 0.02745098)
 
 [node name="cavaloDeTroia3" parent="enemys" instance=ExtResource("5_wdswa")]
-position = Vector2(4240, -1131)
+position = Vector2(3881, -1122)
 
 [node name="DetectionArea" type="Area2D" parent="enemys/cavaloDeTroia3"]
-position = Vector2(-182.5, 0)
+position = Vector2(-48.333332, -0.8333333)
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemys/cavaloDeTroia3/DetectionArea"]
-position = Vector2(35.833332, -81.666664)
-shape = SubResource("RectangleShape2D_mi3ku")
+position = Vector2(0, -91.66669)
+shape = SubResource("RectangleShape2D_g1rm2")
 debug_color = Color(1, 0.9372549, 0.007843138, 0.02745098)
 
 [node name="cavaloDeTroia4" parent="enemys" instance=ExtResource("5_wdswa")]
-position = Vector2(3900, -1125)
+position = Vector2(4357, -1120)
 
 [node name="DetectionArea" type="Area2D" parent="enemys/cavaloDeTroia4"]
-position = Vector2(100, -6.6666665)
+position = Vector2(-48.333332, -0.8333333)
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemys/cavaloDeTroia4/DetectionArea"]
-position = Vector2(35.833332, -81.666664)
-shape = SubResource("RectangleShape2D_mi3ku")
+position = Vector2(0, -91.66669)
+shape = SubResource("RectangleShape2D_g1rm2")
 debug_color = Color(1, 0.9372549, 0.007843138, 0.02745098)
 
 [node name="itens" type="Node2D" parent="."]
