@@ -1,12 +1,13 @@
 extends CharacterBody2D
 class_name cavaloDeTroia
 
-const DASH_SPEED = 500
+const DASH_SPEED = 550
 
-var speed = 100
+var speed = 120
 var dir: Vector2
 
 var health = 80
+var health_max = 80
 var dead: bool = false
 var taking_damage: bool = false
 
@@ -85,7 +86,7 @@ func handle_animation():
 		get_parent().add_child(new_enemy)
 		get_parent().add_child(new_enemy1)
 		get_parent().add_child(new_enemy2)
-
+		_on_death()
 		queue_free()
 		return
 	elif taking_damage:
@@ -187,3 +188,14 @@ func _on_detection_area_area_exited(body: Area2D) -> void:
 		print("Player fora da area de perseguição")
 		is_chasing = false
 		is_roaming = true
+
+func _on_death():
+	# Evita erro se o autoload não estiver carregado ainda
+	if Engine.has_singleton("BestiaryData"):
+		var bestiary = Engine.get_singleton("BestiaryData")
+		bestiary.add_kill("Cavalo de Troia")
+	elif typeof(BestiaryData) != TYPE_NIL:
+		# Caso BestiaryData seja um autoload declarado com "BestiaryData"
+		BestiaryData.add_kill("Cavalo de Troia")
+	else:
+		print("⚠️ BestiaryData não encontrado — inimigo morreu mas não foi registrado no bestiário.")

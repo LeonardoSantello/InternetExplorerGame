@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://c7r2uecmruluc"]
+[gd_scene load_steps=19 format=3 uid="uid://c7r2uecmruluc"]
 
 [ext_resource type="Script" uid="uid://ctodw1g0lrrxd" path="res://scripts/file.gd" id="1_g4uxh"]
 [ext_resource type="Texture2D" uid="uid://n7l6ld6s545q" path="res://assets/sprites/Itens/file.png" id="1_v2vit"]
 [ext_resource type="AudioStream" uid="uid://dno34t60bx436" path="res://assets/Audios/Test/som de coleta de moeda.mp3" id="3_v311d"]
+[ext_resource type="Shader" uid="uid://di8afmayxmt32" path="res://scripts/shaders/wave_text.gdshader" id="4_1jdei"]
+[ext_resource type="Script" uid="uid://cpwk88bp2mre0" path="res://scripts/rich_text_label.gd" id="5_mquqk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4uxh"]
 atlas = ExtResource("1_v2vit")
@@ -85,6 +87,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3tmjw"]
 size = Vector2(19, 26)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bdh6p"]
+shader = ExtResource("4_1jdei")
+shader_parameter/height = 1.5
+shader_parameter/frequency = 7.0
+shader_parameter/speed = 0.8
+
 [node name="file" type="Area2D"]
 collision_mask = 2
 script = ExtResource("1_g4uxh")
@@ -102,6 +110,22 @@ shape = SubResource("RectangleShape2D_3tmjw")
 
 [node name="sfx_coin" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_v311d")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+material = SubResource("ShaderMaterial_bdh6p")
+offset_left = 1093.0
+offset_top = -602.0
+offset_right = 1520.0
+offset_bottom = -561.0
+pivot_offset = Vector2(1261, -165)
+bbcode_enabled = true
+text = "[font=res://assets/fonts/Px437_IBM_BIOS.ttf]Precione espaço para pular[/font]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_mquqk")
+min_distance = 250.0
+max_distance = 400.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

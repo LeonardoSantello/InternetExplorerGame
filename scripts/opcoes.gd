@@ -16,3 +16,28 @@ func _on_h_slider_value_changed(value: float) -> void:
 		bus_index,
 		linear_to_db(value)
 	)
+
+
+func _on_facil_pressed() -> void:
+	Global.health_max = 150
+	Global.health = 150
+	
+	$Botoes/facil.disabled = true
+	$Botoes/normal.disabled = false
+	$Botoes/dificil.disabled = false
+
+func _on_normal_pressed() -> void:
+	Global.health_max = 100
+	Global.health = 100
+	
+	$Botoes/facil.disabled = false
+	$Botoes/normal.disabled = true
+	$Botoes/dificil.disabled = false
+
+func _on_dificil_pressed() -> void:
+	Global.health_max = 50
+	Global.health = 50
+	
+	$Botoes/facil.disabled = false
+	$Botoes/normal.disabled = false
+	$Botoes/dificil.disabled = true

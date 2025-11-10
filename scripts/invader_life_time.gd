@@ -48,6 +48,7 @@ func handle_animation() -> void:
 		$hitBox/CollisionShape2D.disabled = true
 		await get_tree().create_timer(0.1).timeout
 		deathParticleFunc()
+		_on_death()
 		queue_free()
 	else:
 		animation.play("walk")
@@ -76,3 +77,15 @@ func take_damage(damage: int) -> void:
 
 func _on_life_time_timeout() -> void:
 	dead = true
+
+
+func _on_death():
+	# Evita erro se o autoload não estiver carregado ainda
+	if Engine.has_singleton("BestiaryData"):
+		var bestiary = Engine.get_singleton("BestiaryData")
+		bestiary.add_kill("virus")
+	elif typeof(BestiaryData) != TYPE_NIL:
+		# Caso BestiaryData seja um autoload declarado com "BestiaryData"
+		BestiaryData.add_kill("virus")
+	else:
+		print("⚠️ BestiaryData não encontrado — inimigo morreu mas não foi registrado no bestiário.")

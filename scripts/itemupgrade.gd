@@ -18,6 +18,7 @@ func _on_area_2d_body_entered(body):
 		player_ref = body
 		panel.visible = true
 		#get_tree().paused = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		$"../..".process_mode = Node.PROCESS_MODE_DISABLED
 
 func _apply_upgrade(stat: String):
@@ -27,11 +28,11 @@ func _apply_upgrade(stat: String):
 	
 	match stat:
 		"attack":
-			Global.playerDamageAmount *= 1.1
+			Global.playerDamageAmount *= 1.2
 			print ("Ataque aumentado:")
 		"health":
-			Global.health += Global.health_max * 0.1
-			Global.health_max *= 1.1
+			Global.health += Global.health_max * 0.2
+			Global.health_max *= 1.2
 			print ("Vida aumentada:")
 		"speed":
 			Global.speed += 15

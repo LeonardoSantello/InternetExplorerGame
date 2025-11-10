@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://d376na3hdrb0b"]
+[gd_scene load_steps=26 format=3 uid="uid://d376na3hdrb0b"]
 
 [ext_resource type="Script" uid="uid://dhgylo1s24r6c" path="res://scripts/cavaloDeTroia.gd" id="1_u5q8u"]
 [ext_resource type="PackedScene" uid="uid://cr5rxw3y74s46" path="res://scenes/particles/spriteExplosion.tscn" id="2_7125h"]
 [ext_resource type="Texture2D" uid="uid://bv4by8d5nx6bd" path="res://assets/sprites/characters/enemys/trojan_dash.png" id="3_11eot"]
 [ext_resource type="Shader" uid="uid://b48snv0g75ss0" path="res://scripts/shaders/cmos.gdshader" id="5_3demr"]
 [ext_resource type="Texture2D" uid="uid://bg301j3sxlmg6" path="res://assets/sprites/characters/enemys/trojan_walk.png" id="5_7125h"]
+[ext_resource type="PackedScene" uid="uid://c16d0lihpmv54" path="res://scenes/others/health_bar.tscn" id="6_7125h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7125h"]
 atlas = ExtResource("3_11eot")
@@ -456,8 +457,14 @@ shape = SubResource("RectangleShape2D_7125h")
 one_shot = true
 
 [node name="dash_cooldown_timer" type="Timer" parent="."]
-wait_time = 3.5
+wait_time = 3.0
 one_shot = true
+
+[node name="healthBar" parent="." instance=ExtResource("6_7125h")]
+offset_left = -42.499996
+offset_top = 64.166664
+offset_right = 41.666668
+offset_bottom = 77.0
 
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="hitBox" to="." method="_on_hit_box_area_entered"]

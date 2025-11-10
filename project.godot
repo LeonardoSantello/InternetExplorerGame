@@ -23,7 +23,7 @@ BestiaryData="*res://bestiary/scripts/bestiary_data.gd"
 [display]
 
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/stretch/aspect="ignore"
 mouse_cursor/custom_image="uid://cg3jwtxwtdgwa"
 
 [global_group]

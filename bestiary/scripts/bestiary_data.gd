@@ -4,11 +4,26 @@ var enemies = {
 	"cmos": {
 		"unlocked": false,
 		"kills": 0,
-		"description": "Um autômato antigo criado a partir de circuitos esquecidos. 
-		O Cmos patrulha áreas abandonadas em busca de energia.
-		Atacando qualquer coisa que se aproxime de seus territórios.
-		Apesar de sua aparência enferrujada, ele ainda é rápido e implacável.",
+		"description": "Um autômato antigo criado a partir de circuitos esquecidos. O Cmos patrulha áreas abandonadas em busca de energia.Atacando qualquer coisa que se aproxime de seus territórios.Apesar de sua aparência enferrujada, ele ainda é rápido e implacável.",
 		"icon_path": "res://bestiary/sprites/cmos foto.png"
+	},
+	"virus": {
+		"unlocked": false,
+		"kills": 0,
+		"description": "virus teste",
+		"icon_path": "res://bestiary/sprites/invader foto.png"
+	},
+	"Mal Cabeamento": {
+		"unlocked": false,
+		"kills": 0,
+		"description": "mal",
+		"icon_path": "res://assets/sprites/characters/enemys/mal_cabeado.png"
+	},
+	"Cavalo de Troia": {
+		"unlocked": false,
+		"kills": 0,
+		"description": "troiia",
+		"icon_path": "res://bestiary/sprites/trojan foto.png"
 	},
 }
 

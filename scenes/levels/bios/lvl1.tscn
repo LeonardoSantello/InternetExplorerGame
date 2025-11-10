@@ -1235,7 +1235,7 @@ tile_map_data = PackedByteArray("AAD0/wAAAgABAAAAAAD1/wAAAgABAAAAAAD2/wAAAgABAAA
 tile_set = SubResource("TileSet_urubw")
 
 [node name="Player" parent="." instance=ExtResource("4_8qttc")]
-position = Vector2(501, -1020)
+position = Vector2(483, -1006)
 
 [node name="plataformas" type="Node2D" parent="."]
 

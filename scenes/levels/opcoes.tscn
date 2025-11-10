@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cm1ia40myosdp"]
+[gd_scene load_steps=14 format=3 uid="uid://cm1ia40myosdp"]
 
 [ext_resource type="Script" uid="uid://by61v6gprxjpm" path="res://scripts/opcoes.gd" id="1_yfan3"]
 [ext_resource type="Texture2D" uid="uid://ujqcx7ucwdaj" path="res://assets/sprites/ui/fundo menu.jpg" id="2_ebehb"]
@@ -10,6 +10,8 @@ texture = ExtResource("2_ebehb")
 modulate_color = Color(0.65098, 0.65098, 0.65098, 0.490196)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ebehb"]
+content_margin_left = 10.0
+content_margin_right = 5.0
 bg_color = Color(0.188235, 0.286275, 1, 1)
 border_width_left = 2
 border_width_top = 2
@@ -25,6 +27,11 @@ bg_color = Color(0.321728, 0.321728, 0.321728, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_657wa"]
 bg_color = Color(0, 0, 0, 1)
 border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_88qfn"]
+content_margin_left = 10.0
+content_margin_right = 5.0
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g24ca"]
 bg_color = Color(0.568973, 0.568973, 0.568973, 1)
@@ -66,44 +73,50 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -98.0
-offset_top = -18.0
-offset_right = 470.0
-offset_bottom = 42.000427
+offset_left = -115.0
+offset_top = -19.0
+offset_right = 502.0
+offset_bottom = 41.000427
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Button" type="Button" parent="Botoes"]
+[node name="facil" type="Button" parent="Botoes"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_yfan3")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_ebehb")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_whr4y")
 theme_override_styles/hover = SubResource("StyleBoxFlat_657wa")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_88qfn")
 text = "Facil"
 
-[node name="Button3" type="Button" parent="Botoes"]
+[node name="normal" type="Button" parent="Botoes"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
 theme_override_fonts/font = ExtResource("3_yfan3")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_ebehb")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_g24ca")
 theme_override_styles/hover = SubResource("StyleBoxFlat_xwjq7")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_88qfn")
 text = "Normal"
 
-[node name="Button2" type="Button" parent="Botoes"]
+[node name="dificil" type="Button" parent="Botoes"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
 theme_override_fonts/font = ExtResource("3_yfan3")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_ebehb")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_dea73")
 theme_override_styles/hover = SubResource("StyleBoxFlat_33v5e")
-text = "Dificil"
+theme_override_styles/disabled = SubResource("StyleBoxFlat_88qfn")
+text = "Difícil"
 
 [node name="Opcoes" type="Label" parent="."]
 layout_mode = 1
@@ -118,7 +131,7 @@ offset_bottom = 127.032
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_yfan3")
 theme_override_font_sizes/font_size = 32
-text = "opcoes"
+text = "opçoes"
 horizontal_alignment = 1
 
 [node name="Volume" type="Label" parent="."]
@@ -192,5 +205,8 @@ stream = ExtResource("4_ebehb")
 autoplay = true
 parameters/looping = false
 
+[connection signal="pressed" from="Botoes/facil" to="." method="_on_facil_pressed"]
+[connection signal="pressed" from="Botoes/normal" to="." method="_on_normal_pressed"]
+[connection signal="pressed" from="Botoes/dificil" to="." method="_on_dificil_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]

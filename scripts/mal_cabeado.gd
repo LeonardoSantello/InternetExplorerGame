@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name mal_cabeado
 
-const SPEED = 60
+const SPEED = 110
 
 var health = 80
 var health_max = 80
@@ -72,6 +72,7 @@ func handle_animation():
 		await get_tree().create_timer(1).timeout
 		deathParticleFunc()
 		print(str(self), "Morreu")
+		_on_death()
 		self.queue_free()
 	else:
 		animation.play("walk")
@@ -158,3 +159,14 @@ func _on_detection_area_area_exited(body: Area2D) -> void:
 		print("Player fora da area de perseguição")
 		is_chasing = false
 		is_roaming = true
+
+func _on_death():
+	# Evita erro se o autoload não estiver carregado ainda
+	if Engine.has_singleton("BestiaryData"):
+		var bestiary = Engine.get_singleton("BestiaryData")
+		bestiary.add_kill("Mal Cabeamento")
+	elif typeof(BestiaryData) != TYPE_NIL:
+		# Caso BestiaryData seja um autoload declarado com "BestiaryData"
+		BestiaryData.add_kill("Mal Cabeamento")
+	else:
+		print("⚠️ BestiaryData não encontrado — inimigo morreu mas não foi registrado no bestiário.")

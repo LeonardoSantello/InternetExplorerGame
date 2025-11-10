@@ -194,7 +194,7 @@ material = SubResource("ShaderMaterial_nmtrn")
 layout_mode = 2
 mouse_filter = 2
 bbcode_enabled = true
-text = "[font=res://assets/fonts/Px437_IBM_BIOS.ttf][font_size=60]Aumenta seu dano em 10%[/font_size][/font]"
+text = "[font=res://assets/fonts/Px437_IBM_BIOS.ttf][font_size=60]Aumenta seu dano em 20%[/font_size][/font]"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -227,7 +227,7 @@ material = SubResource("ShaderMaterial_nmtrn")
 layout_mode = 2
 mouse_filter = 2
 bbcode_enabled = true
-text = "[font=res://assets/fonts/Px437_IBM_BIOS.ttf][font_size=60]Aumenta sua vida em 10%[/font_size][/font]"
+text = "[font=res://assets/fonts/Px437_IBM_BIOS.ttf][font_size=60]Aumenta sua vida em 20%[/font_size][/font]"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1

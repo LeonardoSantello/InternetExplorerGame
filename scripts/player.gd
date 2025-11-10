@@ -298,6 +298,7 @@ func handle_death_animation() -> void:
 	$Camera2D.zoom.y = 4
 	$Camera2D.position.y = 0
 	$Camera2D/CanvasLayer/death/AnimationPlayer.play("death")
+	
 	print("DEAD")
 
 
