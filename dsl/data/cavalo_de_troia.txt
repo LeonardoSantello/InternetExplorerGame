@@ -1,0 +1,5 @@
+<TITULO: Cavalo de Troia>
+<TEXTO: O termo “Cavalo de Troia” vem da história grega, onde um grande cavalo de madeira escondeu soldados inimigos. Na computação, representa malware que se disfarça de software legítimo para enganar usuários e sistemas.>
+<ICON: res://bestiary/sprites/trojan foto.png>
+<KILLS: 0>
+<UNLOCKED: false>

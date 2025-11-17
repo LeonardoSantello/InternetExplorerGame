@@ -190,12 +190,7 @@ func _on_detection_area_area_exited(body: Area2D) -> void:
 		is_roaming = true
 
 func _on_death():
-	# Evita erro se o autoload não estiver carregado ainda
-	if Engine.has_singleton("BestiaryData"):
-		var bestiary = Engine.get_singleton("BestiaryData")
-		bestiary.add_kill("Cavalo de Troia")
-	elif typeof(BestiaryData) != TYPE_NIL:
-		# Caso BestiaryData seja um autoload declarado com "BestiaryData"
-		BestiaryData.add_kill("Cavalo de Troia")
+	if typeof(BestiaryData) != TYPE_NIL:
+		BestiaryData.add_kill("cavalo_de_troia")
 	else:
 		print("⚠️ BestiaryData não encontrado — inimigo morreu mas não foi registrado no bestiário.")

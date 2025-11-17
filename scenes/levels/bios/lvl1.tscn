@@ -1,11 +1,13 @@
-[gd_scene load_steps=67 format=4 uid="uid://b4crfi8e76cn1"]
+[gd_scene load_steps=70 format=4 uid="uid://b4crfi8e76cn1"]
 
 [ext_resource type="Script" uid="uid://c6dids0rmad8h" path="res://scripts/lvl_1.gd" id="1_7pl1i"]
 [ext_resource type="Texture2D" uid="uid://p8fkhi3wng8c" path="res://assets/sprites/tilemaps/bios_tileset.png" id="1_iqy28"]
 [ext_resource type="Texture2D" uid="uid://cy6ty01ceunha" path="res://assets/sprites/tilemaps/bios_background.png" id="2_8qttc"]
 [ext_resource type="PackedScene" uid="uid://c21ql2k38tee4" path="res://scenes/platforms/plataforma_bios_verde.tscn" id="2_yijia"]
 [ext_resource type="PackedScene" uid="uid://dq1cbspcxg7g4" path="res://scenes/platforms/plataform_bios.tscn" id="3_8qttc"]
+[ext_resource type="Shader" uid="uid://di8afmayxmt32" path="res://scripts/shaders/wave_text.gdshader" id="3_poyrx"]
 [ext_resource type="PackedScene" uid="uid://cfjogcfcpqr1d" path="res://scenes/characters/player.tscn" id="4_8qttc"]
+[ext_resource type="Script" uid="uid://cpwk88bp2mre0" path="res://scripts/rich_text_label.gd" id="4_iekhi"]
 [ext_resource type="FontFile" uid="uid://dk7lxatn30j6k" path="res://assets/fonts/Px437_IBM_BIOS.ttf" id="6_urubw"]
 [ext_resource type="PackedScene" uid="uid://ch0v6e2rqs2vc" path="res://scenes/platforms/bloco1_bios_preta.tscn" id="7_a5iw4"]
 [ext_resource type="PackedScene" uid="uid://c7r2uecmruluc" path="res://scenes/itens/file.tscn" id="7_urubw"]
@@ -31,6 +33,12 @@ font = ExtResource("6_urubw")
 [sub_resource type="LabelSettings" id="LabelSettings_mwrmx"]
 font = ExtResource("6_urubw")
 font_color = Color(1.8901436, 0.04283243, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k7dre"]
+shader = ExtResource("3_poyrx")
+shader_parameter/height = 1.5
+shader_parameter/frequency = 7.0
+shader_parameter/speed = 0.8
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a5iw4"]
 texture = ExtResource("2_8qttc")
@@ -1143,6 +1151,7 @@ ssing"
 label_settings = SubResource("LabelSettings_1w7wf")
 
 [node name="Label6" type="Label" parent="textos"]
+visible = false
 layout_mode = 0
 offset_left = 567.0
 offset_top = -335.0
@@ -1221,6 +1230,24 @@ text = "    POST:
 
  Hard Disk . . ."
 label_settings = SubResource("LabelSettings_1w7wf")
+
+[node name="RichTextLabel35" type="RichTextLabel" parent="textos" node_paths=PackedStringArray("player")]
+material = SubResource("ShaderMaterial_k7dre")
+layout_mode = 0
+offset_left = 422.0
+offset_top = -338.0
+offset_right = 849.0
+offset_bottom = -242.0
+pivot_offset = Vector2(194, 16)
+bbcode_enabled = true
+text = "[font=res://assets/fonts/Px437_IBM_BIOS.ttf]Use J para acessar o bestiário, a cada novo inimigo derrotado ele se torna mais completo[/font]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_iekhi")
+player = NodePath("")
+min_distance = 250.0
+max_distance = 400.0
 
 [node name="TileSet" type="Node" parent="."]
 

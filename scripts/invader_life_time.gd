@@ -80,12 +80,7 @@ func _on_life_time_timeout() -> void:
 
 
 func _on_death():
-	# Evita erro se o autoload não estiver carregado ainda
-	if Engine.has_singleton("BestiaryData"):
-		var bestiary = Engine.get_singleton("BestiaryData")
-		bestiary.add_kill("virus")
-	elif typeof(BestiaryData) != TYPE_NIL:
-		# Caso BestiaryData seja um autoload declarado com "BestiaryData"
+	if typeof(BestiaryData) != TYPE_NIL:
 		BestiaryData.add_kill("virus")
 	else:
 		print("⚠️ BestiaryData não encontrado — inimigo morreu mas não foi registrado no bestiário.")

@@ -1,0 +1,5 @@
+<TITULO: Mal Cabeamento>
+<TEXTO: Este inimigo ilustra problemas de engenharia elétrica, onde conexões mal feitas podem levar a falhas operacionais e instabilidade de sistemas. É um lembrete da importância de organizar e proteger o cabeamento em sistemas complexos.>
+<ICON: res://assets/sprites/characters/enemys/mal_cabeado.png>
+<KILLS: 0>
+<UNLOCKED: false>

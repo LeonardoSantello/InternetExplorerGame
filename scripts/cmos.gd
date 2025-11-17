@@ -114,15 +114,11 @@ func deathParticleFunc():
 
 
 func _on_death():
-	# Evita erro se o autoload não estiver carregado ainda
-	if Engine.has_singleton("BestiaryData"):
-		var bestiary = Engine.get_singleton("BestiaryData")
-		bestiary.add_kill("cmos")
-	elif typeof(BestiaryData) != TYPE_NIL:
-		# Caso BestiaryData seja um autoload declarado com "BestiaryData"
+	if typeof(BestiaryData) != TYPE_NIL:
 		BestiaryData.add_kill("cmos")
 	else:
 		print("⚠️ BestiaryData não encontrado — inimigo morreu mas não foi registrado no bestiário.")
+
 		
 # ==============================
 # PERSEGUIÇÃO

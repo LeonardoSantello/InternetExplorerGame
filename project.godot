@@ -19,6 +19,7 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 
 Global="*res://scripts/global.gd"
 BestiaryData="*res://bestiary/scripts/bestiary_data.gd"
+EnemyDatabase="*res://dsl/enemy_database.gd"
 
 [display]
 
