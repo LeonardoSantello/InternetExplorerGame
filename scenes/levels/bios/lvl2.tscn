@@ -1182,7 +1182,7 @@ position = Vector2(2564, -1923)
 position = Vector2(2699, -2332)
 
 [node name="file5" parent="itens" instance=ExtResource("13_tt4bw")]
-position = Vector2(2365, -1923)
+position = Vector2(2305, -1957)
 
 [node name="file6" parent="itens" instance=ExtResource("13_tt4bw")]
 position = Vector2(2502, -1923)
