@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://8hlgmtrj68pp"]
+
+[ext_resource type="Shader" uid="uid://di8afmayxmt32" path="res://scripts/shaders/wave_text.gdshader" id="1_tdnt8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o43gl"]
+shader = ExtResource("1_tdnt8")
+shader_parameter/height = 1.5
+shader_parameter/frequency = 7.0
+shader_parameter/speed = 0.8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_adsgn"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="creditos" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -304.0
+offset_top = -367.0
+offset_right = 1470.0
+offset_bottom = 1033.0
+color = Color(0, 0, 0, 1)
+
+[node name="text" type="Node2D" parent="."]
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="text"]
+material = SubResource("ShaderMaterial_o43gl")
+offset_left = 132.0
+offset_top = 67.0
+offset_right = 1046.0
+offset_bottom = 1425.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_adsgn")
+bbcode_enabled = true
+text = "[font=res://assets/fonts/Px437_IBM_BIOS.ttf]Creditos:
+
+
+
+Game Design: Leonardo Santello Garino
+
+
+
+
+
+Arte e Personagens: João Vitor da Silva
+
+
+
+
+
+Desenvolvimento: Arthur Tavares de Paula Valim
+
+
+
+
+
+Testes e Documentação: Carlos Eduardo Couto Gonçalves
+
+[/font]"
+scroll_active = false
+horizontal_alignment = 1

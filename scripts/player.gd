@@ -252,6 +252,8 @@ func check_hitbox() -> void:
 			damage = Global.spikeDamageAmount
 		elif hitbox.get_parent() is ddos:
 			damage = Global.ddosDamageAmount
+		elif hitbox.get_parent() is boss:
+			damage = Global.bossDamageAmount
 		if can_take_damage and damage != 0:
 			take_damage(damage)
 

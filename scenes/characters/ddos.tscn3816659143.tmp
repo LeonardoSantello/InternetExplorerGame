@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://cmwfgwllown3m"]
+[gd_scene load_steps=24 format=3 uid="uid://cmwfgwllown3m"]
 
 [ext_resource type="Script" uid="uid://7ee66yulxbnq" path="res://scripts/ddos.gd" id="1_mithf"]
 [ext_resource type="Texture2D" uid="uid://758tatfdbofr" path="res://assets/sprites/characters/enemys/ddos mini.png" id="2_mithf"]
 [ext_resource type="Texture2D" uid="uid://dw7d4knh1fhua" path="res://assets/sprites/characters/enemys/ddos damage.png" id="2_pmifu"]
+[ext_resource type="PackedScene" uid="uid://c16d0lihpmv54" path="res://scenes/others/health_bar.tscn" id="4_ft5n6"]
 [ext_resource type="Shader" uid="uid://b48snv0g75ss0" path="res://scripts/shaders/cmos.gdshader" id="5_jgt5q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pmifu"]
@@ -228,5 +229,11 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
 position = Vector2(0.8333326, 8.333333)
 shape = SubResource("RectangleShape2D_a6udk")
+
+[node name="healthBar" parent="." instance=ExtResource("4_ft5n6")]
+offset_left = -35.0
+offset_top = 33.333332
+offset_right = 36.0
+offset_bottom = 45.833332
 
 [connection signal="area_entered" from="hitBox" to="." method="_on_hit_box_area_entered"]

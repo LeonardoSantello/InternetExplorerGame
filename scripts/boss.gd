@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
-class_name ddos
+class_name boss
 @export var deathParticle : PackedScene 
 
-var health = 30
-var health_max = 30
+var health = 200
+var health_max = 200
 var dir: Vector2
 var dead: bool = false
 var taking_damage: bool = false
@@ -12,7 +12,7 @@ var is_dealing_damge: bool = false
 
 func _ready() -> void:
 	dir = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
-	Global.ddosDamageAmount = 10
+	Global.bossDamageAmount = 10
 	
 func _physics_process(_delta) -> void:
 	handle_animation()

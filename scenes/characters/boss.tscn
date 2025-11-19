@@ -1,55 +1,55 @@
-[gd_scene load_steps=23 format=3 uid="uid://cmwfgwllown3m"]
+[gd_scene load_steps=23 format=3 uid="uid://dpfcmy1w7na57"]
 
-[ext_resource type="Script" uid="uid://7ee66yulxbnq" path="res://scripts/ddos.gd" id="1_mithf"]
-[ext_resource type="Texture2D" uid="uid://758tatfdbofr" path="res://assets/sprites/characters/enemys/ddos mini.png" id="2_mithf"]
-[ext_resource type="Texture2D" uid="uid://dw7d4knh1fhua" path="res://assets/sprites/characters/enemys/ddos damage.png" id="2_pmifu"]
-[ext_resource type="Shader" uid="uid://b48snv0g75ss0" path="res://scripts/shaders/cmos.gdshader" id="5_jgt5q"]
+[ext_resource type="Script" uid="uid://6sdouub1dr4x" path="res://scripts/boss.gd" id="1_p2gyk"]
+[ext_resource type="Texture2D" uid="uid://ckkrsx8nescxt" path="res://assets/sprites/characters/enemys/boss damage.png" id="2_p2gyk"]
+[ext_resource type="Texture2D" uid="uid://ctv0yfvhfo03s" path="res://assets/sprites/characters/enemys/boss.png" id="3_hxcvo"]
+[ext_resource type="Shader" uid="uid://b48snv0g75ss0" path="res://scripts/shaders/cmos.gdshader" id="4_qryem"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pmifu"]
-atlas = ExtResource("2_pmifu")
+[sub_resource type="AtlasTexture" id="AtlasTexture_j30ar"]
+atlas = ExtResource("2_p2gyk")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dgk7m"]
-atlas = ExtResource("2_mithf")
+[sub_resource type="AtlasTexture" id="AtlasTexture_qryem"]
+atlas = ExtResource("3_hxcvo")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xcaqc"]
-atlas = ExtResource("2_mithf")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dof1"]
+atlas = ExtResource("3_hxcvo")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_877pv"]
-atlas = ExtResource("2_mithf")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yo74"]
+atlas = ExtResource("3_hxcvo")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jgt5q"]
-atlas = ExtResource("2_mithf")
+[sub_resource type="AtlasTexture" id="AtlasTexture_io0di"]
+atlas = ExtResource("3_hxcvo")
 region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_38uov"]
-atlas = ExtResource("2_mithf")
+[sub_resource type="AtlasTexture" id="AtlasTexture_od1mr"]
+atlas = ExtResource("3_hxcvo")
 region = Rect2(256, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xb2kr"]
-atlas = ExtResource("2_mithf")
+[sub_resource type="AtlasTexture" id="AtlasTexture_li73i"]
+atlas = ExtResource("3_hxcvo")
 region = Rect2(320, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0dgse"]
-atlas = ExtResource("2_mithf")
+[sub_resource type="AtlasTexture" id="AtlasTexture_kx78e"]
+atlas = ExtResource("3_hxcvo")
 region = Rect2(384, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xhftp"]
-atlas = ExtResource("2_mithf")
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrhtl"]
+atlas = ExtResource("3_hxcvo")
 region = Rect2(448, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a6udk"]
-atlas = ExtResource("2_mithf")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtncg"]
+atlas = ExtResource("3_hxcvo")
 region = Rect2(512, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dwoi8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pmifu")
+"texture": SubResource("AtlasTexture_j30ar")
 }],
 "loop": true,
 "name": &"damage",
@@ -57,31 +57,31 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dgk7m")
+"texture": SubResource("AtlasTexture_qryem")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xcaqc")
+"texture": SubResource("AtlasTexture_3dof1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_877pv")
+"texture": SubResource("AtlasTexture_4yo74")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jgt5q")
+"texture": SubResource("AtlasTexture_io0di")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_38uov")
+"texture": SubResource("AtlasTexture_od1mr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xb2kr")
+"texture": SubResource("AtlasTexture_li73i")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0dgse")
+"texture": SubResource("AtlasTexture_kx78e")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xhftp")
+"texture": SubResource("AtlasTexture_jrhtl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a6udk")
+"texture": SubResource("AtlasTexture_vtncg")
 }],
 "loop": true,
 "name": &"idle",
@@ -89,7 +89,7 @@ animations = [{
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fgp7v"]
-shader = ExtResource("5_jgt5q")
+shader = ExtResource("4_qryem")
 shader_parameter/shake_power = 0.03
 shader_parameter/shake_rate = 0.2
 shader_parameter/shake_speed = 999.0
@@ -98,6 +98,33 @@ shader_parameter/shake_color_rate = 0.01
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhftp"]
 size = Vector2(40, 42.5)
+
+[sub_resource type="Animation" id="Animation_cpynn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ops3k"]
 resource_name = "dead"
@@ -154,33 +181,6 @@ tracks/1/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_cpynn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D/ColorRect:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3jmvj"]
 _data = {
 &"RESET": SubResource("Animation_cpynn"),
@@ -191,17 +191,15 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6udk"]
 size = Vector2(44.999996, 45)
 
-[node name="ddos" type="CharacterBody2D"]
+[node name="boss" type="CharacterBody2D"]
 z_index = 98
 scale = Vector2(1.2, 1.2)
 collision_layer = 16
-script = ExtResource("1_mithf")
+script = ExtResource("1_p2gyk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dwoi8")
-animation = &"idle"
-frame = 7
-frame_progress = 0.84685045
+animation = &"damage"
 
 [node name="ColorRect" type="ColorRect" parent="AnimatedSprite2D"]
 visible = false

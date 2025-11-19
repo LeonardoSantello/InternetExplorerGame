@@ -1,12 +1,16 @@
-[gd_scene load_steps=38 format=4 uid="uid://bfx1v271cfoq1"]
+[gd_scene load_steps=46 format=4 uid="uid://bfx1v271cfoq1"]
 
-[ext_resource type="Script" uid="uid://cds15k12pirsa" path="res://scripts/lvl_4.gd" id="1_0o4ds"]
+[ext_resource type="Script" uid="uid://s76iir8o1mxc" path="res://scripts/boss_lvl.gd" id="1_kl8di"]
 [ext_resource type="Texture2D" uid="uid://cy6ty01ceunha" path="res://assets/sprites/tilemaps/bios_background.png" id="2_x145g"]
 [ext_resource type="Texture2D" uid="uid://p8fkhi3wng8c" path="res://assets/sprites/tilemaps/bios_tileset.png" id="3_yw7wl"]
 [ext_resource type="PackedScene" uid="uid://cfjogcfcpqr1d" path="res://scenes/characters/player.tscn" id="4_pniru"]
 [ext_resource type="PackedScene" uid="uid://bu5l5p1u88yqt" path="res://scenes/platforms/plataforma_bios_preta.tscn" id="5_2hpqy"]
+[ext_resource type="PackedScene" uid="uid://cmwfgwllown3m" path="res://scenes/characters/ddos.tscn" id="9_hpug8"]
 [ext_resource type="PackedScene" uid="uid://v18vcxpjdm5l" path="res://scenes/itens/heal.tscn" id="10_0htcn"]
+[ext_resource type="PackedScene" uid="uid://cr5rxw3y74s46" path="res://scenes/particles/spriteExplosion.tscn" id="10_lclxv"]
 [ext_resource type="PackedScene" uid="uid://gdast3nneiir" path="res://scenes/itens/itemupgrade.tscn" id="11_1ytra"]
+[ext_resource type="PackedScene" uid="uid://c16d0lihpmv54" path="res://scenes/others/health_bar.tscn" id="11_2dcby"]
+[ext_resource type="PackedScene" uid="uid://dpfcmy1w7na57" path="res://scenes/characters/boss.tscn" id="12_kl8di"]
 [ext_resource type="PackedScene" uid="uid://bwrfl87bxo1jh" path="res://scenes/platforms/portaInicio.tscn" id="12_tskrh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a5iw4"]
@@ -872,7 +876,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.5, 2),
+"times": PackedFloat32Array(0.9666667, 2.4666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(424, -1432), Vector2(424, -1171)]
@@ -899,8 +903,59 @@ _data = {
 &"new_animation": SubResource("Animation_ovbdm")
 }
 
-[node name="Lvl4" type="Node2D"]
-script = ExtResource("1_0o4ds")
+[sub_resource type="Animation" id="Animation_o65mc"]
+resource_name = "door"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("boss/portaBoss:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1986.0001, -1433), Vector2(1986, -1170)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("boss/RigidBody2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.100000024),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_kl8di"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("boss/RigidBody2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0o4ds"]
+_data = {
+&"RESET": SubResource("Animation_kl8di"),
+&"door": SubResource("Animation_o65mc")
+}
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_x145g"]
+distance = -149.0
+
+[node name="boss" type="Node2D"]
+script = ExtResource("1_kl8di")
 
 [node name="TileSet" type="Node" parent="."]
 
@@ -921,13 +976,23 @@ position = Vector2(461, -1042)
 [node name="light" type="Node2D" parent="."]
 
 [node name="Light" type="PointLight2D" parent="light"]
-position = Vector2(138.41182, -1419)
+position = Vector2(170, -1362)
 scale = Vector2(8.110937, 2.3390884)
 color = Color(1, 0.3764706, 0.3764706, 1)
 energy = 8.15
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_3bmjf")
-offset = Vector2(51.854454, 87.85474)
+offset = Vector2(47.959938, 63.486267)
+texture_scale = 2.94
+
+[node name="Light2" type="PointLight2D" parent="light"]
+position = Vector2(2834, -1662)
+scale = Vector2(11.873365, 3.8880155)
+color = Color(1, 0.3764706, 0.3764706, 0.22352941)
+energy = 8.15
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_3bmjf")
+offset = Vector2(-25.140312, 73.94519)
 texture_scale = 2.94
 
 [node name="plataforms" type="Node2D" parent="."]
@@ -978,14 +1043,133 @@ position = Vector2(1597, -1170)
 [node name="Itemupgrade" parent="itens" instance=ExtResource("11_1ytra")]
 position = Vector2(1336, -1239)
 
-[node name="portaInicio" parent="." instance=ExtResource("12_tskrh")]
-position = Vector2(425.99997, -1432)
+[node name="boss" parent="." instance=ExtResource("12_kl8di")]
+position = Vector2(2812, -1152)
+scale = Vector2(3.6000001, 3.6000001)
+deathParticle = ExtResource("10_lclxv")
+
+[node name="healthBar" parent="boss" instance=ExtResource("11_2dcby")]
+offset_left = -73.05551
+offset_top = 35.833332
+offset_right = 76.111115
+offset_bottom = 47.77779
+
+[node name="ddos" parent="." instance=ExtResource("9_hpug8")]
+position = Vector2(2238, -1334)
+scale = Vector2(-1.2, 1.2)
+deathParticle = ExtResource("10_lclxv")
+
+[node name="healthBar" parent="ddos" instance=ExtResource("11_2dcby")]
+offset_left = -27.933472
+offset_top = 32.499996
+offset_right = 29.46106
+offset_bottom = 41.034542
+
+[node name="ddos2" parent="." instance=ExtResource("9_hpug8")]
+position = Vector2(2640, -1255)
+scale = Vector2(-1.2, 1.2)
+deathParticle = ExtResource("10_lclxv")
+
+[node name="healthBar" parent="ddos2" instance=ExtResource("11_2dcby")]
+offset_left = -27.933472
+offset_top = 32.499996
+offset_right = 29.46106
+offset_bottom = 41.034542
+
+[node name="ddos3" parent="." instance=ExtResource("9_hpug8")]
+position = Vector2(2991, -1255)
+deathParticle = ExtResource("10_lclxv")
+
+[node name="healthBar" parent="ddos3" instance=ExtResource("11_2dcby")]
+offset_left = -27.933472
+offset_top = 32.499996
+offset_right = 29.46106
+offset_bottom = 41.034542
+
+[node name="ddos4" parent="." instance=ExtResource("9_hpug8")]
+position = Vector2(3422, -1335)
+deathParticle = ExtResource("10_lclxv")
+
+[node name="healthBar" parent="ddos4" instance=ExtResource("11_2dcby")]
+offset_left = -27.933472
+offset_top = 32.499996
+offset_right = 29.46106
+offset_bottom = 41.034542
+
+[node name="ddos5" parent="." instance=ExtResource("9_hpug8")]
+position = Vector2(2562, -1493)
+scale = Vector2(-1.2, 1.2)
+deathParticle = ExtResource("10_lclxv")
+
+[node name="healthBar" parent="ddos5" instance=ExtResource("11_2dcby")]
+offset_left = -27.933472
+offset_top = 32.499996
+offset_right = 29.46106
+offset_bottom = 41.034542
+
+[node name="ddos6" parent="." instance=ExtResource("9_hpug8")]
+position = Vector2(3097, -1493)
+deathParticle = ExtResource("10_lclxv")
+
+[node name="healthBar" parent="ddos6" instance=ExtResource("11_2dcby")]
+offset_left = -27.933472
+offset_top = 32.499996
+offset_right = 29.46106
+offset_bottom = 41.034542
+
+[node name="ddos7" parent="." instance=ExtResource("9_hpug8")]
+position = Vector2(2835, -1586)
+deathParticle = ExtResource("10_lclxv")
+
+[node name="healthBar" parent="ddos7" instance=ExtResource("11_2dcby")]
+offset_left = -27.933472
+offset_top = 32.499996
+offset_right = 29.46106
+offset_bottom = 41.034542
+
+[node name="porta" type="Node2D" parent="."]
+
+[node name="portaInicio" parent="porta" instance=ExtResource("12_tskrh")]
+position = Vector2(424, -1432)
 scale = Vector2(1.44, 1.44)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="portaInicio"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="porta/portaInicio"]
 libraries = {
 &"": SubResource("AnimationLibrary_poyrx")
 }
 autoplay = "move"
 
-[node name="text" type="Node2D" parent="."]
+[node name="boss" type="Node2D" parent="porta"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="porta/boss"]
+position = Vector2(1550, -1)
+collision_layer = 7
+collision_mask = 7
+sleeping = true
+lock_rotation = true
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="porta/boss/RigidBody2D"]
+position = Vector2(435, -1169)
+shape = SubResource("RectangleShape2D_aytyj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="porta/boss"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_0o4ds")
+}
+
+[node name="Area2D" type="Area2D" parent="porta/boss"]
+position = Vector2(3312, -839)
+rotation = -1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="porta/boss/Area2D"]
+position = Vector2(349.00003, -1310)
+shape = SubResource("WorldBoundaryShape2D_x145g")
+
+[node name="portaBoss" parent="porta/boss" instance=ExtResource("12_tskrh")]
+z_index = 0
+position = Vector2(1986.0001, -1433)
+scale = Vector2(1.2, 1.42)
+
+[connection signal="area_entered" from="porta/boss/Area2D" to="." method="_on_area_2d_area_entered"]

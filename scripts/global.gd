@@ -18,6 +18,7 @@ var inimigoBasicoDamageAmount: int
 var cavaloDeTroiaDamageAmount: int
 var invaderDamageAmount: int
 var ddosDamageAmount: int
+var bossDamageAmount: int
 var spikeDamageAmount: int
 
 func reset_game_state():

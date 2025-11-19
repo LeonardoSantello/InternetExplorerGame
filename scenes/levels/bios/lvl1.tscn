@@ -1231,7 +1231,7 @@ text = "    POST:
  Hard Disk . . ."
 label_settings = SubResource("LabelSettings_1w7wf")
 
-[node name="RichTextLabel35" type="RichTextLabel" parent="textos" node_paths=PackedStringArray("player")]
+[node name="RichTextLabel35" type="RichTextLabel" parent="textos"]
 material = SubResource("ShaderMaterial_k7dre")
 layout_mode = 0
 offset_left = 422.0
@@ -1245,7 +1245,6 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("4_iekhi")
-player = NodePath("")
 min_distance = 250.0
 max_distance = 400.0
 
