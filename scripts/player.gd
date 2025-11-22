@@ -25,6 +25,14 @@ const WALL_SLIDE_SPEED = 50 # velocidade ao deslizar na parede
 @export var can_dash: bool = true
 @export var max_jumps: int = 2    # pulo duplo
 
+@export var shaking: bool
+
+var rng = RandomNumberGenerator.new()
+
+var randomStrength: float = 20.0
+var shakeFade: float = 5.0
+var shake_strength: float = 0.0
+
 var is_attacking: bool = false
 var jump_buffer_timer: float = 0.1
 var jump_buffer: bool = false
@@ -68,6 +76,7 @@ func _physics_process(delta: float) -> void:
 	flip_sprite()
 	check_hitbox()
 	handle_bestiary()
+	shake(delta)
 	
 	move_and_slide()
 
@@ -254,6 +263,12 @@ func check_hitbox() -> void:
 			damage = Global.ddosDamageAmount
 		elif hitbox.get_parent() is boss:
 			damage = Global.bossDamageAmount
+		elif hitbox.get_parent() is laser:
+			damage = Global.laserDamageAmount
+		elif hitbox.get_parent() is x:
+			damage = Global.xDamageAmount
+		elif hitbox.get_parent() is folder:
+			damage = Global.folderDamageAmount
 		if can_take_damage and damage != 0:
 			take_damage(damage)
 
@@ -322,6 +337,19 @@ func set_damage() -> void:
 	current_damage_to_deal = 10
 	Global.playerDamageAmount = current_damage_to_deal
 
+func apply_shake():
+	shake_strength = randomStrength
+	
+func randomOffset():
+	return Vector2(rng.randf_range(-shake_strength,shake_strength),rng.randf_range(-shake_strength,shake_strength))
+
+func shake(delta):
+	if shaking:
+		apply_shake()
+	if shake_strength >0:
+		shake_strength = lerpf(shake_strength,0,shakeFade*delta)
+		
+		$Camera2D.offset = randomOffset()
 
 func _on_dash_timeout() -> void:
 	is_dashing = false

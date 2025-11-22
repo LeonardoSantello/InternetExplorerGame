@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://v18vcxpjdm5l"]
+[gd_scene load_steps=10 format=3 uid="uid://v18vcxpjdm5l"]
 
 [ext_resource type="Script" uid="uid://b0meredn5gmuc" path="res://scripts/heal.gd" id="1_8ixjt"]
+[ext_resource type="AudioStream" uid="uid://dwecktxv73cp0" path="res://assets/Audios/effects/Powerup_noise.mp3" id="2_8ixjt"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p6q33"]
 load_path = "res://.godot/imported/heal.png-d89528278a71161852304f8ee5b3cac9.ctex"
@@ -96,5 +97,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_0pst1")
 }
 autoplay = "move"
+
+[node name="PowerupNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_8ixjt")
+volume_db = -5.0
+pitch_scale = 1.15
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

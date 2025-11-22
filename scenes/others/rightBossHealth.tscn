@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddjrym4ge1bd2"]
+
+[ext_resource type="Texture2D" uid="uid://cvst2uyf7p5mt" path="res://assets/sprites/ui/rightBack.png" id="1_n4aqm"]
+[ext_resource type="Texture2D" uid="uid://boil583o843m0" path="res://assets/sprites/ui/rightLife.png" id="2_8hrn7"]
+[ext_resource type="Script" uid="uid://bknvnqcd4c23b" path="res://scripts/bossHealth.gd" id="3_1y7vx"]
+
+[node name="background" type="TextureProgressBar"]
+offset_right = 1717.0
+offset_bottom = 538.0
+value = 61.0
+fill_mode = 1
+texture_under = ExtResource("1_n4aqm")
+texture_progress = ExtResource("2_8hrn7")
+script = ExtResource("3_1y7vx")

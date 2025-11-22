@@ -3,8 +3,8 @@ class_name mal_cabeado
 
 const SPEED = 110
 
-var health = 80
-var health_max = 80
+var health = 65
+var health_max = 65
 
 var dead: bool = false
 var taking_damage: bool = false

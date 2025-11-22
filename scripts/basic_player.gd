@@ -48,4 +48,4 @@ func _on_area_2d_body_entered(_body: CharacterBody2D) -> void:
 	$Camera2D/CanvasLayer/ColorRect.visible = true
 	$"../FastBodyFallImpact8Bit".play()
 	await get_tree().create_timer(2).timeout
-	$"../transition".scene_transition_animation_function("res://scenes/levels/kernel_level.tscn")
+	$Camera2D/CanvasLayer/transition.scene_transition_animation_function("res://scenes/levels/kernel_level.tscn")

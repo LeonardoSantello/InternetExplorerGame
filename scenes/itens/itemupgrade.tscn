@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://gdast3nneiir"]
+[gd_scene load_steps=17 format=3 uid="uid://gdast3nneiir"]
 
 [ext_resource type="Script" uid="uid://ber7hwgokxs1e" path="res://scripts/itemupgrade.gd" id="1_xkfn3"]
 [ext_resource type="Texture2D" uid="uid://b442cxbyky074" path="res://assets/sprites/Itens/upgrade.png" id="2_nmtrn"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bygy1jaravpho" path="res://scripts/tooltip_button.gd" id="4_kc2gw"]
 [ext_resource type="Texture2D" uid="uid://ciy7cjaway2es" path="res://assets/sprites/Itens/speed.png" id="5_8f8d1"]
 [ext_resource type="PackedScene" uid="uid://dhaqt5vt5oicf" path="res://scenes/itens/tooltip.tscn" id="5_nmtrn"]
+[ext_resource type="AudioStream" uid="uid://cnvcglhvy168a" path="res://assets/Audios/effects/startup-sound-variation-6-316850.mp3" id="9_4ulhm"]
 
 [sub_resource type="Gradient" id="Gradient_8ixjt"]
 offsets = PackedFloat32Array(0.41333333, 1)
@@ -264,6 +265,10 @@ text = "[font=res://assets/fonts/Px437_IBM_BIOS.ttf][font_size=60]Aumenta sua ve
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="StartupSoundVariation6316850" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_4ulhm")
+volume_db = 5.725
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Control/HBoxContainer/btn_attack" to="." method="_on_btn_attack_pressed"]

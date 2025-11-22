@@ -15,6 +15,7 @@ func _ready():
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"): 
+		$StartupSoundVariation6316850.play()
 		player_ref = body
 		panel.visible = true
 		#get_tree().paused = true
@@ -36,6 +37,7 @@ func _apply_upgrade(stat: String):
 			print ("Vida aumentada:")
 		"speed":
 			Global.speed += 15
+			Global.max_speed = Global.speed
 			print ("Velocidade aumentado:")
 
 	panel.visible = false

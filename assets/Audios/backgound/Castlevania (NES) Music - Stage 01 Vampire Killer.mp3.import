@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cgonja3urwi3h"
+path="res://.godot/imported/Castlevania (NES) Music - Stage 01 Vampire Killer.mp3-9147a3a5add87d06a939fae3dd6103c9.mp3str"
+
+[deps]
+
+source_file="res://assets/Audios/backgound/Castlevania (NES) Music - Stage 01 Vampire Killer.mp3"
+dest_files=["res://.godot/imported/Castlevania (NES) Music - Stage 01 Vampire Killer.mp3-9147a3a5add87d06a939fae3dd6103c9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

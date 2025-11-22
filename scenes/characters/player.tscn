@@ -1005,6 +1005,7 @@ parameters/looping = false
 
 [node name="sfx_dash" type="AudioStreamPlayer2D" parent="audio" groups=["Sound_effects"]]
 stream = ExtResource("7_6eyoc")
+pitch_scale = 1.5
 
 [node name="sfx_attack" type="AudioStreamPlayer2D" parent="audio" groups=["Sound_effects"]]
 stream = ExtResource("8_eojnx")

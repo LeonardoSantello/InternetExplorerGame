@@ -3,8 +3,8 @@ extends CharacterBody2D
 class_name ddos
 @export var deathParticle : PackedScene 
 
-var health = 30
-var health_max = 30
+var health = 100
+var health_max = 100
 var dir: Vector2
 var dead: bool = false
 var taking_damage: bool = false
@@ -29,9 +29,10 @@ func handle_animation():
 		$AnimatedSprite2D.play("damage")
 		animation.play("dead")
 		$hitBox/CollisionShape2D.disabled = true
-		await  get_tree().create_timer(1).timeout
+		await  get_tree().create_timer(2).timeout
 		print(str(self), "Morreu")
 		deathParticleFunc()
+		$"../boss".take_damage(14.5)
 		self.queue_free()
 	else:
 		$AnimatedSprite2D.play("idle")
@@ -46,6 +47,7 @@ func take_damage(damage):
 	health -= damage
 	taking_damage = true
 	if health <= 0:
+		$ErrorSound390301.play()
 		health = 0
 		dead = true
 		

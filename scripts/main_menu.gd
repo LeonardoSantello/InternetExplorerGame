@@ -7,7 +7,7 @@ func _ready() -> void:
 
 func _on_button_pressed() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	$CanvasLayer/transition.scene_transition_animation_function("res://scenes/levels/kernel_cut.tscn")
+	$CanvasLayer/transition.scene_transition_animation_function("res://scenes/others/3d.tscn")
 
 
 func _on_button_3_pressed() -> void:

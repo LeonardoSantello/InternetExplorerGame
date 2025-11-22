@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://hdmifwidiv7x"
+path="res://.godot/imported/Castlevania II Music (NES) - Bloody Tears (Day Theme).mp3-17653dabc2f48545053c3e507e8fd768.mp3str"
+
+[deps]
+
+source_file="res://assets/Audios/backgound/Castlevania II Music (NES) - Bloody Tears (Day Theme).mp3"
+dest_files=["res://.godot/imported/Castlevania II Music (NES) - Bloody Tears (Day Theme).mp3-17653dabc2f48545053c3e507e8fd768.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

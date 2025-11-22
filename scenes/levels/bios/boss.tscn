@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://bfx1v271cfoq1"]
+[gd_scene load_steps=64 format=4 uid="uid://bfx1v271cfoq1"]
 
 [ext_resource type="Script" uid="uid://s76iir8o1mxc" path="res://scripts/boss_lvl.gd" id="1_kl8di"]
 [ext_resource type="Texture2D" uid="uid://cy6ty01ceunha" path="res://assets/sprites/tilemaps/bios_background.png" id="2_x145g"]
@@ -8,10 +8,20 @@
 [ext_resource type="PackedScene" uid="uid://cmwfgwllown3m" path="res://scenes/characters/ddos.tscn" id="9_hpug8"]
 [ext_resource type="PackedScene" uid="uid://v18vcxpjdm5l" path="res://scenes/itens/heal.tscn" id="10_0htcn"]
 [ext_resource type="PackedScene" uid="uid://cr5rxw3y74s46" path="res://scenes/particles/spriteExplosion.tscn" id="10_lclxv"]
+[ext_resource type="PackedScene" uid="uid://mtuf4o6ko60j" path="res://scenes/others/leftBossHealth.tscn" id="10_o65mc"]
 [ext_resource type="PackedScene" uid="uid://gdast3nneiir" path="res://scenes/itens/itemupgrade.tscn" id="11_1ytra"]
 [ext_resource type="PackedScene" uid="uid://c16d0lihpmv54" path="res://scenes/others/health_bar.tscn" id="11_2dcby"]
+[ext_resource type="PackedScene" uid="uid://ddjrym4ge1bd2" path="res://scenes/others/rightBossHealth.tscn" id="11_i1qp4"]
 [ext_resource type="PackedScene" uid="uid://dpfcmy1w7na57" path="res://scenes/characters/boss.tscn" id="12_kl8di"]
 [ext_resource type="PackedScene" uid="uid://bwrfl87bxo1jh" path="res://scenes/platforms/portaInicio.tscn" id="12_tskrh"]
+[ext_resource type="AudioStream" uid="uid://bbo75fsmge8rs" path="res://assets/Audios/effects/laser-power-up_B_minor.mp3" id="12_x145g"]
+[ext_resource type="AudioStream" uid="uid://dcg5he0jjdwbk" path="res://assets/Audios/effects/8-bit-explosion-95847.mp3" id="13_r3g1s"]
+[ext_resource type="AudioStream" uid="uid://0ltggd60qiy1" path="res://assets/Audios/effects/8-bit-logo-291104.mp3" id="14_jovnr"]
+[ext_resource type="PackedScene" uid="uid://mau87hxmuivp" path="res://scenes/particles/ray_beam.tscn" id="15_0o4ds"]
+[ext_resource type="AudioStream" uid="uid://cvfvcw5mocogk" path="res://assets/Audios/effects/zap_c_07-82067.mp3" id="15_x5tro"]
+[ext_resource type="AudioStream" uid="uid://dtdl57xphbeut" path="res://assets/Audios/backgound/Raphael's Final Act 8-Bits Remix (Baldur's Gate 3).mp3" id="16_jovnr"]
+[ext_resource type="AudioStream" uid="uid://q0wwji4imhu6" path="res://assets/Audios/effects/epic-dragon-roar-364481.mp3" id="17_x5tro"]
+[ext_resource type="AudioStream" uid="uid://caaepscul5w0f" path="res://assets/Audios/backgound/Server Room.mp3" id="22_ir5kr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a5iw4"]
 texture = ExtResource("2_x145g")
@@ -864,7 +874,166 @@ height = 65
 fill_from = Vector2(1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aytyj"]
-size = Vector2(36, 268)
+size = Vector2(36, 532)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_i1qp4"]
+a = Vector2(-101, -3)
+b = Vector2(706, -2)
+
+[sub_resource type="Animation" id="Animation_0o4ds"]
+resource_name = "open"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.99),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [100.0, 200.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background2:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.99),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [100.0, 200.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yw7wl"]
+_data = {
+&"open": SubResource("Animation_0o4ds")
+}
+
+[sub_resource type="Animation" id="Animation_pniru"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_yw7wl"]
+resource_name = "laser1"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RayCast2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 2.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.17453292519943295, -2.9670597283903604]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RayCast2D:is_casting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 2.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_r3g1s"]
+resource_name = "laser2"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RayCast2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 2.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.08726646259971647, -0.7853981633974483]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RayCast2D:is_casting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 2.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../RayCast2D2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 2.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-3.2288591161895095, -2.2689280275926285]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../RayCast2D2:is_casting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 2.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_jovnr"]
+resource_name = "reset_manual"
+length = 1.004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RayCast2D:is_casting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.46666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RayCast2D2:is_casting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.46666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r3g1s"]
+_data = {
+&"RESET": SubResource("Animation_pniru"),
+&"laser1": SubResource("Animation_yw7wl"),
+&"laser2": SubResource("Animation_r3g1s"),
+&"reset_manual": SubResource("Animation_jovnr")
+}
+
+[sub_resource type="Animation" id="Animation_i1qp4"]
+length = 0.001
 
 [sub_resource type="Animation" id="Animation_iw78k"]
 resource_name = "move"
@@ -884,7 +1053,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../light/Light:enabled")
+tracks/1/path = NodePath("../../light/Light:enabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -894,13 +1063,25 @@ tracks/1/keys = {
 "values": [true, false, true, false, true, false]
 }
 
-[sub_resource type="Animation" id="Animation_ovbdm"]
-resource_name = "new_animation"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_poyrx"]
 _data = {
-&"move": SubResource("Animation_iw78k"),
-&"new_animation": SubResource("Animation_ovbdm")
+&"RESET": SubResource("Animation_i1qp4"),
+&"move": SubResource("Animation_iw78k")
+}
+
+[sub_resource type="Animation" id="Animation_kl8di"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("boss/RigidBody2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_o65mc"]
@@ -925,21 +1106,6 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0.100000024),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_kl8di"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("boss/RigidBody2D/CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
@@ -971,7 +1137,7 @@ tile_map_data = PackedByteArray("AAD0/wAAAgAHAAAAAAD1/wAAAgAHAAAAAAD2/wAAAgAHAAA
 tile_set = SubResource("TileSet_urubw")
 
 [node name="Player" parent="." instance=ExtResource("4_pniru")]
-position = Vector2(461, -1042)
+position = Vector2(471, -1062)
 
 [node name="light" type="Node2D" parent="."]
 
@@ -1030,6 +1196,9 @@ position = Vector2(2641, -1206)
 [node name="plataforma_bios_verde7" parent="plataforms" instance=ExtResource("5_2hpqy")]
 position = Vector2(2992, -1206)
 
+[node name="plataforma_bios_verde8" parent="plataforms" instance=ExtResource("5_2hpqy")]
+position = Vector2(2827, -1352)
+
 [node name="enemys" type="Node2D" parent="."]
 
 [node name="itens" type="Node2D" parent="."]
@@ -1043,16 +1212,88 @@ position = Vector2(1597, -1170)
 [node name="Itemupgrade" parent="itens" instance=ExtResource("11_1ytra")]
 position = Vector2(1336, -1239)
 
+[node name="Area2D4" type="Area2D" parent="itens"]
+position = Vector2(2346, -1174)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="itens/Area2D4"]
+position = Vector2(179, 221)
+rotation = -1.5707964
+shape = SubResource("SegmentShape2D_i1qp4")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="itens"]
+position = Vector2(1702, -89)
+collision_layer = 7
+collision_mask = 7
+sleeping = true
+lock_rotation = true
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="itens/RigidBody2D"]
+position = Vector2(567, -1169)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_aytyj")
+
+[node name="heal3" parent="itens" instance=ExtResource("10_0htcn")]
+position = Vector2(2828, -1419)
+
 [node name="boss" parent="." instance=ExtResource("12_kl8di")]
 position = Vector2(2812, -1152)
 scale = Vector2(3.6000001, 3.6000001)
 deathParticle = ExtResource("10_lclxv")
 
-[node name="healthBar" parent="boss" instance=ExtResource("11_2dcby")]
-offset_left = -73.05551
-offset_top = 35.833332
-offset_right = 76.111115
-offset_bottom = 47.77779
+[node name="CanvasLayer" type="CanvasLayer" parent="boss"]
+
+[node name="background" parent="boss/CanvasLayer" instance=ExtResource("10_o65mc")]
+offset_left = 71.0
+offset_top = 510.0
+offset_right = 1788.0
+offset_bottom = 1048.0
+scale = Vector2(0.6, 0.6)
+max_value = 200.0
+value = 100.0
+
+[node name="background2" parent="boss/CanvasLayer" instance=ExtResource("11_i1qp4")]
+offset_left = 71.0
+offset_top = 510.0
+offset_right = 1788.0
+offset_bottom = 1048.0
+scale = Vector2(0.6, 0.6)
+max_value = 200.0
+value = 100.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="boss/CanvasLayer"]
+libraries = {
+&"": SubResource("AnimationLibrary_yw7wl")
+}
+
+[node name="moves" type="AnimationPlayer" parent="boss"]
+libraries = {
+&"": SubResource("AnimationLibrary_r3g1s")
+}
+autoplay = "reset_manual"
+
+[node name="Timer" type="Timer" parent="boss"]
+wait_time = 2.0
+one_shot = true
+
+[node name="LaserPowerUpBMinor" type="AudioStreamPlayer" parent="boss"]
+stream = ExtResource("12_x145g")
+
+[node name="8BitExplosion95847" type="AudioStreamPlayer" parent="boss"]
+stream = ExtResource("13_r3g1s")
+
+[node name="8BitLogo291104" type="AudioStreamPlayer" parent="boss"]
+stream = ExtResource("14_jovnr")
+
+[node name="ZapC0782067" type="AudioStreamPlayer" parent="boss"]
+stream = ExtResource("15_x5tro")
+
+[node name="Raphael\'sFinalAct8BitsRemix(baldur\'sGate3)" type="AudioStreamPlayer" parent="boss"]
+stream = ExtResource("16_jovnr")
+parameters/looping = false
+
+[node name="EpicDragonRoar364481" type="AudioStreamPlayer" parent="boss"]
+stream = ExtResource("17_x5tro")
 
 [node name="ddos" parent="." instance=ExtResource("9_hpug8")]
 position = Vector2(2238, -1334)
@@ -1143,8 +1384,8 @@ autoplay = "move"
 
 [node name="RigidBody2D" type="RigidBody2D" parent="porta/boss"]
 position = Vector2(1550, -1)
-collision_layer = 7
-collision_mask = 7
+collision_layer = 15
+collision_mask = 15
 sleeping = true
 lock_rotation = true
 freeze = true
@@ -1172,4 +1413,26 @@ z_index = 0
 position = Vector2(1986.0001, -1433)
 scale = Vector2(1.2, 1.42)
 
+[node name="RayCast2D" parent="." instance=ExtResource("15_0o4ds")]
+modulate = Color(0.6392157, 1, 0.9843137, 1)
+position = Vector2(2792, -1148)
+rotation = -0.17453292
+scale = Vector2(3, 3)
+collision_mask = 8
+is_casting = false
+
+[node name="RayCast2D2" parent="." instance=ExtResource("15_0o4ds")]
+modulate = Color(0.6392157, 1, 0.9843137, 1)
+position = Vector2(2792, -1148)
+rotation = -2.268928
+scale = Vector2(3, 3)
+collision_mask = 8
+is_casting = false
+
+[node name="ServerRoom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_ir5kr")
+
+[connection signal="area_entered" from="itens/Area2D4" to="." method="_on_area_2d_4_area_entered"]
+[connection signal="animation_finished" from="boss/CanvasLayer/AnimationPlayer" to="boss/CanvasLayer/background" method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="boss/Timer" to="boss" method="_on_timer_timeout"]
 [connection signal="area_entered" from="porta/boss/Area2D" to="." method="_on_area_2d_area_entered"]

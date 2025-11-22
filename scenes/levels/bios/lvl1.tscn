@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=4 uid="uid://b4crfi8e76cn1"]
+[gd_scene load_steps=71 format=4 uid="uid://b4crfi8e76cn1"]
 
 [ext_resource type="Script" uid="uid://c6dids0rmad8h" path="res://scripts/lvl_1.gd" id="1_7pl1i"]
 [ext_resource type="Texture2D" uid="uid://p8fkhi3wng8c" path="res://assets/sprites/tilemaps/bios_tileset.png" id="1_iqy28"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bwrfl87bxo1jh" path="res://scenes/platforms/portaInicio.tscn" id="13_um055"]
 [ext_resource type="PackedScene" uid="uid://b0fl0q5ein34y" path="res://scenes/characters/invader.tscn" id="15_2boqi"]
 [ext_resource type="PackedScene" uid="uid://v18vcxpjdm5l" path="res://scenes/itens/heal.tscn" id="17_vnygk"]
+[ext_resource type="AudioStream" uid="uid://cgonja3urwi3h" path="res://assets/Audios/backgound/Castlevania (NES) Music - Stage 01 Vampire Killer.mp3" id="21_iekhi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1w7wf"]
 paragraph_spacing = -5.0
@@ -1584,6 +1585,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_poyrx")
 }
 autoplay = "move"
+
+[node name="Castlevania(nes)MusicStage01VampireKiller" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_iekhi")
+autoplay = true
+parameters/looping = false
 
 [connection signal="area_entered" from="plataformas/plataformas_ultima_parte/porta/porta" to="." method="_on_porta_area_entered"]
 [connection signal="animation_finished" from="plataformas/plataformas_ultima_parte/porta/porta2" to="." method="_on_porta_2_animation_finished"]

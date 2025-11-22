@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://b1yarx6frbwxk"]
+[gd_scene load_steps=54 format=4 uid="uid://b1yarx6frbwxk"]
 
 [ext_resource type="Script" uid="uid://cds15k12pirsa" path="res://scripts/lvl_4.gd" id="1_apo5x"]
 [ext_resource type="Texture2D" uid="uid://cy6ty01ceunha" path="res://assets/sprites/tilemaps/bios_background.png" id="2_gbf61"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://cpwk88bp2mre0" path="res://scripts/rich_text_label.gd" id="8_1v41j"]
 [ext_resource type="PackedScene" uid="uid://d376na3hdrb0b" path="res://scenes/characters/cavaloDeTroia.tscn" id="8_a10hy"]
 [ext_resource type="PackedScene" uid="uid://bwrfl87bxo1jh" path="res://scenes/platforms/portaInicio.tscn" id="12_2ux4k"]
+[ext_resource type="AudioStream" uid="uid://dte07f0stepn1" path="res://assets/Audios/backgound/Castlevania_ Symphony of the Night - Dracula's Castle [Song].mp3" id="16_aytyj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a5iw4"]
 texture = ExtResource("2_gbf61")
@@ -1139,11 +1140,14 @@ debug_color = Color(1, 0.9372549, 0.007843138, 0.02745098)
 [node name="heal" parent="itens" instance=ExtResource("5_ned1q")]
 position = Vector2(1398, -2161)
 
+[node name="heal2" parent="itens" instance=ExtResource("5_ned1q")]
+position = Vector2(6112, -2203)
+
 [node name="Itemupgrade2" parent="itens" instance=ExtResource("4_kj485")]
 position = Vector2(5818, -2240)
 
-[node name="heal2" parent="itens" instance=ExtResource("5_ned1q")]
-position = Vector2(8097, -3180)
+[node name="Itemupgrade3" parent="itens" instance=ExtResource("4_kj485")]
+position = Vector2(8096, -3178)
 
 [node name="portaInicio" parent="." instance=ExtResource("12_2ux4k")]
 position = Vector2(425.99997, -1432)
@@ -1495,6 +1499,12 @@ position = Vector2(11764, -3063)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nextLVL"]
 shape = SubResource("SegmentShape2D_apo5x")
+
+[node name="CastlevaniaSymphonyOfTheNightDracula\'sCastle[song]" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_aytyj")
+volume_db = -10.0
+autoplay = true
+parameters/looping = false
 
 [connection signal="area_entered" from="enemys/cmos/DetectionArea" to="enemys/cmos" method="_on_detection_area_area_entered"]
 [connection signal="area_exited" from="enemys/cmos/DetectionArea" to="enemys/cmos" method="_on_detection_area_area_exited"]

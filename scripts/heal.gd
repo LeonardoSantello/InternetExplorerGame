@@ -5,6 +5,7 @@ extends Area2D
 
 func _on_body_entered(body: Node):
 	if body.is_in_group("player"):   # garanta que seu Player esteja no grupo "player"
+		$PowerupNoise.play()
 		Global.health = move_toward(Global.health, Global.health_max, heal_bonus)
 		print("Heal:", Global.health)
 		$CollisionShape2D.queue_free()

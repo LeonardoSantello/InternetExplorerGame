@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://ox53v7f2mjj1"]
+
+[ext_resource type="Script" uid="uid://dtxd2qovq75ik" path="res://scripts/x_attack.gd" id="1_80ha3"]
+[ext_resource type="Texture2D" uid="uid://bmiuuym6mg1f4" path="res://bestiary/sprites/bestiario_x.png" id="2_llhmb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3d4c"]
+size = Vector2(46, 40)
+
+[node name="x_attack" type="Node2D"]
+
+[node name="hitBox" type="Area2D" parent="."]
+script = ExtResource("1_80ha3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
+shape = SubResource("RectangleShape2D_n3d4c")
+
+[node name="Sprite2D" type="Sprite2D" parent="hitBox"]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(3, 3)
+texture = ExtResource("2_llhmb")
+
+[node name="hitBox" type="Area2D" parent="hitBox"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox/hitBox"]
+shape = SubResource("RectangleShape2D_n3d4c")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="hitBox" method="_on_timer_timeout"]

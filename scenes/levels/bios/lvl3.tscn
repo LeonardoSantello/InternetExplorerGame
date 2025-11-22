@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://b6coe4c1dyqx0"]
+[gd_scene load_steps=50 format=4 uid="uid://b6coe4c1dyqx0"]
 
 [ext_resource type="Script" uid="uid://ytjvy1a23xab" path="res://scripts/lvl_3.gd" id="1_g1rm2"]
 [ext_resource type="Texture2D" uid="uid://cy6ty01ceunha" path="res://assets/sprites/tilemaps/bios_background.png" id="2_hd0a2"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c7r2uecmruluc" path="res://scenes/itens/file.tscn" id="10_ikllx"]
 [ext_resource type="PackedScene" uid="uid://gdast3nneiir" path="res://scenes/itens/itemupgrade.tscn" id="11_36ghw"]
 [ext_resource type="PackedScene" uid="uid://v18vcxpjdm5l" path="res://scenes/itens/heal.tscn" id="12_8pryf"]
+[ext_resource type="AudioStream" uid="uid://hdmifwidiv7x" path="res://assets/Audios/backgound/Castlevania II Music (NES) - Bloody Tears (Day Theme).mp3" id="13_fm6p0"]
 [ext_resource type="PackedScene" uid="uid://bwrfl87bxo1jh" path="res://scenes/platforms/portaInicio.tscn" id="13_y8n3l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a5iw4"]
@@ -1308,6 +1309,11 @@ position = Vector2(6856, -2737)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nextLVL"]
 shape = SubResource("SegmentShape2D_fm6p0")
+
+[node name="CastlevaniaIiMusic(nes)BloodyTears(dayTheme)" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_fm6p0")
+autoplay = true
+parameters/looping = true
 
 [connection signal="area_entered" from="enemys/cavaloDeTroia/DetectionArea" to="enemys/cavaloDeTroia" method="_on_detection_area_area_entered"]
 [connection signal="area_exited" from="enemys/cavaloDeTroia/DetectionArea" to="enemys/cavaloDeTroia" method="_on_detection_area_area_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://dlhfqoiuj63xp"]
+[gd_scene load_steps=53 format=4 uid="uid://dlhfqoiuj63xp"]
 
 [ext_resource type="Script" uid="uid://nix1daw06oku" path="res://scripts/lvl_2.gd" id="1_ttp01"]
 [ext_resource type="Texture2D" uid="uid://cy6ty01ceunha" path="res://assets/sprites/tilemaps/bios_background.png" id="3_c101n"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bwrfl87bxo1jh" path="res://scenes/platforms/portaInicio.tscn" id="11_ovbdm"]
 [ext_resource type="PackedScene" uid="uid://v18vcxpjdm5l" path="res://scenes/itens/heal.tscn" id="12_ni5by"]
 [ext_resource type="PackedScene" uid="uid://c7r2uecmruluc" path="res://scenes/itens/file.tscn" id="13_tt4bw"]
+[ext_resource type="AudioStream" uid="uid://1op5l15wpaxi" path="res://assets/Audios/backgound/Metroid (NES) Music - Brinstar Theme.mp3" id="14_oxwir"]
 [ext_resource type="PackedScene" uid="uid://u30mi0f28jcw" path="res://scenes/characters/cmos.tscn" id="14_rriqu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a5iw4"]
@@ -1182,7 +1183,7 @@ position = Vector2(2564, -1923)
 position = Vector2(2699, -2332)
 
 [node name="file5" parent="itens" instance=ExtResource("13_tt4bw")]
-position = Vector2(2305, -1957)
+position = Vector2(2357, -1923)
 
 [node name="file6" parent="itens" instance=ExtResource("13_tt4bw")]
 position = Vector2(2502, -1923)
@@ -1214,6 +1215,11 @@ position = Vector2(6338, -3061)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nextLVL"]
 shape = SubResource("SegmentShape2D_ttp01")
+
+[node name="Metroid(nes)MusicBrinstarTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_oxwir")
+autoplay = true
+parameters/looping = false
 
 [connection signal="area_entered" from="enemys/cmos/DetectionArea" to="enemys/cmos" method="_on_detection_area_area_entered"]
 [connection signal="area_exited" from="enemys/cmos/DetectionArea" to="enemys/cmos" method="_on_detection_area_area_exited"]

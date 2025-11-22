@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://cmwfgwllown3m"]
+[gd_scene load_steps=24 format=3 uid="uid://cmwfgwllown3m"]
 
 [ext_resource type="Script" uid="uid://7ee66yulxbnq" path="res://scripts/ddos.gd" id="1_mithf"]
 [ext_resource type="Texture2D" uid="uid://758tatfdbofr" path="res://assets/sprites/characters/enemys/ddos mini.png" id="2_mithf"]
 [ext_resource type="Texture2D" uid="uid://dw7d4knh1fhua" path="res://assets/sprites/characters/enemys/ddos damage.png" id="2_pmifu"]
 [ext_resource type="Shader" uid="uid://b48snv0g75ss0" path="res://scripts/shaders/cmos.gdshader" id="5_jgt5q"]
+[ext_resource type="AudioStream" uid="uid://dagbawxu0ga5m" path="res://assets/Audios/effects/error-sound-390301.mp3" id="5_pmifu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pmifu"]
 atlas = ExtResource("2_pmifu")
@@ -99,6 +100,33 @@ shader_parameter/shake_color_rate = 0.01
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhftp"]
 size = Vector2(40, 42.5)
 
+[sub_resource type="Animation" id="Animation_cpynn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_ops3k"]
 resource_name = "dead"
 tracks/0/type = "value"
@@ -154,33 +182,6 @@ tracks/1/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_cpynn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D/ColorRect:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3jmvj"]
 _data = {
 &"RESET": SubResource("Animation_cpynn"),
@@ -228,5 +229,9 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
 position = Vector2(0.8333326, 8.333333)
 shape = SubResource("RectangleShape2D_a6udk")
+
+[node name="ErrorSound390301" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_pmifu")
+volume_db = 7.633
 
 [connection signal="area_entered" from="hitBox" to="." method="_on_hit_box_area_entered"]

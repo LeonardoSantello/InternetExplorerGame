@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dte07f0stepn1"
+path="res://.godot/imported/Castlevania_ Symphony of the Night - Dracula's Castle [Song].mp3-564e784f878bd115370fbabeeb261b5b.mp3str"
+
+[deps]
+
+source_file="res://assets/Audios/backgound/Castlevania_ Symphony of the Night - Dracula's Castle [Song].mp3"
+dest_files=["res://.godot/imported/Castlevania_ Symphony of the Night - Dracula's Castle [Song].mp3-564e784f878bd115370fbabeeb261b5b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

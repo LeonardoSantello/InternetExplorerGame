@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqhmejjfpaeem"]
+
+[ext_resource type="Script" uid="uid://djxpn4svlb7id" path="res://scripts/folder_attack.gd" id="1_fagcm"]
+[ext_resource type="Texture2D" uid="uid://bmiuuym6mg1f4" path="res://bestiary/sprites/bestiario_x.png" id="2_wq118"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3d4c"]
+
+[node name="folder_attack" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_fagcm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_n3d4c")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("2_wq118")
+
+[node name="hitBox" type="Area2D" parent="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/hitBox"]
+shape = SubResource("RectangleShape2D_n3d4c")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="Area2D" method="_on_timer_timeout"]

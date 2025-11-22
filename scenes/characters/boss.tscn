@@ -199,7 +199,7 @@ script = ExtResource("1_p2gyk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dwoi8")
-animation = &"damage"
+animation = &"idle"
 
 [node name="ColorRect" type="ColorRect" parent="AnimatedSprite2D"]
 visible = false

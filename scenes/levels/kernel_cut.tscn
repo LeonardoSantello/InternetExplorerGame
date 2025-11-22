@@ -805,6 +805,8 @@ offset_right = 1754.0
 offset_bottom = 1028.0
 color = Color(0, 0, 0, 1)
 
+[node name="transition" parent="PlayerCut/Camera2D/CanvasLayer" instance=ExtResource("6_2335s")]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCut"]
 position = Vector2(-2, -54)
 scale = Vector2(2, 2)
@@ -825,8 +827,6 @@ position = Vector2(0, -2)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.5, 390.5)
 shape = SubResource("RectangleShape2D_ob3uo")
-
-[node name="transition" parent="." instance=ExtResource("6_2335s")]
 
 [node name="WindArtificial8Bit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_7upbb")

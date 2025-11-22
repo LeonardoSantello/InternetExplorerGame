@@ -1,6 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://8hlgmtrj68pp"]
+[gd_scene load_steps=12 format=3 uid="uid://8hlgmtrj68pp"]
 
+[ext_resource type="Script" uid="uid://dkkwf7g5dvhie" path="res://scripts/creditos.gd" id="1_o43gl"]
 [ext_resource type="Shader" uid="uid://di8afmayxmt32" path="res://scripts/shaders/wave_text.gdshader" id="1_tdnt8"]
+[ext_resource type="AudioStream" uid="uid://iqbxrw84vbdk" path="res://assets/Audios/backgound/creditos.mp3" id="2_tdnt8"]
+[ext_resource type="PackedScene" uid="uid://bkw56kxvg6xmo" path="res://scenes/others/transition.tscn" id="5_s3kdx"]
+[ext_resource type="PackedScene" uid="uid://cmwfgwllown3m" path="res://scenes/characters/ddos.tscn" id="7_0jold"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o43gl"]
 shader = ExtResource("1_tdnt8")
@@ -11,7 +15,120 @@ shader_parameter/speed = 0.8
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_adsgn"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="Animation" id="Animation_adsgn"]
+resource_name = "move"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("text/nomesAlunos:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.96666664, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(132, 782), Vector2(132, -752)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("text/sprites:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(20, 35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(137, 702), Vector2(137, -1445)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("text/agradecimentos:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(35, 55.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(124, 782), Vector2(124, -1375)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Creditos:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(54.533333, 60),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -20.0]
+}
+
+[sub_resource type="Animation" id="Animation_tdnt8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("text/nomesAlunos:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(132, 782)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("text/sprites:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(137, 702)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("text/agradecimentos:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(124, 782)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Creditos:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_43gjp"]
+_data = {
+&"RESET": SubResource("Animation_tdnt8"),
+&"move": SubResource("Animation_adsgn")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tdnt8"]
+size = Vector2(1211, 20)
+
 [node name="creditos" type="Node2D"]
+script = ExtResource("1_o43gl")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -304.0
@@ -22,19 +139,29 @@ color = Color(0, 0, 0, 1)
 
 [node name="text" type="Node2D" parent="."]
 
-[node name="RichTextLabel6" type="RichTextLabel" parent="text"]
+[node name="nomesAlunos" type="RichTextLabel" parent="text"]
 material = SubResource("ShaderMaterial_o43gl")
 offset_left = 132.0
-offset_top = 67.0
+offset_top = 782.0
 offset_right = 1046.0
-offset_bottom = 1425.0
+offset_bottom = 2140.0
 theme_override_styles/focus = SubResource("StyleBoxFlat_adsgn")
 bbcode_enabled = true
 text = "[font=res://assets/fonts/Px437_IBM_BIOS.ttf]Creditos:
 
 
 
+
+
+
+
+
 Game Design: Leonardo Santello Garino
+
+
+
+
+
 
 
 
@@ -46,7 +173,17 @@ Arte e Personagens: João Vitor da Silva
 
 
 
+
+
+
+
+
 Desenvolvimento: Arthur Tavares de Paula Valim
+
+
+
+
+
 
 
 
@@ -57,3 +194,250 @@ Testes e Documentação: Carlos Eduardo Couto Gonçalves
 [/font]"
 scroll_active = false
 horizontal_alignment = 1
+
+[node name="sprites" type="RichTextLabel" parent="text"]
+material = SubResource("ShaderMaterial_o43gl")
+offset_left = 137.0
+offset_top = 702.0
+offset_right = 1051.0
+offset_bottom = 2112.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_adsgn")
+bbcode_enabled = true
+text = "[font=res://assets/fonts/Px437_IBM_BIOS.ttf]
+Sprite base do personagem principal:
+
+Clembod 
+
+
+
+
+
+
+Icone de dash:
+
+Lorc 
+
+
+
+
+
+
+Fonte:
+
+IBM
+
+
+
+
+
+
+Musica menu principal:
+
+Criada por Lorien Testard 
+Cantada por Alice Duport-Percier
+Orquestra por Orchestre Curieux
+
+
+
+
+
+
+Musica primeiro nivel:
+
+Satoe Terashima
+
+
+
+
+
+
+Musica segundo nivel:
+
+Hirokazu Tanaka
+
+
+
+
+
+
+Musica terceiro nivel:
+
+Kenichi Matsubara
+
+
+
+
+
+
+Musica quarto nivel:
+
+Michiru Yamane
+
+
+
+
+
+
+Musica chefe final:
+
+Borislav Slavov
+
+
+
+
+
+Musica creditos:
+
+Jonah Senzel
+
+
+[/font]"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="agradecimentos" type="RichTextLabel" parent="text"]
+material = SubResource("ShaderMaterial_o43gl")
+offset_left = 124.0
+offset_top = 782.0
+offset_right = 1038.0
+offset_bottom = 2652.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_adsgn")
+bbcode_enabled = true
+text = "[font=res://assets/fonts/Px437_IBM_BIOS.ttf]
+Agradecimentos:
+
+
+
+
+
+Professora: Ana Carolina Maldonado Matos
+
+
+
+
+
+
+Professor: Carlos Alberto Collozzo de Souza
+
+
+
+
+
+
+Professor: Gabriel Evaristo Santana da Silva
+
+
+
+
+
+
+Professor: Marcelo Alexandre C. da Silva
+
+
+
+
+
+
+Professor: Marcelo Ciacco de Almeida
+
+
+
+
+
+
+Professora: Mariangela Martimbianco Santos
+
+
+
+
+
+
+Professor: Mauro Glória Junior
+
+
+
+
+
+
+Professor: Max Streicher Vallim
+
+
+
+
+
+
+Professor: Nivaldo de Andrade
+
+
+
+
+
+
+Professor: Patrick Edson da Silva Martins
+
+
+
+
+
+
+Professor: Rodrigo Marudi de Oliveira
+
+
+
+
+
+
+Professor: Sidney Gitcoff Telles
+[/font]"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_43gjp")
+}
+autoplay = "move"
+
+[node name="Creditos" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_tdnt8")
+autoplay = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(590.5, 658)
+shape = SubResource("RectangleShape2D_tdnt8")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-7, -660)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(590.5, 658)
+shape = SubResource("RectangleShape2D_tdnt8")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(685.99994, -237.99998)
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(590.5, 658)
+shape = SubResource("RectangleShape2D_tdnt8")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(1799, -255)
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(590.5, 658)
+shape = SubResource("RectangleShape2D_tdnt8")
+
+[node name="ddos" parent="." instance=ExtResource("7_0jold")]
+position = Vector2(1100, 610)
+
+[node name="ddos2" parent="." instance=ExtResource("7_0jold")]
+position = Vector2(59, 611)
+scale = Vector2(-1.2, 1.2)
+
+[node name="transition" parent="." instance=ExtResource("5_s3kdx")]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
