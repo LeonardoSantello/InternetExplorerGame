@@ -1501,6 +1501,7 @@ position = Vector2(11764, -3063)
 shape = SubResource("SegmentShape2D_apo5x")
 
 [node name="CastlevaniaSymphonyOfTheNightDracula\'sCastle[song]" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("16_aytyj")
 volume_db = -10.0
 autoplay = true

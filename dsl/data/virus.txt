@@ -1,5 +1,5 @@
 <TITULO: Virus>
 <TEXTO: Na computação real, vírus são programas maliciosos que podem se espalhar através de redes e dispositivos, causando falhas e perdas de dados. Este inimigo é inspirado no comportamento de softwares maliciosos digitais.>
-<ICON: res://bestiary/sprites/invader foto.png>
+<ICON: res://bestiary/sprites/invader_foto.png>
 <KILLS: 0>
 <UNLOCKED: false>

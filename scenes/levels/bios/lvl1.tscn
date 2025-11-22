@@ -1587,6 +1587,7 @@ libraries = {
 autoplay = "move"
 
 [node name="Castlevania(nes)MusicStage01VampireKiller" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("21_iekhi")
 autoplay = true
 parameters/looping = false

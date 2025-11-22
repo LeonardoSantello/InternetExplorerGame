@@ -1311,6 +1311,7 @@ position = Vector2(6856, -2737)
 shape = SubResource("SegmentShape2D_fm6p0")
 
 [node name="CastlevaniaIiMusic(nes)BloodyTears(dayTheme)" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("13_fm6p0")
 autoplay = true
 parameters/looping = true

@@ -1217,6 +1217,7 @@ position = Vector2(6338, -3061)
 shape = SubResource("SegmentShape2D_ttp01")
 
 [node name="Metroid(nes)MusicBrinstarTheme" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("14_oxwir")
 autoplay = true
 parameters/looping = false

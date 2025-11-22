@@ -49,11 +49,7 @@ func _update_bestiary():
 
 		var tex = null
 		if enemy.unlocked:
-			if FileAccess.file_exists(enemy.icon_path):
-				tex = load(enemy.icon_path)
-			else:
-				print("Aviso: textura não encontrada para ", name, " -> ", enemy.icon_path)
-				tex = load("res://bestiary/sprites/unknow.png")
+			tex = load(enemy.icon_path)
 		else:
 			tex = load("res://bestiary/sprites/unknow.png")
 

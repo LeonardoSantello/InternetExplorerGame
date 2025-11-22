@@ -7,6 +7,7 @@ func _ready() -> void:
 
 func _on_button_pressed() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	Global.reset_game_state()
 	$CanvasLayer/transition.scene_transition_animation_function("res://scenes/others/3d.tscn")
 
 

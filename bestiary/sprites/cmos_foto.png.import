@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b07t36g6t2cwe"
-path="res://.godot/imported/cmos foto.png-154b7baf10f5ce7d0cf5ae5043523b7c.ctex"
+path="res://.godot/imported/cmos_foto.png-6e7c26d4a03240f6b1de075975f9aff4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bestiary/sprites/cmos foto.png"
-dest_files=["res://.godot/imported/cmos foto.png-154b7baf10f5ce7d0cf5ae5043523b7c.ctex"]
+source_file="res://bestiary/sprites/cmos_foto.png"
+dest_files=["res://.godot/imported/cmos_foto.png-6e7c26d4a03240f6b1de075975f9aff4.ctex"]
 
 [params]
 

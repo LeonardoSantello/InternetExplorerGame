@@ -1,5 +1,5 @@
 <TITULO: CMOS>
 <TEXTO: CMOS (Complementary Metal-Oxide-Semiconductor) é uma tecnologia essencial em eletrônica moderna, usada em microchips que armazenam pequenas quantidades de informação com baixo consumo de energia. Dispositivos que utilizam CMOS incluem chips de relógio de computadores, sensores de imagem em câmeras digitais e memórias de baixo consumo. A eficiência energética e a confiabilidade dos circuitos CMOS permitiram a evolução de eletrônicos portáteis e sistemas embarcados.>
-<ICON: res://bestiary/sprites/cmos foto.png>
+<ICON: res://bestiary/sprites/cmos_foto.png>
 <KILLS: 0>
 <UNLOCKED: false>

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccwcjs6mit6u7"
-path="res://.godot/imported/trojan foto.png-7b3774a0906a35ce593c59db87aff37f.ctex"
+uid="uid://c3egs05fpk7sl"
+path="res://.godot/imported/invader_foto.png-c5da654ad6e876c696e40d98ae7b3449.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bestiary/sprites/trojan foto.png"
-dest_files=["res://.godot/imported/trojan foto.png-7b3774a0906a35ce593c59db87aff37f.ctex"]
+source_file="res://bestiary/sprites/invader_foto.png"
+dest_files=["res://.godot/imported/invader_foto.png-c5da654ad6e876c696e40d98ae7b3449.ctex"]
 
 [params]
 
