@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=4 uid="uid://cj7vpkwwv223o"]
+[gd_scene load_steps=56 format=4 uid="uid://cj7vpkwwv223o"]
 
 [ext_resource type="Script" uid="uid://bhj40ab1dkyq" path="res://scripts/tutorial.gd" id="1_ucdw3"]
 [ext_resource type="Texture2D" uid="uid://cy6ty01ceunha" path="res://assets/sprites/tilemaps/bios_background.png" id="2_lfdfo"]
@@ -953,6 +953,9 @@ _data = {
 &"RESET": SubResource("Animation_5t42b"),
 &"move": SubResource("Animation_shyp6")
 }
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_sk1cs"]
+a = Vector2(2, -788)
 
 [node name="kernel_level" type="Node2D"]
 script = ExtResource("1_ucdw3")
@@ -1914,6 +1917,12 @@ libraries = {
 z_index = -12
 position = Vector2(3262, -2062)
 rotation = -1.5707964
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(4600, -1973)
+shape = SubResource("SegmentShape2D_sk1cs")
 
 [connection signal="area_entered" from="areas2D/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="areas2D/Area2D3" to="." method="_on_area_2d_3_area_entered"]

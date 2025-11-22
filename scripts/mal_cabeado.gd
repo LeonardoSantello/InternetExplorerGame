@@ -62,7 +62,7 @@ func handle_animation():
 		animation.play("attack")
 	elif not dead and taking_damage:
 		animation.play("hurt")
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(0.5).timeout
 		taking_damage = false
 	elif dead:
 		animation.play("dead")

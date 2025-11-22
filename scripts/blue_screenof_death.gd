@@ -2,6 +2,7 @@ extends Node2D
 
 
 func _on_animation_player_animation_finished(_anim_name = "death") -> void:
+	Global.reset_game_state()
 	$VideoStreamPlayer.play()
 
 

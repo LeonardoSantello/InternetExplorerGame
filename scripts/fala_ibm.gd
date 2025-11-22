@@ -39,6 +39,7 @@ func next_dialogue():
 	if current_index < dialogues.size():
 		self.bbcode_text = "[font=res://assets/fonts/Px437_IBM_BIOS.ttf]" + dialogues[current_index] + "[/font]"
 	else:
+		$"../StaticBody2D".queue_free()
 		self.text = "" # ou algo como "Fim do diálogo"
 
 func _process(_delta):

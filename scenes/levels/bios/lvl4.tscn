@@ -1296,7 +1296,7 @@ position = Vector2(6921.5, -990)
 position = Vector2(6986, -990)
 
 [node name="RedSpike17" parent="spiks2" instance=ExtResource("6_e6gr4")]
-position = Vector2(6336, -2130)
+position = Vector2(6340, -2130)
 rotation = -3.1415927
 
 [node name="spikes3" type="Node2D" parent="."]

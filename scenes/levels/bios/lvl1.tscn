@@ -1350,6 +1350,8 @@ scale = Vector2(-1, 1)
 [node name="porta" parent="plataformas/plataformas_ultima_parte" instance=ExtResource("10_jx8t1")]
 z_index = -5
 position = Vector2(3544, -394)
+collision_layer = 17
+collision_mask = 17
 deathParticle = ExtResource("11_8sq1s")
 
 [node name="porta" type="Area2D" parent="plataformas/plataformas_ultima_parte/porta"]

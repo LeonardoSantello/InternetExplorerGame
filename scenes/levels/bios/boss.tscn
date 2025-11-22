@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://bfx1v271cfoq1"]
+[gd_scene load_steps=65 format=4 uid="uid://bfx1v271cfoq1"]
 
 [ext_resource type="Script" uid="uid://s76iir8o1mxc" path="res://scripts/boss_lvl.gd" id="1_kl8di"]
 [ext_resource type="Texture2D" uid="uid://cy6ty01ceunha" path="res://assets/sprites/tilemaps/bios_background.png" id="2_x145g"]
@@ -876,6 +876,9 @@ fill_from = Vector2(1, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aytyj"]
 size = Vector2(36, 532)
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ir5kr"]
+a = Vector2(0, -230)
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_i1qp4"]
 a = Vector2(-101, -3)
 b = Vector2(706, -2)
@@ -1137,7 +1140,7 @@ tile_map_data = PackedByteArray("AAD0/wAAAgAHAAAAAAD1/wAAAgAHAAAAAAD2/wAAAgAHAAA
 tile_set = SubResource("TileSet_urubw")
 
 [node name="Player" parent="." instance=ExtResource("4_pniru")]
-position = Vector2(471, -1062)
+position = Vector2(463, -1043)
 
 [node name="light" type="Node2D" parent="."]
 
@@ -1198,6 +1201,18 @@ position = Vector2(2992, -1206)
 
 [node name="plataforma_bios_verde8" parent="plataforms" instance=ExtResource("5_2hpqy")]
 position = Vector2(2827, -1352)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="plataforms"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plataforms/StaticBody2D"]
+position = Vector2(2526, -1050)
+shape = SubResource("SegmentShape2D_ir5kr")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="plataforms"]
+position = Vector2(-49, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plataforms/StaticBody2D2"]
+shape = SubResource("SegmentShape2D_ir5kr")
 
 [node name="enemys" type="Node2D" parent="."]
 
