@@ -6,7 +6,7 @@ extends RichTextLabel
 var can_talk: bool = false
 
 var dialogues = [
-	"A ola pequenino, você me acordou\n(Use 'E' para passar os dialogos)",
+	"Ah ola pequenino, você me acordou\n(Use 'E' para passar os dialogos)",
 	"Então você é a causa daquele barulho mais cedo ?",
 	"Ah, esqueci de me apresentar",
 	"Eu sou um IBM 5150, mas pode me chamar de PC",
@@ -19,7 +19,7 @@ var dialogues = [
 	"O que ? você quer voltar lá para cima ?",
 	"Você não é qualquer programa",
 	"Vejo potencial em você, e acredito que seja nossa última esperança",
-	"Eu estou muito velho para me aventurar ao lado de fora, mas lhe desejo sorte",
+	"Eu estou muito velho para me aventurar no lado de fora, mas lhe desejo sorte",
 	"Va, purifique cada componente desse computador, e traga a estabilidade a esse sistema"
 ]
 

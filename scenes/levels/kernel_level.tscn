@@ -1077,7 +1077,7 @@ offset_right = 1520.0
 offset_bottom = -561.0
 pivot_offset = Vector2(1261, -165)
 bbcode_enabled = true
-text = "[font=res://assets/fonts/Px437_IBM_BIOS.ttf]Precione espaço para pular[/font]"
+text = "[font=res://assets/fonts/Px437_IBM_BIOS.ttf]Pressione espaço para pular[/font]"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1142,7 +1142,7 @@ offset_top = -932.0
 offset_right = 3127.0
 offset_bottom = -870.0
 bbcode_enabled = true
-text = "[font=res://assets/fonts/Px437_IBM_BIOS.ttf]E quanto menos tempo você pressiona menos você pular[/font]"
+text = "[font=res://assets/fonts/Px437_IBM_BIOS.ttf]E quanto menos tempo você pressiona menos você pula[/font]"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
